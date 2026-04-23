@@ -183,7 +183,7 @@ async def entrypoint(ctx: JobContext):
             model="faseeh-v1-preview",
             stability=0.75,
             speed=0.9,
-        ),,
+        ),
         vad=silero.VAD.load(min_speech_duration=0.05, min_silence_duration=0.4),
     )
 
