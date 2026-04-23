@@ -31,7 +31,7 @@ from livekit.agents import (
     function_tool,
     get_job_context,
 )
-from livekit.plugins import deepgram, openai, silero
+from livekit.plugins import deepgram, openai, silero, faseeh
 
 
 load_dotenv(dotenv_path=Path(__file__).parent / ".env")
@@ -177,7 +177,13 @@ async def entrypoint(ctx: JobContext):
         },
         stt=deepgram.STT(model="nova-3", language="ar-SA"),
         llm=openai.LLM(model="gpt-4o-mini", temperature=0.7),
-        tts=openai.TTS(voice="alloy"),
+        tts=faseeh.TTS(
+            base_url="https://api.munsit.com/api/v1",
+            voice_id="ar-najdi-female-1",
+            model="faseeh-v1-preview",
+            stability=0.75,
+            speed=0.9,
+        ),,
         vad=silero.VAD.load(min_speech_duration=0.05, min_silence_duration=0.4),
     )
 
