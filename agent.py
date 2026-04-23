@@ -177,9 +177,7 @@ async def entrypoint(ctx: JobContext):
         },
         stt=deepgram.STT(model="nova-3", language="ar-SA"),
         llm=openai.LLM(model="gpt-4o-mini", temperature=0.7),
-        # tts-1 is the legacy-but-fast OpenAI TTS model. gpt-4o-mini-tts is
-        # newer but has been timing out for us from EC2 eu-north-1.
-        tts=openai.TTS(model="tts-1", voice="alloy"),
+        tts=openai.TTS(voice="alloy"),
         vad=silero.VAD.load(min_speech_duration=0.05, min_silence_duration=0.4),
     )
 
