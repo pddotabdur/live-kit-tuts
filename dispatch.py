@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 async def main():
-    phone_number = "+966554107452" #0505820123
+    phone_number = "880554107452"
     
     # Initialize LiveKit API
     # It will automatically use LIVEKIT_URL, LIVEKIT_API_KEY, and LIVEKIT_API_SECRET from the environment
@@ -25,7 +25,7 @@ async def main():
         # Dispatch the agent to the room
         metadata = json.dumps({"phone_number": phone_number})
         dispatch_request = api.CreateAgentDispatchRequest(
-            agent_name="outbound-caller",
+            agent_name="outbound-caller", #outbound-caller", #nora-outbound #
             room=room_name,
             metadata=metadata
         )

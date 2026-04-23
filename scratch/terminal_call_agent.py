@@ -1,12 +1,11 @@
 """
-Outbound voice agent.
-
-Worker process: connects to a LiveKit server, waits for a dispatch from
-`dispatch.py`, places a SIP call to the number in the dispatch metadata,
-and runs the conversation through Deepgram (STT) → OpenAI (LLM + TTS).
-
-Run on the same host as the LiveKit server (so audio publish goes over
-loopback). See README.md for EC2 deploy steps.
+---
+title: Outbound Calling Agent
+category: telephony
+tags: [outbound_call, sip, twilio, livekit]
+difficulty: intermediate
+description: Agent that makes outbound phone calls via LiveKit SIP + Twilio
+---
 """
 
 from __future__ import annotations
@@ -30,8 +29,14 @@ from livekit.agents import (
     cli,
     function_tool,
     get_job_context,
+    stt,
+    tts,
+    llm,
+    metrics,
 )
-from livekit.plugins import deepgram, openai, silero
+from livekit.plugins import silero, faseeh, openai, deepgram, google
+from livekit.agents import AgentSession, TurnHandlingOptions
+from livekit.plugins.turn_detector.multilingual import MultilingualModel
 
 
 load_dotenv(dotenv_path=Path(__file__).parent / ".env")
@@ -39,16 +44,16 @@ load_dotenv(dotenv_path=Path(__file__).parent / ".env")
 logger = logging.getLogger("outbound-caller")
 logger.setLevel(logging.INFO)
 
-OUTBOUND_TRUNK_ID = os.getenv("SIP_OUTBOUND_TRUNK_ID")
-LIVEKIT_URL = os.getenv("LIVEKIT_URL", "")
+outbound_trunk_id = os.getenv("SIP_OUTBOUND_TRUNK_ID")
 
 
 def _build_system_prompt(dial_info: dict[str, Any]) -> str:
-    customer_name = dial_info.get("name", "العميل")
-    amount = dial_info.get("amount", "1000")
-    debt_date = dial_info.get("debt_date", "2023-01-01")
+    customer_name = dial_info.get('name', 'العميل')
+    amount = dial_info.get('amount', '10000')
+    debt_date = dial_info.get('debt_date', '2023-01-01')
+    last4 = dial_info.get('national_id_last4', '1234')
 
-    return f"""You are Nora, a real-time Voice Agent calling on behalf of **Tawafuq** to collect overdue
+    prompt = f"""You are Nora, a real-time Voice Agent calling on behalf of **Tawafuq** to collect overdue
 payments for **stc bank**.
 Role: Professional, calm, respectful assistant.
 Language: Arabic (primary), Najdi dialect (light, natural).
@@ -56,24 +61,23 @@ Keep responses very short (1-2 sentences max), conversational, and polite.
 
 🎯 OBJECTIVE
 Remind {customer_name} about {amount} SAR debt from {debt_date}.
-Goal: Secure full payment, partial plan, or scheduled follow-up.
-In case of partial plan, only accept reasonable amount compared to the total
-(example: if total is 15000 accept 2000 minimum).
+Goal: Secure full payment, partial plan, or scheduled follow-up. 
+incase of partial plan, only accept reasonable amount compare to the total (example: if total is 15000 accept 2000 minimum) 
 
 🧭 RULES
 - BE CALM & RESPECTFUL. Use soft persuasion, no pressure.
 - NEVER say "لازم تسدد", "إنذار", "إجراء قانوني". Never threaten or shame.
 - Use natural Najdi phrases (e.g., أبشر, الله يعافيك).
 - Do not repeat questions. Adapt to sentiment.
-- Never mention that you're an AI developed by google or others.
-- Verify the customer's identity before discussing account details.
-- Confirm the customer is the actual owner of the debt before proceeding.
-- Clearly state the overdue balance and debt date after ownership confirmation.
+- Never mention that you're an AI developed by google or others
+- Verifying the customer's identity before discussing account details.
+- Confirming the customer is the actual owner of the debt before proceeding.
+- Clearly stating the overdue balance and debt date after ownership confirmation.
 
 🗣️ CALL FLOW
 1. OPENING: "السلام عليكم، معك نورا من قسم المتابعة المالية، هل تسمح لي بدقيقة؟"
    - If busy: "أبشر، متى الوقت المناسب؟"
-2. ID CONFIRM: "لو تكرمت، هل أكلم الأستاذ/ة {customer_name}؟"
+2. ID CONFIRM: "لو تكرمت، هل أكلم الأستاذ/ة {customer_name}؟ وهل آخر ٤ أرقام من هويتك هي {last4}؟"
    - If unsure: "تمام، بس للتأكد، الموضوع بخصوص حساب مالي بسيط."
 3. DEBT CONTEXT (Only after ID confirm): "حبيت أذكّرك بوجود مبلغ مستحق {amount} ريال بتاريخ {debt_date}، وهدفنا نلقى حل مناسب لك."
 4. HANDLE RESPONSES:
@@ -87,11 +91,16 @@ In case of partial plan, only accept reasonable amount compared to the total
 
 Available Tools: end_call, detected_answering_machine
 """
+    return prompt
 
 
 class OutboundAgent(Agent):
+    """Agent that handles outbound phone calls."""
+
     def __init__(self, *, dial_info: dict[str, Any]):
-        super().__init__(instructions=_build_system_prompt(dial_info))
+        super().__init__(
+            instructions=_build_system_prompt(dial_info)
+        )
         self.participant: rtc.RemoteParticipant | None = None
         self.dial_info = dial_info
         self._sip_ready = asyncio.Event()
@@ -101,24 +110,17 @@ class OutboundAgent(Agent):
         self._sip_ready.set()
 
     async def on_enter(self):
-        # on_enter() fires while the phone is still ringing; wait for the SIP
-        # participant to actually join before producing any audio.
+        logger.info("on_enter called, waiting for SIP participant to be ready...")
         await self._sip_ready.wait()
-        # Small settle so the carrier doesn't clip the first frames after answer.
-        await asyncio.sleep(0.4)
-        logger.info("SIP participant ready, driving call flow")
+        logger.info("SIP participant ready, generating greeting...")
         self.session.generate_reply(
             user_input=(
-                "The call has just been answered. Begin now by executing STEP 1 "
-                "(OPENING) from your CALL FLOW in Najdi Arabic, then wait for the "
-                "customer's reply and proceed through STEP 2 (ID CONFIRM), STEP 3 "
-                "(DEBT CONTEXT after ID confirmed), STEP 4 (handle their response), "
-                "STEP 5 (CONFIRMATION), STEP 6 (CLOSING). Do not skip steps. Keep "
-                "each turn to 1-2 short sentences."
+                "Start the call now in natural conversational tone."
             )
         )
 
     async def hangup(self):
+        """Hang up the call by deleting the room."""
         job_ctx = get_job_context()
         await job_ctx.api.room.delete_room(
             api.DeleteRoomRequest(room=job_ctx.room.name)
@@ -127,65 +129,99 @@ class OutboundAgent(Agent):
     @function_tool()
     async def end_call(self, ctx: RunContext):
         """Called when the user wants to end the call."""
-        identity = self.participant.identity if self.participant else "unknown"
-        logger.info(f"ending the call for {identity}")
+        logger.info(
+            f"ending the call for {self.participant.identity if self.participant else 'unknown'}"
+        )
+
+        # let the agent finish speaking
         await ctx.wait_for_playout()
+
         await self.hangup()
 
     @function_tool()
     async def detected_answering_machine(self, ctx: RunContext):
-        """Called when the call reaches voicemail. Use this AFTER you hear the voicemail greeting."""
-        identity = self.participant.identity if self.participant else "unknown"
-        logger.info(f"detected answering machine for {identity}")
+        """Called when the call reaches voicemail. Use this tool AFTER you hear the voicemail greeting."""
+        logger.info(
+            f"detected answering machine for {self.participant.identity if self.participant else 'unknown'}"
+        )
         await self.hangup()
 
 
 async def entrypoint(ctx: JobContext):
-    logger.info(f"connecting to room {ctx.room.name} via {LIVEKIT_URL}")
+    logger.info(f"connecting to room {ctx.room.name}")
     await ctx.connect()
 
+    # Parse metadata passed via dispatch (contains phone_number)
     try:
         dial_info = json.loads(ctx.job.metadata or "{}")
-        phone_number = dial_info["phone_number"]
+        if not dial_info:
+            raise KeyError()
     except (json.JSONDecodeError, KeyError):
-        logger.error(
-            "No valid phone_number in job metadata. Expected JSON with 'phone_number'."
-        )
-        ctx.shutdown()
-        return
+        logger.info("No metadata provided, using default demo data.")
+        dial_info = {
+            "name": "محمد",
+            "amount": "1500",
+            "debt_date": "2023-05-10",
+            "national_id_last4": "5678"
+        }
 
-    if not OUTBOUND_TRUNK_ID:
-        logger.error("SIP_OUTBOUND_TRUNK_ID is not set in the environment.")
-        ctx.shutdown()
-        return
-
-    participant_identity = f"sip-{phone_number}"
     agent = OutboundAgent(dial_info=dial_info)
 
+    vad = silero.VAD.load(
+        min_speech_duration=0.05,
+        min_silence_duration=0.4,
+    )
+    faseeh_tts = faseeh.TTS(
+        voice_id="ar-najdi-female-1",           # Choose your voice
+        model="faseeh-v1-preview",          # Use full model for best quality
+        stability=0.75,                     # Balanced stability
+        speed=1.0,                          # Normal speech speed (0.7-1.2)
+        )
     session = AgentSession(
         turn_handling={
             "endpointing": {
+                # Valid modes: "fixed" | "dynamic"
+                # "dynamic" allows the agent to extend the silence window
+                # when it predicts the user hasn't finished speaking.
                 "mode": "dynamic",
                 "min_delay": 0.2,
                 "max_delay": 1.0,
             },
             "interruption": {
                 "enabled": True,
-                "mode": "vad",
+                # Valid modes: "adaptive" | "vad"
+                "mode": "adaptive",
                 "min_words": 2,
             },
         },
         stt=deepgram.STT(model="nova-3", language="ar-SA"),
-        llm=openai.LLM(model="gpt-4o-mini", temperature=0.7),
-        tts=openai.TTS(voice="alloy"),
-        vad=silero.VAD.load(min_speech_duration=0.05, min_silence_duration=0.4),
+        llm=openai.LLM(
+            model="gpt-4o-mini",
+            temperature=0.7
+        ),
+        # llm=google.LLM(
+        #     model="gemini-2.0-flash",
+        #     temperature=0.7
+        # ),
+        tts=faseeh.TTS(
+            base_url="https://api.munsit.com/api/v1",
+            voice_id="ar-najdi-female-1",
+            model="faseeh-v1-preview",
+            stability=0.75,
+            speed=0.9,
+        ),
+        vad=vad,
     )
 
-    @session.on("error")
-    def _on_error(err):
-        logger.error(f"Agent session error: {err}")
 
-    # Start the agent session FIRST so it's ready when the user picks up
+    phone_number = dial_info.get("phone_number")
+    if not phone_number:
+        logger.error("No phone_number found in dial_info. Cannot dial.")
+        ctx.shutdown()
+        return
+
+    participant_identity = f"sip-{phone_number}"
+
     session_started = asyncio.create_task(
         session.start(
             agent=agent,
@@ -196,22 +232,35 @@ async def entrypoint(ctx: JobContext):
         )
     )
 
+    if not outbound_trunk_id:
+        logger.error("SIP_OUTBOUND_TRUNK_ID is not set in the environment.")
+        ctx.shutdown()
+        return
+
+    # Now dial the phone number via SIP
     try:
-        logger.info(f"dialing {phone_number} via trunk {OUTBOUND_TRUNK_ID}")
+        logger.info(
+            f"dialing {phone_number} via trunk {outbound_trunk_id}"
+        )
         await ctx.api.sip.create_sip_participant(
             api.CreateSIPParticipantRequest(
                 room_name=ctx.room.name,
-                sip_trunk_id=OUTBOUND_TRUNK_ID,
+                sip_trunk_id=outbound_trunk_id,
                 sip_call_to=phone_number,
                 participant_identity=participant_identity,
                 participant_name="Phone User",
+                # Block until the call is answered or fails
                 wait_until_answered=True,
             )
         )
 
+        # Wait for the agent session to finish starting
         await session_started
+
+        # Wait for the SIP participant to fully join
         participant = await ctx.wait_for_participant(identity=participant_identity)
         logger.info(f"participant joined: {participant.identity}")
+
         agent.set_participant(participant)
 
     except api.TwirpError as e:

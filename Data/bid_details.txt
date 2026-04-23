@@ -1,0 +1,68 @@
+63. Scope of Work
+	1.	The supplier shall design, develop, and operate a comprehensive hypothetical collection system based on artificial intelligence technologies. This includes studying and analyzing customers’ personal behavioral patterns, classifying them accordingly, and then creating appropriate communication content for each pattern. Communication processes shall be executed according to a defined timeline and adapted per pattern, using multi-channel approaches aligned with these characteristics. The system must contribute to increasing debt collection rates for individuals and small and medium enterprises (SMEs) at the bank.
+	2.	The operational model must be comprehensive and integrated, combining behavioral, psychological, personal, and financial analysis through multiple data sources. It shall include task classification, automated decision-making under governance controls, and execution across multiple channels (whether simultaneous, sequential, inbound, or outbound). Target channels include interactive voice calls (using AI simulating human Arabic communication), recorded voice messages, documented text messages, WhatsApp, email, or any suitable communication method, with continuous monitoring to ensure achievement of collection targets and sustainability of performance throughout the contract period. The system must ensure the security and reliability of the channels used and assess associated risks to prevent fraud.
+	3.	The system shall cover the full debt lifecycle for all debtor segments, starting from receiving portfolio data, passing through multi-dimensional analysis, dynamic behavioral classification, decision-making, interactive communication, and ending with case closure or escalation. It must support multiple operational paths for both individual and corporate debts.
+	4.	Debtors shall be classified based on behavioral patterns and repayment opportunities. All analysis and classification processes must rely on the unified customer identifier (Golden Record ID) as defined in the bank’s Master Data Management (MDM) system. The customer master record must be continuously updated using the latest verified contact data during collection processes.
+	5.	The supplier shall implement an advanced and documented operational classification framework for debtors (individuals and entities), not limited to traditional financial indicators. It must integrate behavioral, interactive, and historical indicators, including at a minimum:
+	•	Expected repayment capacity
+	•	Behavioral willingness to pay
+	•	Customer’s financial discipline level
+	•	Emotional state and personal behavior
+	•	Interaction pattern with various collection channels
+	•	Regularity or fluctuation in payments over time
+	•	Duration, value, and frequency of delinquency
+	•	Nature of business activity, size, and cash flow patterns (for entities)
+The framework must be dynamic, capable of automatic reclassification when any indicator changes, while maintaining a historical record explaining transition reasons between segments, subject to bank approval.
+
+⸻
+
+	6.	Communication and collection mechanisms shall be customized per debtor based on segment, behavioral classification, and debt lifecycle stage. The system shall:
+	•	Avoid using unified or generic communication campaigns
+	•	Determine channel, timing, message formulation, tone, and escalation level based on individual analysis
+	•	Fully separate individual and corporate collection scenarios, especially in escalation and settlement negotiations
+	•	Manage retry attempts, stimulation, and escalation through a smart, gradual collection logic balancing efficiency and regulatory compliance
+	•	Log all communication attempts and outcomes in an auditable manner
+	•	Ensure all message content complies with approved communication protocols and quality/regulatory standards
+	7.	Virtual Collection Agents (Avatars):
+The system shall include at least 10 virtual personas with appropriate names to execute interactive communications that simulate human interaction. These personas shall have multiple voice tones and support both male and female voices, with speech styles aligned with message content and personality profiles.
+
+⸻
+
+	8.	Decision-Making and Governance Mechanisms:
+The supplier shall implement an intelligent decision engine based on multi-variable analysis, considering varying decision levels and risk across individuals and entities. Governance must include:
+	•	Defining decisions allowed for automated systems
+	•	Identifying decisions requiring prior or subsequent human approval
+	•	Ability to detect cases where communication must stop (e.g., customer death, severe illness, or justified inability to continue communication), with mechanisms to prevent excessive or illogical repetition
+	•	Implementation of a Human-in-the-Loop model for critical decision points
+	•	Enabling the bank to stop, modify, or redirect any collection policy at any time
+	•	Ensuring decisions are explainable and interpretable for audit and review purposes
+	•	Providing quarterly reports measuring model bias (Model Bias) and fairness across customer segments
+
+⸻
+
+	9.	Audit Trails and Transparency:
+The supplier shall provide comprehensive audit trails covering all collection operations without exception, including automated decisions, human interventions, policy changes, and communication attempts, with clear traceability of reasons and outcomes.
+
+⸻
+
+	10.	Communication Recording and Documentation:
+All customer communications must be recorded and stored, with real-time reporting dashboards enabling viewing, listening, and tracking. Reports must allow multi-dimensional filtering and tracking per loan, including time, product, and communication channel.
+	11.	The supplier shall transfer and store all communication data within the bank’s systems, bearing associated costs.
+	12.	Reporting and Outputs:
+The supplier shall provide detailed reports in Arabic through flexible dashboards, including full communication and analysis history per customer, continuously stored and integrated with the bank’s systems.
+	13.	The technical proposal must include a project implementation timeline detailing delivery dates for each component.
+	14.	The company must comply with all regulations and laws governing artificial intelligence in the Kingdom of Saudi Arabia.
+	15.	The company shall bear full liability for any financial or legal consequences arising from communication errors.
+	16.	The company shall provide at least two (2) employees dedicated to the project, in coordination with the bank.
+	17.	The company shall provide a daily reporting system reflecting communication activities, customer behavior, and collection movements.
+	18.	The company shall ensure immediate response for urgent cases and provide a direct communication point.
+	19.	The company shall adhere to defined response times (TAT), with penalties applied for delays.
+	20.	Integration and Data Exchange:
+The company must implement secure electronic integration channels with the bank’s systems, using approved institutional integration standards via Batch or API connections, ensuring real-time data flow of behavioral analysis outputs (Behavioral Tags).
+	21.	All requirements stated in this document must be fully covered.
+	22.	The company shall deliver all analysis, content, and communication records to the bank’s systems during or after project completion and commit to secure disposal (Secure Disposal) of all customer data from its systems, providing certified proof of deletion in accordance with approved policies.
+	23.	The company shall not publish or share any bank data or derived analysis with any third party and shall bear full responsibility for any data breach.
+	24.	The company commits that all project operations shall be conducted using artificial intelligence technologies without human intervention, except in model development.
+	25.	The company must be capable of executing the project independently without outsourcing any part to third parties.
+	26.	The contractor shall execute tasks using its own operational capabilities, tools, and supporting systems.
+	27.	Strict guardrails must be implemented for LLMs to prevent incorrect financial information, inappropriate language, or promises beyond system authority (Hallucinations Prevention).

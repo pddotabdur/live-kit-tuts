@@ -1,7 +1,12 @@
 .env
+.env.aws
+.env.cloud
+.env.local
 .venv/
 __pycache__/
 *.log
 faseeh_terminal_logs
 node_modules/
 .DS_Store
+scratch/agent_run.log
+session_reports/
