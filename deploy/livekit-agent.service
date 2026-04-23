@@ -11,8 +11,10 @@ EnvironmentFile=/home/ubuntu/live-kit-tuts/.env
 ExecStart=/home/ubuntu/.local/bin/uv run python agent.py start
 Restart=on-failure
 RestartSec=3
-StandardOutput=append:/var/log/livekit-agent.log
-StandardError=append:/var/log/livekit-agent.log
+# Log to journal so `journalctl -u livekit-agent -f` works
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=livekit-agent
 
 [Install]
 WantedBy=multi-user.target

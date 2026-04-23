@@ -177,13 +177,20 @@ async def entrypoint(ctx: JobContext):
         },
         stt=deepgram.STT(model="nova-3", language="ar-SA"),
         llm=openai.LLM(model="gpt-4o-mini", temperature=0.7),
-        tts=openai.TTS(voice="alloy"),
+        # tts-1 is the legacy-but-fast OpenAI TTS model. gpt-4o-mini-tts is
+        # newer but has been timing out for us from EC2 eu-north-1.
+        tts=openai.TTS(model="tts-1", voice="alloy"),
         vad=silero.VAD.load(min_speech_duration=0.05, min_silence_duration=0.4),
     )
 
     @session.on("error")
     def _on_error(err):
         logger.error(f"Agent session error: {err}")
+
+    @session.on("metrics_collected")
+    def _on_metrics(ev):
+        # surface STT/LLM/TTS latency so future "no audio" issues are diagnosable
+        logger.info(f"metrics: {ev.metrics}")
 
     # Start the agent session FIRST so it's ready when the user picks up
     session_started = asyncio.create_task(

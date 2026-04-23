@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 async def main():
-    phone_number = "880554107452"
+    phone_number = "880535363567"
     
     # Initialize LiveKit API
     # It will automatically use LIVEKIT_URL, LIVEKIT_API_KEY, and LIVEKIT_API_SECRET from the environment
