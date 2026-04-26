@@ -8,33 +8,31 @@ from dotenv import load_dotenv
 load_dotenv()
 
 async def main():
-    phone_number = "880535363567"
-    
-    # Initialize LiveKit API
-    # It will automatically use LIVEKIT_URL, LIVEKIT_API_KEY, and LIVEKIT_API_SECRET from the environment
-    lk_api = api.LiveKitAPI()
-    
-    # Generate a unique room name for this call
-    room_name = f"outbound-call-{uuid.uuid4().hex[:8]}"
-    
-    try:
-        # Create an empty room
-        await lk_api.room.create_room(api.CreateRoomRequest(name=room_name))
-        print(f"✅ Created room: {room_name}")
+    phone_number = os.getenv("PHONE_NUMBER")
+    if not phone_number:
+        raise SystemExit("PHONE_NUMBER env var is required (e.g. PHONE_NUMBER=+966555209485)")
 
-        # Dispatch the agent to the room
+    agent_name = os.getenv("AGENT_NAME", "outbound-caller")
+
+    lk_api = api.LiveKitAPI()
+    room_name = f"outbound-call-{uuid.uuid4().hex[:8]}"
+
+    try:
+        await lk_api.room.create_room(api.CreateRoomRequest(name=room_name))
+        print(f"Created room: {room_name}")
+
         metadata = json.dumps({"phone_number": phone_number})
         dispatch_request = api.CreateAgentDispatchRequest(
-            agent_name="outbound-caller", #outbound-caller", #nora-outbound #
+            agent_name=agent_name,
             room=room_name,
             metadata=metadata
         )
         
         await lk_api.agent_dispatch.create_dispatch(dispatch_request)
-        print(f"🔊 Agent securely dispatched! The agent is now joining the room and dialing {phone_number}.")
-        
+        print(f"Dispatched agent '{agent_name}' to room '{room_name}', dialing {phone_number}.")
+
     except Exception as e:
-        print(f"❌ Failed to dispatch agent: {e}")
+        print(f"Failed to dispatch agent: {e}")
     finally:
         await lk_api.aclose()
 

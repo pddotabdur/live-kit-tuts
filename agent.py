@@ -238,7 +238,7 @@ if __name__ == "__main__":
     cli.run_app(
         WorkerOptions(
             entrypoint_fnc=entrypoint,
-            agent_name="outbound-caller",
+            agent_name=os.getenv("AGENT_NAME", "outbound-caller"),
             num_idle_processes=1,
         )
     )
