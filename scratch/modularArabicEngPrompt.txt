@@ -1,0 +1,890 @@
+(base) abdur@gargantua:~/Desktop/voice_agents/test_agents/live-kit-tuts$ source .venv/bin/activate
+(live-kit-tuts) (base) abdur@gargantua:~/Desktop/voice_agents/test_agents/live-kit-tuts$ claude
+╭─── Claude Code v2.1.119 ─────────────────────────────────────────────────────╮
+│                                                    │ Tips for getting        │
+│                Welcome back Claude!                │ started                 │
+│                                                    │ Run /init to create a … │
+│                       ▐▛███▜▌                      │ ─────────────────────── │
+│                      ▝▜█████▛▘                     │ Recent activity         │
+│                        ▘▘ ▝▝                       │ No recent activity      │
+│     Opus 4.7 with high effort · Claude Pro ·       │                         │
+│     zeeeyshan@gmail.com's Organization             │                         │
+│  ~/Desktop/voice_agents/test_agents/live-kit-tuts  │                         │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+────────────────────────────────────────────────────────────────────────────────
+❯ i am testing the agent @reem_agent.py with prompt, but the response is not   
+  consistent. the agent does not follow the call script consistently. it        
+  sometimes repeats itself, like exampleL  it asks a question if your are       
+  free, if you say yes, it would ask what is the good time to call you or       
+  repeat the question again. i want to make this modular and consistent. i      
+  would like you to check livekit documentation for this and modify the         
+  behavior so every call and scene is repeated the same way everytime. for now  
+  let make an english user intended just for testing. use deepgram and          
+  cartestia. the agent is optimized for low latency already. see if those       
+  pract                                                                         
+────────────────────────────────────────────────────────────────────────────────
+
+╭─── Claude Code v2.1.119 ─────────────────────────────────────────────────────╮
+│                                                    │ Tips for getting        │
+│                Welcome back Claude!                │ started                 │
+│                                                    │ Run /init to create a … │
+│                       ▐▛███▜▌                      │ ─────────────────────── │
+│                      ▝▜█████▛▘                     │ Recent activity         │
+│                        ▘▘ ▝▝                       │ No recent activity      │
+│     Opus 4.7 with high effort · Claude Pro ·       │                         │
+│     zeeeyshan@gmail.com's Organization             │                         │
+│  ~/Desktop/voice_agents/test_agents/live-kit-tuts  │                         │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+❯ i am testing the agent @reem_agent.py with prompt, but the response is not    
+  consistent. the agent does not follow the call script consistently. it        
+  sometimes repeats itself, like exampleL  it asks a question if your are free, 
+   if you say yes, it would ask what is the good time to call you or repeat the 
+   question again. i want to make this modular and consistent. i would like you 
+   to check livekit documentation for this and modify the behavior so every     
+  call and scene is repeated the same way everytime. for now let make an        
+  english user intended just for testing. use deepgram and cartestia. the agent 
+   is optimized for low latency already.                                        
+  ⎿  Read reem_agent.py (416 lines)                                            
+                                                                                
+● I'll first check LiveKit documentation for the right pattern (multi-agent
+  workflows / handoffs are usually the answer for deterministic call flows),
+  then propose a modular structure before writing code.                         
+   
+● Fetch(https://docs.livekit.io/agents/build/workflows/)                        
+  ⎿  Received 218.9KB (200 OK)
+                                                                                
+● Fetch(https://docs.livekit.io/agents/build/)                                  
+  ⎿  Received 290.1KB (200 OK)                                                  
+                  
+● Fetch(https://docs.livekit.io/agents/build/workflows)                         
+  ⎿  Received 218.9KB (200 OK)                       
+                                                                                
+● Fetch(https://docs.livekit.io/agents/build/nodes/)
+  ⎿  Received 620.5KB (200 OK)                                                  
+                                                                                
+● Fetch(https://docs.livekit.io/agents/build/handoff/)                          
+  ⎿  Error: Request failed with status code 404                                 
+                                                                                
+● Fetch(https://docs.livekit.io/agents/build/audio/)                            
+  ⎿  Received 558.2KB (200 OK)                                                  
+                                                                                
+● Fetch(https://docs.livekit.io/agents/build/agents/)                    
+  ⎿  Error: Request failed with status code 404                                 
+                                                                                
+● Web Search("livekit agents python multi-agent handoff function_tool return
+            Agent userdata dataclass example")                                  
+  ⎿  Did 1 search in 10s                                                        
+                                                                                
+● Fetch(https://raw.githubusercontent.com/livekit/agents/main/examples/voice_age
+       nts/multi_agent.py)                                                      
+  ⎿  Received 5.5KB (200 OK)                                                    
+                                                                                
+● Found the canonical pattern. The fix is multi-agent handoffs — split each step
+   of your script into its own Agent subclass. This eliminates the inconsistency
+   you're seeing because:                                                       
+                                                                             
+  1. Each step has narrow, focused instructions (one job, can't skip ahead or   
+  repeat).                                                                      
+  2. session.say(text, allow_interruptions=False) delivers verbatim lines       
+  without LLM generation — no paraphrasing drift.                               
+  3. @function_tool returns the next Agent instance to hand off — transitions   
+  are explicit, not implicit in the prompt.                                     
+  4. @dataclass userdata carries state (name, debt amount, confirmation flags)  
+  across agents.                                                                
+                  
+  Let me check what plugins you have, then build a modular English test agent.  
+                  
+  Read 1 file (ctrl+o to expand)                                                
+                   
+● Cartesia is in deps. Now I'll create a new English test agent that keeps the
+  same SIP/dispatch wiring but breaks the script into deterministic per-step
+  agents.                                                                       
+                                                                                
+● Write(test_agent_en.py)                                                       
+                                                                                
+────────────────────────────────────────────────────────────────────────────────
+ Create file
+ test_agent_en.py                                                               
+╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌
+    1 """
+    2 English test agent — modular, deterministic call flow.
+    3
+    4 Each step of the call script is a dedicated Agent subclass. Transitions
+    5 happen by returning the next agent from a function_tool. Verbatim lines
+    6 are delivered via session.say() (no LLM generation), and only branching
+    7 decisions go through the LLM as tool calls.
+    8
+    9 This is the pattern recommended by LiveKit for scripted workflows:
+   10 https://docs.livekit.io/agents/build/workflows/
+   11 """
+   12
+   13 from __future__ import annotations
+   14
+   15 import asyncio
+   16 import json
+   17 import logging
+   18 import os
+   19 from dataclasses import dataclass, field
+   20 from pathlib import Path
+   21 from typing import Any
+   22
+   23 from dotenv import load_dotenv
+   24 from livekit import api, rtc
+   25 from livekit.agents import (
+   26     Agent,
+   27     AgentSession,
+   28     ChatContext,
+   29     JobContext,
+   30     RoomInputOptions,
+   31     RunContext,
+   32     WorkerOptions,
+   33     cli,
+   34     function_tool,
+   35     get_job_context,
+   36 )
+   37 from livekit.plugins import cartesia, deepgram, openai, silero
+   38
+   39
+   40 load_dotenv(dotenv_path=Path(__file__).parent / ".env")
+   41
+   42 logger = logging.getLogger("outbound-caller-en")
+   43 logger.setLevel(logging.INFO)
+   44
+   45 OUTBOUND_TRUNK_ID = os.getenv("SIP_OUTBOUND_TRUNK_ID")
+   46 LIVEKIT_URL = os.getenv("LIVEKIT_URL", "")
+   47
+   48
+   49 # ---------- Shared state ----------
+   50
+   51 @dataclass
+   52 class CallData:
+   53     customer_name: str = "Mohammed"
+   54     amount: str = "10000"
+   55     debt_date: str = "2023-01-01"
+   56     national_id_last4: str = "1234"
+   57
+   58     identity_confirmed: bool = False
+   59     id_verified: bool = False
+   60     outcome: str | None = None  # "paid_now" | "scheduled" | "partial"
+      | "denied" | "no_agreement"
+   61     scheduled_date: str | None = None
+   62     sip_ready: asyncio.Event = field(default_factory=asyncio.Event)
+   63     participant: rtc.RemoteParticipant | None = None
+   64
+   65
+   66 # ---------- Base agent (shared end_call + hangup) ----------
+   67
+   68 class BaseCallAgent(Agent):
+   69     async def hangup(self):
+   70         job_ctx = get_job_context()
+   71         try:
+   72             await job_ctx.api.room.delete_room(
+   73                 api.DeleteRoomRequest(room=job_ctx.room.name)
+   74             )
+   75         except Exception as e:
+   76             logger.warning(f"hangup error (room may already be gone): {
+      e}")
+   77
+   78     @function_tool()
+   79     async def detected_answering_machine(self, ctx: RunContext[CallData
+      ]):
+   80         """Call this if you hear a voicemail greeting instead of a live
+       person."""
+   81         logger.info("voicemail detected, hanging up")
+   82         await self.hangup()
+   83
+   84
+   85 # ---------- Step 1: Greeting ----------
+   86
+   87 GREETING_LINE = (
+   88     "Hello, this is Nora calling from Tawafuq on behalf of STC Bank. "
+   89     "Is now a good time to talk?"
+   90 )
+   91 GREETING_REPEAT = (
+   92     "No problem. Again, this is Nora from Tawafuq's financial follow-up
+       team. "
+   93     "Is now a good time?"
+   94 )
+   95 BUSY_GOODBYE = (
+   96     "No problem, we will call back at a more convenient time. Take care
+      ."
+   97 )
+   98
+   99
+  100 class GreetingAgent(BaseCallAgent):
+  101     def __init__(self, data: CallData) -> None:
+  102         super().__init__(
+  103             instructions=(
+  104                 "You just greeted the customer and asked if it's a good
+       time to talk. "
+  105                 "Listen to their reply and call exactly one tool: "
+  106                 "caller_available if they say yes / sure / go ahead, "
+  107                 "caller_busy if they say no / later / busy / call back,
+       "
+  108                 "unclear_response if they didn't hear you or asked you
+      to repeat. "
+  109                 "Do not say anything else. Do not generate free-form re
+      plies."
+  110             ),
+  111         )
+  112         self.data = data
+  113
+  114     async def on_enter(self):
+  115         # Wait for SIP participant to actually join before speaking.
+  116         await self.data.sip_ready.wait()
+  117         await asyncio.sleep(0.4)  # small settle so carrier doesn't cli
+      p
+  118         await self.session.say(GREETING_LINE, allow_interruptions=False
+      )
+  119
+  120     @function_tool()
+  121     async def caller_available(self, ctx: RunContext[CallData]):
+  122         """User confirmed it's a good time to talk."""
+  123         return IdentityAgent(self.data, chat_ctx=self.chat_ctx)
+  124
+  125     @function_tool()
+  126     async def caller_busy(self, ctx: RunContext[CallData]):
+  127         """User said it's not a good time / asked to call back later.""
+      "
+  128         await self.session.say(BUSY_GOODBYE, allow_interruptions=False)
+  129         await self.hangup()
+  130
+  131     @function_tool()
+  132     async def unclear_response(self, ctx: RunContext[CallData]):
+  133         """User did not hear or asked you to repeat."""
+  134         await self.session.say(GREETING_REPEAT, allow_interruptions=Fal
+      se)
+  135
+  136
+  137 # ---------- Step 2: Identity confirmation ----------
+  138
+  139 WRONG_PERSON_GOODBYE = (
+  140     "Sorry to bother you, have a great day. Goodbye."
+  141 )
+  142
+  143
+  144 class IdentityAgent(BaseCallAgent):
+  145     def __init__(self, data: CallData, *, chat_ctx: ChatContext | None 
+      = None) -> None:
+  146         super().__init__(
+  147             instructions=(
+  148                 f"Ask exactly: 'Excuse me, am I speaking with {data.cus
+      tomer_name}?' "
+  149                 "Then listen and call exactly one tool: "
+  150                 "identity_confirmed if they say yes / that's me, "
+  151                 "wrong_person if they say no / wrong number / not me, "
+  152                 "unclear if they ask you to repeat or say something off
+      -topic. "
+  153                 "Do not skip this step. Do not discuss the debt yet."
+  154             ),
+  155             chat_ctx=chat_ctx,
+  156         )
+  157         self.data = data
+  158
+  159     async def on_enter(self):
+  160         await self.session.say(
+  161             f"With your permission, am I speaking with {self.data.custo
+      mer_name}?",
+  162             allow_interruptions=False,
+  163         )
+  164
+  165     @function_tool()
+  166     async def identity_confirmed(self, ctx: RunContext[CallData]):
+  167         """User confirmed they are the named customer."""
+  168         ctx.userdata.identity_confirmed = True
+  169         return IDVerificationAgent(self.data, chat_ctx=self.chat_ctx)
+  170
+  171     @function_tool()
+  172     async def wrong_person(self, ctx: RunContext[CallData]):
+  173         """User says they are not the named customer."""
+  174         await self.session.say(WRONG_PERSON_GOODBYE, allow_interruption
+      s=False)
+  175         await self.hangup()
+  176
+  177     @function_tool()
+  178     async def unclear(self, ctx: RunContext[CallData]):
+  179         """User asked to repeat or replied off-topic."""
+  180         await self.session.say(
+  181             f"With your permission, am I speaking with {self.data.custo
+      mer_name}?",
+  182             allow_interruptions=False,
+  183         )
+  184
+  185
+  186 # ---------- Step 3: ID verification ----------
+  187
+  188 class IDVerificationAgent(BaseCallAgent):
+  189     def __init__(self, data: CallData, *, chat_ctx: ChatContext | None 
+      = None) -> None:
+  190         super().__init__(
+  191             instructions=(
+  192                 f"Verify the customer's identity. Their last 4 ID digit
+      s should be {data.national_id_last4}. "
+  193                 "Listen for digits in their reply. Call exactly one too
+      l: "
+  194                 f"id_correct if their digits match {data.national_id_la
+      st4}, "
+  195                 "id_incorrect if their digits do not match or they refu
+      se, "
+  196                 "unclear if they asked to repeat. "
+  197                 "Never reveal the correct digits to them. Never proceed
+       without confirmation."
+  198             ),
+  199             chat_ctx=chat_ctx,
+  200         )
+  201         self.data = data
+  202
+  203     async def on_enter(self):
+  204         await self.session.say(
+  205             "Could you please confirm the last 4 digits of your nationa
+      l ID?",
+  206             allow_interruptions=False,
+  207         )
+  208
+  209     @function_tool()
+  210     async def id_correct(self, ctx: RunContext[CallData]):
+  211         """The 4 digits the user spoke matched the expected value."""
+  212         ctx.userdata.id_verified = True
+  213         return DebtContextAgent(self.data, chat_ctx=self.chat_ctx)
+  214
+  215     @function_tool()
+  216     async def id_incorrect(self, ctx: RunContext[CallData]):
+  217         """The 4 digits did not match, or the user refused to provide t
+      hem."""
+  218         await self.session.say(
+  219             "I'm sorry, those don't match our records. Could you try on
+      ce more?",
+  220             allow_interruptions=False,
+  221         )
+  222
+  223     @function_tool()
+  224     async def unclear(self, ctx: RunContext[CallData]):
+  225         """User asked you to repeat the question."""
+  226         await self.session.say(
+  227             "Could you please confirm the last 4 digits of your nationa
+      l ID?",
+  228             allow_interruptions=False,
+  229         )
+  230
+  231
+  232 # ---------- Step 4: Debt context ----------
+  233
+  234 PAYMENT_LINK_LINE = (
+  235     "Excellent. I'll send you the payment link now, and you'll receive
+      a "
+  236     "confirmation message right after. Thank you very much."
+  237 )
+  238 DENIED_DEBT_LINE = (
+  239     "No problem, let me double-check your records. "
+  240     "Yes, I can confirm the amount has already been settled. "
+  241     "We apologize for the inconvenience and thank you for your time."
+  242 )
+  243
+  244
+  245 class DebtContextAgent(BaseCallAgent):
+  246     def __init__(self, data: CallData, *, chat_ctx: ChatContext | None 
+      = None) -> None:
+  247         super().__init__(
+  248             instructions=(
+  249                 f"You just told the customer about an outstanding amoun
+      t of {data.amount} SAR "
+  250                 f"from {data.debt_date} and asked if they can pay now.
+      "
+  251                 "Classify their reply and call exactly one tool: "
+  252                 "will_pay_now if they agree to pay now / say yes / I ca
+      n, "
+  253                 "needs_time if they ask for time / say later / not toda
+      y, "
+  254                 "no_funds if they say they have no money / can't afford
+      , "
+  255                 "denies_debt if they say it's not their debt / already
+      paid / wrong amount, "
+  256                 "is_angry if they are frustrated, insulting, or accusin
+      g you of being a bot. "
+  257                 "Do not invent any new amount or date."
+  258             ),
+  259             chat_ctx=chat_ctx,
+  260         )
+  261         self.data = data
+  262
+  263     async def on_enter(self):
+  264         await self.session.say(
+  265             f"I'd like to remind you of an outstanding amount of {self.
+      data.amount} SAR "
+  266             f"from {self.data.debt_date}. Are you able to settle it now
+      ?",
+  267             allow_interruptions=True,
+  268         )
+  269
+  270     @function_tool()
+  271     async def will_pay_now(self, ctx: RunContext[CallData]):
+  272         """Customer agrees to pay now."""
+  273         ctx.userdata.outcome = "paid_now"
+  274         await self.session.say(PAYMENT_LINK_LINE, allow_interruptions=F
+      alse)
+  275         return ClosingAgent(self.data, chat_ctx=self.chat_ctx)
+  276
+  277     @function_tool()
+  278     async def needs_time(self, ctx: RunContext[CallData]):
+  279         """Customer needs more time before paying."""
+  280         return ScheduleAgent(self.data, chat_ctx=self.chat_ctx)
+  281
+  282     @function_tool()
+  283     async def no_funds(self, ctx: RunContext[CallData]):
+  284         """Customer says they have no money."""
+  285         return PartialPaymentAgent(self.data, chat_ctx=self.chat_ctx)
+  286
+  287     @function_tool()
+  288     async def denies_debt(self, ctx: RunContext[CallData]):
+  289         """Customer denies the debt or says it's already paid."""
+  290         ctx.userdata.outcome = "denied"
+  291         await self.session.say(DENIED_DEBT_LINE, allow_interruptions=Fa
+      lse)
+  292         await self.hangup()
+  293
+  294     @function_tool()
+  295     async def is_angry(self, ctx: RunContext[CallData]):
+  296         """Customer is angry, frustrated, or accusing you of being a bo
+      t."""
+  297         await self.session.say(
+  298             "I understand, and our goal is to make this as easy as poss
+      ible "
+  299             "for you with no pressure. Are you able to settle the amoun
+      t today?",
+  300             allow_interruptions=True,
+  301         )
+  302
+  303
+  304 # ---------- Step 5a: Schedule a payment date ----------
+  305
+  306 ESCALATION_WARNING = (
+  307     "Without a clear payment date, the case may be escalated. "
+  308     "We always prefer to resolve this amicably. "
+  309     "What's the soonest date that works for you within the next two mon
+      ths?"
+  310 )
+  311
+  312
+  313 class ScheduleAgent(BaseCallAgent):
+  314     def __init__(self, data: CallData, *, chat_ctx: ChatContext | None 
+      = None) -> None:
+  315         super().__init__(
+  316             instructions=(
+  317                 "You are negotiating a payment date with the customer.
+      "
+  318                 "Acceptable window: within the next 2 months from today
+      . "
+  319                 "Listen to their reply and call exactly one tool: "
+  320                 "time_acceptable(date) if their proposed date is within
+       2 months, "
+  321                 "time_too_far if they propose more than 2 months, "
+  322                 "refuses_to_commit if they refuse to give any date or k
+      eep evading. "
+  323                 "Pass dates as ISO YYYY-MM-DD when possible."
+  324             ),
+  325             chat_ctx=chat_ctx,
+  326         )
+  327         self.data = data
+  328
+  329     async def on_enter(self):
+  330         await self.session.say(
+  331             "No problem. When would be a good time for you to settle th
+      e amount?",
+  332             allow_interruptions=True,
+  333         )
+  334
+  335     @function_tool()
+  336     async def time_acceptable(self, ctx: RunContext[CallData], date: st
+      r):
+  337         """The customer proposed a date within the next 2 months.
+  338
+  339         Args:
+  340             date: The date they proposed, ideally ISO YYYY-MM-DD.
+  341         """
+  342         ctx.userdata.scheduled_date = date
+  343         ctx.userdata.outcome = "scheduled"
+  344         await self.session.say(
+  345             f"Great, I've recorded {date} as your payment date. "
+  346             "We'll be in touch closer to the time.",
+  347             allow_interruptions=False,
+  348         )
+  349         return ClosingAgent(self.data, chat_ctx=self.chat_ctx)
+  350
+  351     @function_tool()
+  352     async def time_too_far(self, ctx: RunContext[CallData]):
+  353         """The customer's proposed date is more than 2 months away."""
+  354         await self.session.say(
+  355             "We'd like to keep this within a shorter window. "
+  356             "Could you commit to a date within the next two months?",
+  357             allow_interruptions=True,
+  358         )
+  359
+  360     @function_tool()
+  361     async def refuses_to_commit(self, ctx: RunContext[CallData]):
+  362         """Customer refuses to give any concrete date."""
+  363         await self.session.say(ESCALATION_WARNING, allow_interruptions=
+      True)
+  364
+  365
+  366 # ---------- Step 5b: Partial payment offer ----------
+  367
+  368 class PartialPaymentAgent(BaseCallAgent):
+  369     def __init__(self, data: CallData, *, chat_ctx: ChatContext | None 
+      = None) -> None:
+  370         super().__init__(
+  371             instructions=(
+  372                 "You are offering a partial payment plan to a customer
+      who said they have no funds. "
+  373                 "Listen to their reply and call exactly one tool: "
+  374                 "accepts_partial(amount) if they agree to pay any parti
+      al amount, "
+  375                 "refuses_partial if they cannot pay even a small amount
+      ."
+  376             ),
+  377             chat_ctx=chat_ctx,
+  378         )
+  379         self.data = data
+  380
+  381     async def on_enter(self):
+  382         await self.session.say(
+  383             "No problem. Let's find a workable solution. "
+  384             "Would you be able to pay a small amount, for example 100 S
+      AR, today?",
+  385             allow_interruptions=True,
+  386         )
+  387
+  388     @function_tool()
+  389     async def accepts_partial(self, ctx: RunContext[CallData], amount:
+      str):
+  390         """Customer agreed to a partial payment.
+  391
+  392         Args:
+  393             amount: The partial amount they agreed to.
+  394         """
+  395         ctx.userdata.outcome = "partial"
+  396         await self.session.say(
+  397             f"Thank you. I'll send the link for {amount} SAR now.",
+  398             allow_interruptions=False,
+  399         )
+  400         return ClosingAgent(self.data, chat_ctx=self.chat_ctx)
+  401
+  402     @function_tool()
+  403     async def refuses_partial(self, ctx: RunContext[CallData]):
+  404         """Customer cannot pay any amount today."""
+  405         return ScheduleAgent(self.data, chat_ctx=self.chat_ctx)
+  406
+  407
+  408 # ---------- Step 6: Closing ----------
+  409
+  410 CLOSING_LINE = (
+  411     "Thank you for your cooperation. Have a great day, goodbye."
+  412 )
+  413
+  414
+  415 class ClosingAgent(BaseCallAgent):
+  416     def __init__(self, data: CallData, *, chat_ctx: ChatContext | None 
+      = None) -> None:
+  417         super().__init__(
+  418             instructions="The call is ending. Do not generate any reply
+      .",
+  419             chat_ctx=chat_ctx,
+  420         )
+  421         self.data = data
+  422
+  423     async def on_enter(self):
+  424         await self.session.say(CLOSING_LINE, allow_interruptions=False)
+  425         await self.hangup()
+  426
+  427
+  428 # ---------- Entrypoint ----------
+  429
+  430 async def entrypoint(ctx: JobContext):
+  431     logger.info(f"connecting to room {ctx.room.name} via {LIVEKIT_URL}"
+      )
+  432     await ctx.connect()
+  433
+  434     try:
+  435         dial_info = json.loads(ctx.job.metadata or "{}")
+  436         phone_number = dial_info["phone_number"]
+  437     except (json.JSONDecodeError, KeyError):
+  438         logger.error("No valid phone_number in job metadata.")
+  439         ctx.shutdown()
+  440         return
+  441
+  442     if not OUTBOUND_TRUNK_ID:
+  443         logger.error("SIP_OUTBOUND_TRUNK_ID is not set.")
+  444         ctx.shutdown()
+  445         return
+  446
+  447     data = CallData(
+  448         customer_name=dial_info.get("name", "Mohammed"),
+  449         amount=dial_info.get("amount", "10000"),
+  450         debt_date=dial_info.get("debt_date", "2023-01-01"),
+  451         national_id_last4=dial_info.get("national_id_last4", "1234"),
+  452     )
+  453
+  454     participant_identity = f"sip-{phone_number}"
+  455
+  456     session = AgentSession[CallData](
+  457         userdata=data,
+  458         turn_handling={
+  459             "endpointing": {
+  460                 "mode": "dynamic",
+  461                 "min_delay": 0.2,
+  462                 "max_delay": 1.0,
+  463             },
+  464             "interruption": {
+  465                 "enabled": True,
+  466                 "mode": "vad",
+  467                 "min_words": 2,
+  468             },
+  469         },
+  470         stt=deepgram.STT(model="nova-3", language="en-US"),
+  471         llm=openai.LLM(model="gpt-4o-mini", temperature=0.3),
+  472         tts=cartesia.TTS(
+  473             model="sonic-2",
+  474             voice="794f9389-aac1-45b6-b726-9d9369183238",  # default Ca
+      rtesia female voice
+  475             language="en",
+  476         ),
+  477         vad=silero.VAD.load(min_speech_duration=0.05, min_silence_durat
+      ion=0.4),
+  478     )
+  479
+  480     @session.on("error")
+  481     def _on_error(err):
+  482         logger.error(f"Agent session error: {err}")
+  483
+  484     @session.on("metrics_collected")
+  485     def _on_metrics(ev):
+  486         logger.info(f"metrics: {ev.metrics}")
+  487
+  488     try:
+  489         logger.info(f"dialing {phone_number} via trunk {OUTBOUND_TRUNK_
+      ID}")
+  490         await ctx.api.sip.create_sip_participant(
+  491             api.CreateSIPParticipantRequest(
+  492                 room_name=ctx.room.name,
+  493                 sip_trunk_id=OUTBOUND_TRUNK_ID,
+  494                 sip_call_to=phone_number,
+  495                 participant_identity=participant_identity,
+  496                 participant_name="Phone User",
+  497                 wait_until_answered=True,
+  498             )
+  499         )
+  500
+  501         participant = await ctx.wait_for_participant(identity=participa
+      nt_identity)
+  502         logger.info(f"participant joined: {participant.identity}")
+  503         data.participant = participant
+  504         data.sip_ready.set()
+  505
+  506         await session.start(
+  507             agent=GreetingAgent(data),
+  508             room=ctx.room,
+  509             room_input_options=RoomInputOptions(
+  510                 participant_identity=participant_identity,
+  511             ),
+  512         )
+  513
+  514     except api.TwirpError as e:
+  515         logger.error(
+  516             f"error creating SIP participant: {e.message}, "
+  517             f"SIP status: {e.metadata.get('sip_status_code')} "
+  518             f"{e.metadata.get('sip_status')}"
+  519         )
+  520         ctx.shutdown()
+  521
+  522
+  523 if __name__ == "__main__":
+  524     cli.run_app(
+  525         WorkerOptions(
+  526             entrypoint_fnc=entrypoint,
+  527             agent_name=os.getenv("AGENT_NAME", "outbound-caller-en"),
+  528             num_idle_processes=1,
+  529         )
+  530     )
+╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌
+ Do you want to create test_agent_en.py?
+   1. Yes
+ ❯ 2. Yes, allow all edits during this session (shift+tab)
+   3. No
+
+ Esc to cancel               
+
+  2. session.say(text, allow_interruptions=False) delivers verbatim lines
+  without LLM generation — no paraphrasing drift.
+  3. @function_tool returns the next Agent instance to hand off — transitions
+  are explicit, not implicit in the prompt.
+  4. @dataclass userdata carries state (name, debt amount, confirmation flags)
+  across agents.
+
+  Let me check what plugins you have, then build a modular English test agent.
+
+  Read 1 file (ctrl+o to expand)
+
+● Cartesia is in deps. Now I'll create a new English test agent that keeps the
+  same SIP/dispatch wiring but breaks the script into deterministic per-step
+  agents.
+
+● Write(test_agent_en.py)
+  ⎿  Wrote 530 lines to test_agent_en.py
+       2 English test agent — modular, deterministic call flow.
+       3 
+         sitionsep of the call script is a dedicated Agent subclass. Tran       
+       5 happen by returning the next agent from a function_tool. Verbati
+         m lines                                                                
+         anchingivered via session.say() (no LLM generation), and only br     
+       7 decisions go through the LLM as tool calls.
+       9 This is the pattern recommended by LiveKit for scripted workflow
+         s:
+      10 https://docs.livekit.io/agents/build/workflows/
+     … +605 lines (ctrl+o to expand)
+
+● Created test_agent_en.py:1. Here's the design and what changed.
+
+  Why your current agent drifts                                                 
+   
+  A single mega-prompt asks the LLM to remember which step it's on, decide if a 
+  step was completed, and generate the next line — all simultaneously. The model
+   has no enforced state, so it skips, repeats, or paraphrases. The fix LiveKit 
+  recommends for scripted flows is multi-agent handoffs.                      
+
+  The new structure                                                             
+   
+  Each script step is its own Agent subclass with a tiny, single-purpose prompt 
+  that does one thing: classify the user's reply into a small set of tool calls.
+                                                                                
+  ┌──────┬─────────────────────┬─────────────────────────────────────────────┐  
+  │ Step │        Agent        │          Branches (function_tools)          │
+  ├──────┼─────────────────────┼─────────────────────────────────────────────┤  
+  │      │                     │ caller_available → IdentityAgent ·          │
+  │ 1    │ GreetingAgent       │ caller_busy → hangup · unclear_response →   │
+  │      │                     │ repeat                                      │  
+  ├──────┼─────────────────────┼─────────────────────────────────────────────┤
+  │ 2    │ IdentityAgent       │ identity_confirmed → IDVerificationAgent ·  │  
+  │      │                     │ wrong_person → hangup · unclear → repeat    │
+  ├──────┼─────────────────────┼─────────────────────────────────────────────┤  
+  │ 3    │ IDVerificationAgent │ id_correct → DebtContextAgent ·             │  
+  │      │                     │ id_incorrect → re-ask · unclear → repeat    │
+  ├──────┼─────────────────────┼─────────────────────────────────────────────┤  
+  │      │                     │ will_pay_now → ClosingAgent · needs_time →  │
+  │ 4    │ DebtContextAgent    │ ScheduleAgent · no_funds →                  │  
+  │      │                     │ PartialPaymentAgent · denies_debt → hangup  │
+  │      │                     │ · is_angry → empathize                      │  
+  ├──────┼─────────────────────┼─────────────────────────────────────────────┤
+  │ 5a   │ ScheduleAgent       │ time_acceptable(date) · time_too_far ·      │
+  │      │                     │ refuses_to_commit                           │  
+  ├──────┼─────────────────────┼─────────────────────────────────────────────┤
+  │ 5b   │ PartialPaymentAgent │ accepts_partial(amount) · refuses_partial → │  
+  │      │                     │  ScheduleAgent                              │  
+  ├──────┼─────────────────────┼─────────────────────────────────────────────┤
+  │ 6    │ ClosingAgent        │ speaks final line, hangs up                 │  
+  └──────┴─────────────────────┴─────────────────────────────────────────────┘  
+   
+  Three things that make it deterministic                                       
+                                                            
+  1. session.say(text, allow_interruptions=False) — every scripted line         
+  (greeting, closing, "wrong person, sorry") is spoken verbatim. The LLM never
+  re-generates them, so no paraphrase drift.                                    
+  2. function_tool returning the next Agent — handoffs are explicit. The LLM's
+  only job is to classify the reply into one of N tool calls; the transition    
+  itself is code, not prose.
+  3. @dataclass CallData as AgentSession[CallData] userdata —                   
+  identity_confirmed, id_verified, outcome, scheduled_date are typed state, not 
+  free-text the LLM has to remember.
+                                                                                
+  Other notes                                               
+
+  - chat_ctx=self.chat_ctx is passed on every handoff, so each new agent sees   
+  the prior conversation.
+  - temperature=0.3 (down from 0.7) — script consistency over creativity.       
+  - STT switched to en-US, TTS to Cartesia sonic-2 with a default English female
+   voice. Swap the voice UUID if you want a specific voice.                     
+  - Same SIP/dispatch wiring as reem_agent.py — your existing dispatch.py will  
+  work; just point AGENT_NAME=outbound-caller-en.                               
+  - Run: uv run python test_agent_en.py dev (same as the others).
+                                                                                
+  Once this flow feels right in English, the same structure ports to Arabic by  
+  translating the *_LINE constants and the per-agent instructions — the state   
+  machine itself stays unchanged.                                               
+                                                            
+  Sources:
+  - Workflows | LiveKit Docs
+  - multi_agent.py example | livekit/agents                                     
+   
+✻ Worked for 3m 46s                                                             
+                                                            
+❯ why dont you go ahead and make an arabic version as well. i will test both.   
+  use the original deepgram and faseeh pipeline for tts and stt. remember the   
+  arabic is najdi saudi not msa                                                 
+                                                                                
+● Mirroring the English structure, with verbatim Najdi lines, Deepgram ar-SA    
+  STT, and Faseeh ar-najdi-female-1 TTS. Tool-classification instructions stay
+  in English (more reliable for the LLM); only the spoken output is Arabic.
+
+● Write(test_agent_ar.py)                                                       
+  ⎿  Wrote 534 lines to test_agent_ar.py                                      
+      2 Arabic (Najdi) test agent — modular, deterministic call flow.           
+      3                                                                       
+      4 Same multi-agent handoff structure as test_agent_en.py, but spoke       
+        n output
+      5 is verbatim Najdi Arabic. STT: Deepgram nova-3 ar-SA. TTS: Faseeh       
+        ishnajdi-female-1. The instructions given to the LLM stay in Engl
+      7 because the model only classifies replies into tool calls — it ne       
+        ver                                                 
+      8 generates the user-facing audio (session.say does that verbatim).
+      9 """
+     … +603 lines (ctrl+o to expand)
+
+● Created test_agent_ar.py:1. Same state machine as the English version, with
+  these differences:                                                          
+                  
+  - STT — deepgram.STT(model="nova-3", language="ar-SA")                        
+  - TTS — faseeh.TTS(voice_id="ar-najdi-female-1", ...) (same params as         
+  reem_agent.py)                                                                
+  - All session.say() lines — verbatim Najdi, preserving phrases from your      
+  original prompt: أبشر, طال عمرك, الله يعافيك, ولا يهمك, شاكر لك, الله يجزاك   
+  خير.                                                      
+  - LLM instructions — kept in English since the LLM only classifies replies    
+  into tool calls (it never speaks). Each agent's instructions enumerate Najdi  
+  keywords for each branch (e.g. caller_busy if they say مشغول / بعدين / لاحق),
+  which gives the model concrete cues without forcing it to generate Arabic.    
+  - One fix vs. the original — the old prompt's ID-verification line read out
+  the expected last-4 digits to the customer (آخر ٤ أرقام من الهوية {last4}،    
+  صحيح؟), defeating the purpose of verification. Both new agents ask the
+  customer to provide the digits and the LLM compares them against              
+  data.national_id_last4.                                   
+  - Brand mismatch — your original prompt said "stc bank" in the role
+  description but the Arabic opening said شركة الاتصالات زين. I went with بنك   
+  stc to match the English version. Let me know if you want Zain instead and
+  I'll swap one line.                                                           
+                                                            
+  Run with:
+  AGENT_NAME=outbound-caller-ar uv run python test_agent_ar.py dev
+  (or English: AGENT_NAME=outbound-caller-en uv run python test_agent_en.py 
+  dev).                                                                         
+                                                                                
+  Your dispatch.py should work unchanged — just point its agent_name env to     
+  whichever you're testing.                                                     
+                                                            
+✻ Churned for 2m 19s                                                            
+                                                            
+────────────────────────────────────────────────────────────────────────────────
+❯       
+────────────────────────────────────────────────────────────────────────────────
+  Press Ctrl-C again to exit                                                  
+                                                                                
+Resume this session with:                                                       
+claude --resume acc0dece-7521-46a7-ba2f-2fec4f4260a1                            
+(live-kit-tuts) (base) abdur@gargantua:~/Desktop/voice_agents/test_agents/live-kit-tuts$                                                                        
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+

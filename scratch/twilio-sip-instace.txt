@@ -1,0 +1,1270 @@
+ubuntu@ip-10-0-23-147:~$ pwd
+ls -la
+/home/ubuntu
+total 40
+drwxr-x--- 5 ubuntu ubuntu 4096 Apr 23 14:48 .
+drwxr-xr-x 3 root   root   4096 Apr 23 13:38 ..
+-rw------- 1 ubuntu ubuntu 4615 Apr 24 19:26 .bash_history
+-rw-r--r-- 1 ubuntu ubuntu  220 Mar 31  2024 .bash_logout
+-rw-r--r-- 1 ubuntu ubuntu 3771 Mar 31  2024 .bashrc
+drwx------ 2 ubuntu ubuntu 4096 Apr 23 13:40 .cache
+drwxrwxr-x 3 ubuntu ubuntu 4096 Apr 23 13:42 .local
+-rw-r--r-- 1 ubuntu ubuntu  807 Mar 31  2024 .profile
+drwx------ 2 ubuntu ubuntu 4096 Apr 23 13:38 .ssh
+-rw-r--r-- 1 ubuntu ubuntu    0 Apr 23 13:40 .sudo_as_admin_successful
+ubuntu@ip-10-0-23-147:~$ cd ~
+ls -la
+total 40
+drwxr-x--- 5 ubuntu ubuntu 4096 Apr 23 14:48 .
+drwxr-xr-x 3 root   root   4096 Apr 23 13:38 ..
+-rw------- 1 ubuntu ubuntu 4615 Apr 24 19:26 .bash_history
+-rw-r--r-- 1 ubuntu ubuntu  220 Mar 31  2024 .bash_logout
+-rw-r--r-- 1 ubuntu ubuntu 3771 Mar 31  2024 .bashrc
+drwx------ 2 ubuntu ubuntu 4096 Apr 23 13:40 .cache
+drwxrwxr-x 3 ubuntu ubuntu 4096 Apr 23 13:42 .local
+-rw-r--r-- 1 ubuntu ubuntu  807 Mar 31  2024 .profile
+drwx------ 2 ubuntu ubuntu 4096 Apr 23 13:38 .ssh
+-rw-r--r-- 1 ubuntu ubuntu    0 Apr 23 13:40 .sudo_as_admin_successful
+ubuntu@ip-10-0-23-147:~$ sudo find / -iname "*livekit*" 2>/dev/null
+/var/lib/docker/rootfs/overlayfs/37600d3558bd257601c377e346e9d68c3a79cea75c651ee1a1da60be007ff62b/root/.cache/uv/simple-v21/pypi/livekit-plugins-silero.rkyv
+/var/lib/docker/rootfs/overlayfs/37600d3558bd257601c377e346e9d68c3a79cea75c651ee1a1da60be007ff62b/root/.cache/uv/simple-v21/pypi/livekit-api.rkyv
+/var/lib/docker/rootfs/overlayfs/37600d3558bd257601c377e346e9d68c3a79cea75c651ee1a1da60be007ff62b/root/.cache/uv/simple-v21/pypi/livekit-plugins-faseeh.rkyv
+/var/lib/docker/rootfs/overlayfs/37600d3558bd257601c377e346e9d68c3a79cea75c651ee1a1da60be007ff62b/root/.cache/uv/simple-v21/pypi/livekit.rkyv
+/var/lib/docker/rootfs/overlayfs/37600d3558bd257601c377e346e9d68c3a79cea75c651ee1a1da60be007ff62b/root/.cache/uv/simple-v21/pypi/livekit-plugins-openai.rkyv
+/var/lib/docker/rootfs/overlayfs/37600d3558bd257601c377e346e9d68c3a79cea75c651ee1a1da60be007ff62b/root/.cache/uv/simple-v21/pypi/livekit-plugins-deepgram.rkyv
+/var/lib/docker/rootfs/overlayfs/37600d3558bd257601c377e346e9d68c3a79cea75c651ee1a1da60be007ff62b/root/.cache/uv/simple-v21/pypi/livekit-blingfire.rkyv
+/var/lib/docker/rootfs/overlayfs/37600d3558bd257601c377e346e9d68c3a79cea75c651ee1a1da60be007ff62b/root/.cache/uv/simple-v21/pypi/livekit-plugins-turn-detector.rkyv
+/var/lib/docker/rootfs/overlayfs/37600d3558bd257601c377e346e9d68c3a79cea75c651ee1a1da60be007ff62b/root/.cache/uv/simple-v21/pypi/livekit-plugins-noise-cancellation.rkyv
+/var/lib/docker/rootfs/overlayfs/37600d3558bd257601c377e346e9d68c3a79cea75c651ee1a1da60be007ff62b/root/.cache/uv/simple-v21/pypi/livekit-protocol.rkyv
+/var/lib/docker/rootfs/overlayfs/37600d3558bd257601c377e346e9d68c3a79cea75c651ee1a1da60be007ff62b/root/.cache/uv/simple-v21/pypi/livekit-agents.rkyv
+/var/lib/docker/rootfs/overlayfs/37600d3558bd257601c377e346e9d68c3a79cea75c651ee1a1da60be007ff62b/root/.cache/uv/archive-v0/ODCtvUNkX83PZGK-xTIm6/livekit_protocol-1.1.6.dist-info
+/var/lib/docker/rootfs/overlayfs/37600d3558bd257601c377e346e9d68c3a79cea75c651ee1a1da60be007ff62b/root/.cache/uv/archive-v0/ODCtvUNkX83PZGK-xTIm6/livekit
+/var/lib/docker/rootfs/overlayfs/37600d3558bd257601c377e346e9d68c3a79cea75c651ee1a1da60be007ff62b/root/.cache/uv/archive-v0/CKjVCKpuZAos-4vcdSKki/livekit_plugins_faseeh-0.1.5.dist-info
+/var/lib/docker/rootfs/overlayfs/37600d3558bd257601c377e346e9d68c3a79cea75c651ee1a1da60be007ff62b/root/.cache/uv/archive-v0/CKjVCKpuZAos-4vcdSKki/livekit
+/var/lib/docker/rootfs/overlayfs/37600d3558bd257601c377e346e9d68c3a79cea75c651ee1a1da60be007ff62b/root/.cache/uv/archive-v0/XoYa0_u1DhflVRuW96wIE/livekit
+/var/lib/docker/rootfs/overlayfs/37600d3558bd257601c377e346e9d68c3a79cea75c651ee1a1da60be007ff62b/root/.cache/uv/archive-v0/XoYa0_u1DhflVRuW96wIE/livekit/plugins/noise_cancellation/resources/liblivekit_nc_plugin.so
+/var/lib/docker/rootfs/overlayfs/37600d3558bd257601c377e346e9d68c3a79cea75c651ee1a1da60be007ff62b/root/.cache/uv/archive-v0/XoYa0_u1DhflVRuW96wIE/livekit_plugins_noise_cancellation-0.2.5.dist-info
+/var/lib/docker/rootfs/overlayfs/37600d3558bd257601c377e346e9d68c3a79cea75c651ee1a1da60be007ff62b/root/.cache/uv/archive-v0/d11aH7ZXfmQg35EOYHUV3/livekit-1.1.5.dist-info
+/var/lib/docker/rootfs/overlayfs/37600d3558bd257601c377e346e9d68c3a79cea75c651ee1a1da60be007ff62b/root/.cache/uv/archive-v0/d11aH7ZXfmQg35EOYHUV3/livekit
+/var/lib/docker/rootfs/overlayfs/37600d3558bd257601c377e346e9d68c3a79cea75c651ee1a1da60be007ff62b/root/.cache/uv/archive-v0/d11aH7ZXfmQg35EOYHUV3/livekit/rtc/resources/liblivekit_ffi.so
+/var/lib/docker/rootfs/overlayfs/37600d3558bd257601c377e346e9d68c3a79cea75c651ee1a1da60be007ff62b/root/.cache/uv/archive-v0/d11aH7ZXfmQg35EOYHUV3/livekit/rtc/resources/livekit_ffi.h
+/var/lib/docker/rootfs/overlayfs/37600d3558bd257601c377e346e9d68c3a79cea75c651ee1a1da60be007ff62b/root/.cache/uv/archive-v0/PqFPbV9Bpq1_uNxwW2W4H/livekit
+/var/lib/docker/rootfs/overlayfs/37600d3558bd257601c377e346e9d68c3a79cea75c651ee1a1da60be007ff62b/root/.cache/uv/archive-v0/PqFPbV9Bpq1_uNxwW2W4H/livekit_plugins_openai-1.5.6.dist-info
+/var/lib/docker/rootfs/overlayfs/37600d3558bd257601c377e346e9d68c3a79cea75c651ee1a1da60be007ff62b/root/.cache/uv/archive-v0/bD04WQSYy1oD3fK1FlxP9/livekit
+/var/lib/docker/rootfs/overlayfs/37600d3558bd257601c377e346e9d68c3a79cea75c651ee1a1da60be007ff62b/root/.cache/uv/archive-v0/bD04WQSYy1oD3fK1FlxP9/livekit/api/livekit_api.py
+/var/lib/docker/rootfs/overlayfs/37600d3558bd257601c377e346e9d68c3a79cea75c651ee1a1da60be007ff62b/root/.cache/uv/archive-v0/bD04WQSYy1oD3fK1FlxP9/livekit_api-1.1.0.dist-info
+/var/lib/docker/rootfs/overlayfs/37600d3558bd257601c377e346e9d68c3a79cea75c651ee1a1da60be007ff62b/root/.cache/uv/archive-v0/6N1Ik4kkY0xoiK1QOxcKL/livekit
+/var/lib/docker/rootfs/overlayfs/37600d3558bd257601c377e346e9d68c3a79cea75c651ee1a1da60be007ff62b/root/.cache/uv/archive-v0/6N1Ik4kkY0xoiK1QOxcKL/livekit_plugins_turn_detector-1.5.6.dist-info
+/var/lib/docker/rootfs/overlayfs/37600d3558bd257601c377e346e9d68c3a79cea75c651ee1a1da60be007ff62b/root/.cache/uv/archive-v0/rccn1FDBQP6YUFFrt_g6X/livekit_agents-1.5.6.dist-info
+/var/lib/docker/rootfs/overlayfs/37600d3558bd257601c377e346e9d68c3a79cea75c651ee1a1da60be007ff62b/root/.cache/uv/archive-v0/rccn1FDBQP6YUFFrt_g6X/livekit
+/var/lib/docker/rootfs/overlayfs/37600d3558bd257601c377e346e9d68c3a79cea75c651ee1a1da60be007ff62b/root/.cache/uv/archive-v0/yBKa46FIXyyuYzeDhblu_/livekit_plugins_silero-1.5.6.dist-info
+/var/lib/docker/rootfs/overlayfs/37600d3558bd257601c377e346e9d68c3a79cea75c651ee1a1da60be007ff62b/root/.cache/uv/archive-v0/yBKa46FIXyyuYzeDhblu_/livekit
+/var/lib/docker/rootfs/overlayfs/37600d3558bd257601c377e346e9d68c3a79cea75c651ee1a1da60be007ff62b/root/.cache/uv/archive-v0/yBKa46FIXyyuYzeDhblu_/livekit_plugins_silero-1.5.6.data
+/var/lib/docker/rootfs/overlayfs/37600d3558bd257601c377e346e9d68c3a79cea75c651ee1a1da60be007ff62b/root/.cache/uv/archive-v0/yBKa46FIXyyuYzeDhblu_/livekit_plugins_silero-1.5.6.data/data/livekit
+/var/lib/docker/rootfs/overlayfs/37600d3558bd257601c377e346e9d68c3a79cea75c651ee1a1da60be007ff62b/root/.cache/uv/archive-v0/RDdX1tOcMg87c44qWslHj/livekit_plugins_deepgram-1.5.6.dist-info
+/var/lib/docker/rootfs/overlayfs/37600d3558bd257601c377e346e9d68c3a79cea75c651ee1a1da60be007ff62b/root/.cache/uv/archive-v0/RDdX1tOcMg87c44qWslHj/livekit
+/var/lib/docker/rootfs/overlayfs/37600d3558bd257601c377e346e9d68c3a79cea75c651ee1a1da60be007ff62b/root/.cache/uv/archive-v0/Is_8ECS0FHVQeduEc027b/livekit_blingfire-1.1.0.dist-info
+/var/lib/docker/rootfs/overlayfs/37600d3558bd257601c377e346e9d68c3a79cea75c651ee1a1da60be007ff62b/root/.cache/uv/archive-v0/Is_8ECS0FHVQeduEc027b/livekit
+/var/lib/docker/rootfs/overlayfs/37600d3558bd257601c377e346e9d68c3a79cea75c651ee1a1da60be007ff62b/root/.cache/uv/wheels-v6/pypi/livekit-blingfire
+/var/lib/docker/rootfs/overlayfs/37600d3558bd257601c377e346e9d68c3a79cea75c651ee1a1da60be007ff62b/root/.cache/uv/wheels-v6/pypi/livekit-plugins-deepgram
+/var/lib/docker/rootfs/overlayfs/37600d3558bd257601c377e346e9d68c3a79cea75c651ee1a1da60be007ff62b/root/.cache/uv/wheels-v6/pypi/livekit-plugins-openai
+/var/lib/docker/rootfs/overlayfs/37600d3558bd257601c377e346e9d68c3a79cea75c651ee1a1da60be007ff62b/root/.cache/uv/wheels-v6/pypi/livekit-plugins-silero
+/var/lib/docker/rootfs/overlayfs/37600d3558bd257601c377e346e9d68c3a79cea75c651ee1a1da60be007ff62b/root/.cache/uv/wheels-v6/pypi/livekit
+/var/lib/docker/rootfs/overlayfs/37600d3558bd257601c377e346e9d68c3a79cea75c651ee1a1da60be007ff62b/root/.cache/uv/wheels-v6/pypi/livekit-plugins-faseeh
+/var/lib/docker/rootfs/overlayfs/37600d3558bd257601c377e346e9d68c3a79cea75c651ee1a1da60be007ff62b/root/.cache/uv/wheels-v6/pypi/livekit-plugins-turn-detector
+/var/lib/docker/rootfs/overlayfs/37600d3558bd257601c377e346e9d68c3a79cea75c651ee1a1da60be007ff62b/root/.cache/uv/wheels-v6/pypi/livekit-plugins-noise-cancellation
+/var/lib/docker/rootfs/overlayfs/37600d3558bd257601c377e346e9d68c3a79cea75c651ee1a1da60be007ff62b/root/.cache/uv/wheels-v6/pypi/livekit-agents
+/var/lib/docker/rootfs/overlayfs/37600d3558bd257601c377e346e9d68c3a79cea75c651ee1a1da60be007ff62b/root/.cache/uv/wheels-v6/pypi/livekit-protocol
+/var/lib/docker/rootfs/overlayfs/37600d3558bd257601c377e346e9d68c3a79cea75c651ee1a1da60be007ff62b/root/.cache/uv/wheels-v6/pypi/livekit-api
+/var/lib/docker/rootfs/overlayfs/37600d3558bd257601c377e346e9d68c3a79cea75c651ee1a1da60be007ff62b/root/.cache/huggingface/hub/.locks/models--livekit--turn-detector
+/var/lib/docker/rootfs/overlayfs/37600d3558bd257601c377e346e9d68c3a79cea75c651ee1a1da60be007ff62b/root/.cache/huggingface/hub/models--livekit--turn-detector
+/var/lib/docker/rootfs/overlayfs/37600d3558bd257601c377e346e9d68c3a79cea75c651ee1a1da60be007ff62b/app/.venv/livekit
+/var/lib/docker/rootfs/overlayfs/37600d3558bd257601c377e346e9d68c3a79cea75c651ee1a1da60be007ff62b/app/.venv/lib/python3.11/site-packages/livekit_blingfire-1.1.0.dist-info
+/var/lib/docker/rootfs/overlayfs/37600d3558bd257601c377e346e9d68c3a79cea75c651ee1a1da60be007ff62b/app/.venv/lib/python3.11/site-packages/livekit_plugins_deepgram-1.5.6.dist-info
+/var/lib/docker/rootfs/overlayfs/37600d3558bd257601c377e346e9d68c3a79cea75c651ee1a1da60be007ff62b/app/.venv/lib/python3.11/site-packages/livekit_plugins_faseeh-0.1.5.dist-info
+/var/lib/docker/rootfs/overlayfs/37600d3558bd257601c377e346e9d68c3a79cea75c651ee1a1da60be007ff62b/app/.venv/lib/python3.11/site-packages/livekit_protocol-1.1.6.dist-info
+/var/lib/docker/rootfs/overlayfs/37600d3558bd257601c377e346e9d68c3a79cea75c651ee1a1da60be007ff62b/app/.venv/lib/python3.11/site-packages/livekit-1.1.5.dist-info
+/var/lib/docker/rootfs/overlayfs/37600d3558bd257601c377e346e9d68c3a79cea75c651ee1a1da60be007ff62b/app/.venv/lib/python3.11/site-packages/livekit_agents-1.5.6.dist-info
+/var/lib/docker/rootfs/overlayfs/37600d3558bd257601c377e346e9d68c3a79cea75c651ee1a1da60be007ff62b/app/.venv/lib/python3.11/site-packages/livekit_plugins_silero-1.5.6.dist-info
+/var/lib/docker/rootfs/overlayfs/37600d3558bd257601c377e346e9d68c3a79cea75c651ee1a1da60be007ff62b/app/.venv/lib/python3.11/site-packages/livekit
+/var/lib/docker/rootfs/overlayfs/37600d3558bd257601c377e346e9d68c3a79cea75c651ee1a1da60be007ff62b/app/.venv/lib/python3.11/site-packages/livekit/api/livekit_api.py
+/var/lib/docker/rootfs/overlayfs/37600d3558bd257601c377e346e9d68c3a79cea75c651ee1a1da60be007ff62b/app/.venv/lib/python3.11/site-packages/livekit/api/__pycache__/livekit_api.cpython-311.pyc
+/var/lib/docker/rootfs/overlayfs/37600d3558bd257601c377e346e9d68c3a79cea75c651ee1a1da60be007ff62b/app/.venv/lib/python3.11/site-packages/livekit/rtc/resources/liblivekit_ffi.so
+/var/lib/docker/rootfs/overlayfs/37600d3558bd257601c377e346e9d68c3a79cea75c651ee1a1da60be007ff62b/app/.venv/lib/python3.11/site-packages/livekit/rtc/resources/livekit_ffi.h
+/var/lib/docker/rootfs/overlayfs/37600d3558bd257601c377e346e9d68c3a79cea75c651ee1a1da60be007ff62b/app/.venv/lib/python3.11/site-packages/livekit/plugins/noise_cancellation/resources/liblivekit_nc_plugin.so
+/var/lib/docker/rootfs/overlayfs/37600d3558bd257601c377e346e9d68c3a79cea75c651ee1a1da60be007ff62b/app/.venv/lib/python3.11/site-packages/livekit_plugins_openai-1.5.6.dist-info
+/var/lib/docker/rootfs/overlayfs/37600d3558bd257601c377e346e9d68c3a79cea75c651ee1a1da60be007ff62b/app/.venv/lib/python3.11/site-packages/livekit_plugins_noise_cancellation-0.2.5.dist-info
+/var/lib/docker/rootfs/overlayfs/37600d3558bd257601c377e346e9d68c3a79cea75c651ee1a1da60be007ff62b/app/.venv/lib/python3.11/site-packages/livekit_plugins_turn_detector-1.5.6.dist-info
+/var/lib/docker/rootfs/overlayfs/37600d3558bd257601c377e346e9d68c3a79cea75c651ee1a1da60be007ff62b/app/.venv/lib/python3.11/site-packages/livekit_api-1.1.0.dist-info
+/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/66/fs/app/.venv/lib/python3.11/site-packages/livekit
+/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/66/fs/app/.venv/lib/python3.11/site-packages/livekit/api/__pycache__/livekit_api.cpython-311.pyc
+/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/66/fs/root/.cache/huggingface/hub/.locks/models--livekit--turn-detector
+/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/66/fs/root/.cache/huggingface/hub/models--livekit--turn-detector
+/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/110/fs/app/.venv/lib/python3.11/site-packages/livekit
+/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/40/fs/app/.venv/lib/python3.11/site-packages/livekit
+/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/40/fs/app/.venv/lib/python3.11/site-packages/livekit/api/__pycache__/livekit_api.cpython-311.pyc
+/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/40/fs/root/.cache/huggingface/hub/.locks/models--livekit--turn-detector
+/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/40/fs/root/.cache/huggingface/hub/models--livekit--turn-detector
+/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/24/fs/app/.venv/livekit
+/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/24/fs/app/.venv/lib/python3.11/site-packages/livekit_blingfire-1.1.0.dist-info
+/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/24/fs/app/.venv/lib/python3.11/site-packages/livekit_plugins_deepgram-1.5.6.dist-info
+/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/24/fs/app/.venv/lib/python3.11/site-packages/livekit_plugins_faseeh-0.1.5.dist-info
+/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/24/fs/app/.venv/lib/python3.11/site-packages/livekit_protocol-1.1.6.dist-info
+/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/24/fs/app/.venv/lib/python3.11/site-packages/livekit-1.1.5.dist-info
+/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/24/fs/app/.venv/lib/python3.11/site-packages/livekit_agents-1.5.6.dist-info
+/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/24/fs/app/.venv/lib/python3.11/site-packages/livekit_plugins_silero-1.5.6.dist-info
+/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/24/fs/app/.venv/lib/python3.11/site-packages/livekit
+/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/24/fs/app/.venv/lib/python3.11/site-packages/livekit/api/livekit_api.py
+/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/24/fs/app/.venv/lib/python3.11/site-packages/livekit/rtc/resources/liblivekit_ffi.so
+/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/24/fs/app/.venv/lib/python3.11/site-packages/livekit/rtc/resources/livekit_ffi.h
+/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/24/fs/app/.venv/lib/python3.11/site-packages/livekit/plugins/noise_cancellation/resources/liblivekit_nc_plugin.so
+/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/24/fs/app/.venv/lib/python3.11/site-packages/livekit_plugins_openai-1.5.6.dist-info
+/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/24/fs/app/.venv/lib/python3.11/site-packages/livekit_plugins_noise_cancellation-0.2.5.dist-info
+/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/24/fs/app/.venv/lib/python3.11/site-packages/livekit_plugins_turn_detector-1.5.6.dist-info
+/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/24/fs/app/.venv/lib/python3.11/site-packages/livekit_api-1.1.0.dist-info
+/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/24/fs/root/.cache/uv/simple-v21/pypi/livekit-plugins-silero.rkyv
+/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/24/fs/root/.cache/uv/simple-v21/pypi/livekit-api.rkyv
+/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/24/fs/root/.cache/uv/simple-v21/pypi/livekit-plugins-faseeh.rkyv
+/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/24/fs/root/.cache/uv/simple-v21/pypi/livekit.rkyv
+/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/24/fs/root/.cache/uv/simple-v21/pypi/livekit-plugins-openai.rkyv
+/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/24/fs/root/.cache/uv/simple-v21/pypi/livekit-plugins-deepgram.rkyv
+/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/24/fs/root/.cache/uv/simple-v21/pypi/livekit-blingfire.rkyv
+/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/24/fs/root/.cache/uv/simple-v21/pypi/livekit-plugins-turn-detector.rkyv
+/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/24/fs/root/.cache/uv/simple-v21/pypi/livekit-plugins-noise-cancellation.rkyv
+/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/24/fs/root/.cache/uv/simple-v21/pypi/livekit-protocol.rkyv
+/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/24/fs/root/.cache/uv/simple-v21/pypi/livekit-agents.rkyv
+/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/24/fs/root/.cache/uv/archive-v0/ODCtvUNkX83PZGK-xTIm6/livekit_protocol-1.1.6.dist-info
+/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/24/fs/root/.cache/uv/archive-v0/ODCtvUNkX83PZGK-xTIm6/livekit
+/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/24/fs/root/.cache/uv/archive-v0/CKjVCKpuZAos-4vcdSKki/livekit_plugins_faseeh-0.1.5.dist-info
+/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/24/fs/root/.cache/uv/archive-v0/CKjVCKpuZAos-4vcdSKki/livekit
+/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/24/fs/root/.cache/uv/archive-v0/XoYa0_u1DhflVRuW96wIE/livekit
+/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/24/fs/root/.cache/uv/archive-v0/XoYa0_u1DhflVRuW96wIE/livekit/plugins/noise_cancellation/resources/liblivekit_nc_plugin.so
+/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/24/fs/root/.cache/uv/archive-v0/XoYa0_u1DhflVRuW96wIE/livekit_plugins_noise_cancellation-0.2.5.dist-info
+/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/24/fs/root/.cache/uv/archive-v0/d11aH7ZXfmQg35EOYHUV3/livekit-1.1.5.dist-info
+/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/24/fs/root/.cache/uv/archive-v0/d11aH7ZXfmQg35EOYHUV3/livekit
+/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/24/fs/root/.cache/uv/archive-v0/d11aH7ZXfmQg35EOYHUV3/livekit/rtc/resources/liblivekit_ffi.so
+/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/24/fs/root/.cache/uv/archive-v0/d11aH7ZXfmQg35EOYHUV3/livekit/rtc/resources/livekit_ffi.h
+/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/24/fs/root/.cache/uv/archive-v0/PqFPbV9Bpq1_uNxwW2W4H/livekit
+/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/24/fs/root/.cache/uv/archive-v0/PqFPbV9Bpq1_uNxwW2W4H/livekit_plugins_openai-1.5.6.dist-info
+/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/24/fs/root/.cache/uv/archive-v0/bD04WQSYy1oD3fK1FlxP9/livekit
+/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/24/fs/root/.cache/uv/archive-v0/bD04WQSYy1oD3fK1FlxP9/livekit/api/livekit_api.py
+/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/24/fs/root/.cache/uv/archive-v0/bD04WQSYy1oD3fK1FlxP9/livekit_api-1.1.0.dist-info
+/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/24/fs/root/.cache/uv/archive-v0/6N1Ik4kkY0xoiK1QOxcKL/livekit
+/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/24/fs/root/.cache/uv/archive-v0/6N1Ik4kkY0xoiK1QOxcKL/livekit_plugins_turn_detector-1.5.6.dist-info
+/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/24/fs/root/.cache/uv/archive-v0/rccn1FDBQP6YUFFrt_g6X/livekit_agents-1.5.6.dist-info
+/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/24/fs/root/.cache/uv/archive-v0/rccn1FDBQP6YUFFrt_g6X/livekit
+/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/24/fs/root/.cache/uv/archive-v0/yBKa46FIXyyuYzeDhblu_/livekit_plugins_silero-1.5.6.dist-info
+/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/24/fs/root/.cache/uv/archive-v0/yBKa46FIXyyuYzeDhblu_/livekit
+/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/24/fs/root/.cache/uv/archive-v0/yBKa46FIXyyuYzeDhblu_/livekit_plugins_silero-1.5.6.data
+/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/24/fs/root/.cache/uv/archive-v0/yBKa46FIXyyuYzeDhblu_/livekit_plugins_silero-1.5.6.data/data/livekit
+/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/24/fs/root/.cache/uv/archive-v0/RDdX1tOcMg87c44qWslHj/livekit_plugins_deepgram-1.5.6.dist-info
+/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/24/fs/root/.cache/uv/archive-v0/RDdX1tOcMg87c44qWslHj/livekit
+/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/24/fs/root/.cache/uv/archive-v0/Is_8ECS0FHVQeduEc027b/livekit_blingfire-1.1.0.dist-info
+/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/24/fs/root/.cache/uv/archive-v0/Is_8ECS0FHVQeduEc027b/livekit
+/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/24/fs/root/.cache/uv/wheels-v6/pypi/livekit-blingfire
+/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/24/fs/root/.cache/uv/wheels-v6/pypi/livekit-plugins-deepgram
+/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/24/fs/root/.cache/uv/wheels-v6/pypi/livekit-plugins-openai
+/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/24/fs/root/.cache/uv/wheels-v6/pypi/livekit-plugins-silero
+/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/24/fs/root/.cache/uv/wheels-v6/pypi/livekit
+/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/24/fs/root/.cache/uv/wheels-v6/pypi/livekit-plugins-faseeh
+/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/24/fs/root/.cache/uv/wheels-v6/pypi/livekit-plugins-turn-detector
+/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/24/fs/root/.cache/uv/wheels-v6/pypi/livekit-plugins-noise-cancellation
+/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/24/fs/root/.cache/uv/wheels-v6/pypi/livekit-agents
+/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/24/fs/root/.cache/uv/wheels-v6/pypi/livekit-protocol
+/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/24/fs/root/.cache/uv/wheels-v6/pypi/livekit-api
+/usr/local/bin/livekit-cli
+ubuntu@ip-10-0-23-147:~$ ps aux | grep -i livekit
+root        6945  0.0  3.5 413652 140324 ?       S    Apr23   0:01 /app/.venv/bin/python3 -c from multiprocessing.forkserver import main; main(20, 22, ['livekit.plugins.deepgram', 'livekit.plugins.faseeh', 'livekit.plugins.openai', 'livekit.plugins.silero', 'livekit.plugins.turn_detector', 'av'], **{'sys_path': ['/app/src', '/usr/local/lib/python311.zip', '/usr/local/lib/python3.11', '/usr/local/lib/python3.11/lib-dynload', '/app/.venv/lib/python3.11/site-packages', '/app']})
+root        6947  0.0 19.5 1449632 762004 ?      Sl   Apr23   0:36 /app/.venv/bin/python3 -c from multiprocessing.forkserver import main; main(20, 22, ['livekit.plugins.deepgram', 'livekit.plugins.faseeh', 'livekit.plugins.openai', 'livekit.plugins.silero', 'livekit.plugins.turn_detector', 'av'], **{'sys_path': ['/app/src', '/usr/local/lib/python311.zip', '/usr/local/lib/python3.11', '/usr/local/lib/python3.11/lib-dynload', '/app/.venv/lib/python3.11/site-packages', '/app']})
+root        6959  0.0  4.8 904384 188608 ?       Sl   Apr23   0:45 /app/.venv/bin/python3 -c from multiprocessing.forkserver import main; main(20, 22, ['livekit.plugins.deepgram', 'livekit.plugins.faseeh', 'livekit.plugins.openai', 'livekit.plugins.silero', 'livekit.plugins.turn_detector', 'av'], **{'sys_path': ['/app/src', '/usr/local/lib/python311.zip', '/usr/local/lib/python3.11', '/usr/local/lib/python3.11/lib-dynload', '/app/.venv/lib/python3.11/site-packages', '/app']})
+root        6985  0.0  5.1 910660 202708 ?       Sl   Apr23   0:44 /app/.venv/bin/python3 -c from multiprocessing.forkserver import main; main(20, 22, ['livekit.plugins.deepgram', 'livekit.plugins.faseeh', 'livekit.plugins.openai', 'livekit.plugins.silero', 'livekit.plugins.turn_detector', 'av'], **{'sys_path': ['/app/src', '/usr/local/lib/python311.zip', '/usr/local/lib/python3.11', '/usr/local/lib/python3.11/lib-dynload', '/app/.venv/lib/python3.11/site-packages', '/app']})
+ubuntu     31964  0.0  0.0   6916  2688 pts/0    S+   07:27   0:00 grep --color=auto -i livekit
+ubuntu@ip-10-0-23-147:~$ sudo systemctl list-units --type=service | grep -i livekit
+  nora-worker.service                            loaded active running Nora LiveKit Worker (Docker)
+ubuntu@ip-10-0-23-147:~$ docker ps -a
+permission denied while trying to connect to the docker API at unix:///var/run/docker.sock
+ubuntu@ip-10-0-23-147:~$ docker --version
+Docker version 29.1.3, build 29.1.3-0ubuntu3~24.04.1
+ubuntu@ip-10-0-23-147:~$ docker ps
+permission denied while trying to connect to the docker API at unix:///var/run/docker.sock
+ubuntu@ip-10-0-23-147:~$ sudo usermod -aG docker $USER
+ubuntu@ip-10-0-23-147:~$ newgrp docker
+ubuntu@ip-10-0-23-147:~$ docker ps -a
+CONTAINER ID   IMAGE                COMMAND                  CREATED        STATUS        PORTS     NAMES
+37600d3558bd   nora-worker:latest   "uv run python src/a…"   41 hours ago   Up 41 hours             nora-worker
+ubuntu@ip-10-0-23-147:~$ docker logs 37600d3558bd
+2026-04-23 14:52:45.005237858 [W:onnxruntime:Default, device_discovery.cc:325 DiscoverDevicesForPlatform] GPU device discovery failed: device_discovery.cc:92 ReadFileContents Failed to open file: "/sys/class/drm/card0/device/vendor"
+INFO:livekit.agents:starting worker
+INFO:livekit.agents:plugin registered
+INFO:livekit.agents:plugin registered
+INFO:livekit.agents:plugin registered
+INFO:livekit.agents:plugin registered
+INFO:livekit.agents:plugin registered
+INFO:livekit.agents:preloading plugins
+{"message": "starting worker", "level": "INFO", "name": "livekit.agents", "version": "1.5.6", "rtc-version": "1.1.5", "timestamp": "2026-04-23T14:52:45.020736+00:00"}
+{"message": "plugin registered", "level": "INFO", "name": "livekit.agents", "plugin": "livekit.plugins.deepgram", "version": "1.5.6", "timestamp": "2026-04-23T14:52:45.020910+00:00"}
+{"message": "plugin registered", "level": "INFO", "name": "livekit.agents", "plugin": "livekit.plugins.faseeh", "version": "0.1.5", "timestamp": "2026-04-23T14:52:45.020987+00:00"}
+{"message": "plugin registered", "level": "INFO", "name": "livekit.agents", "plugin": "livekit.plugins.openai", "version": "1.5.6", "timestamp": "2026-04-23T14:52:45.021049+00:00"}
+{"message": "plugin registered", "level": "INFO", "name": "livekit.agents", "plugin": "livekit.plugins.silero", "version": "1.5.6", "timestamp": "2026-04-23T14:52:45.021112+00:00"}
+{"message": "plugin registered", "level": "INFO", "name": "livekit.agents", "plugin": "livekit.plugins.turn_detector.base", "version": "1.5.6", "timestamp": "2026-04-23T14:52:45.021161+00:00"}
+{"message": "preloading plugins", "level": "INFO", "name": "livekit.agents", "packages": ["livekit.plugins.deepgram", "livekit.plugins.faseeh", "livekit.plugins.openai", "livekit.plugins.silero", "livekit.plugins.turn_detector", "av"], "timestamp": "2026-04-23T14:52:45.021212+00:00"}
+{"message": "starting inference executor", "level": "INFO", "name": "livekit.agents", "timestamp": "2026-04-23T14:52:45.037803+00:00"}
+INFO:livekit.agents:starting inference executor
+2026-04-23 14:52:46.047651924 [W:onnxruntime:Default, device_discovery.cc:325 DiscoverDevicesForPlatform] GPU device discovery failed: device_discovery.cc:92 ReadFileContents Failed to open file: "/sys/class/drm/card0/device/vendor"
+{"message": "initializing process", "level": "INFO", "name": "livekit.agents", "pid": 21, "inference": true, "timestamp": "2026-04-23T14:52:46.056802+00:00"}
+INFO:livekit.agents:initializing process
+[transformers] PyTorch was not found. Models won't be available and only tokenizers, configuration and file/data utilities can be used.
+INFO:livekit.agents:process initialized
+{"message": "process initialized", "level": "INFO", "name": "livekit.agents", "pid": 21, "inference": true, "elapsed_time": 2.63, "timestamp": "2026-04-23T14:52:48.686484+00:00"}
+INFO:livekit.agents:HTTP server listening on :8081
+{"message": "HTTP server listening on :8081", "level": "INFO", "name": "livekit.agents", "timestamp": "2026-04-23T14:52:48.688183+00:00"}
+{"message": "initializing process", "level": "INFO", "name": "livekit.agents", "pid": 30, "timestamp": "2026-04-23T14:52:48.694747+00:00"}
+INFO:livekit.agents:initializing process
+INFO:livekit.agents:initializing process
+{"message": "initializing process", "level": "INFO", "name": "livekit.agents", "pid": 32, "timestamp": "2026-04-23T14:52:48.699779+00:00"}
+INFO:nora-agent:S3 uploads disabled or bucket not configured; using local artifacts at /app/artifacts_local
+INFO:nora-agent:S3 uploads disabled or bucket not configured; using local artifacts at /app/artifacts_local
+INFO:nora-agent:S3 uploads disabled or bucket not configured; using local artifacts at /app/artifacts_local
+{"message": "S3 uploads disabled or bucket not configured; using local artifacts at /app/artifacts_local", "level": "INFO", "name": "nora-agent", "pid": 30, "timestamp": "2026-04-23T14:52:49.132940+00:00"}
+INFO:nora-agent:S3 uploads disabled or bucket not configured; using local artifacts at /app/artifacts_local
+INFO:livekit.agents:process initialized
+{"message": "S3 uploads disabled or bucket not configured; using local artifacts at /app/artifacts_local", "level": "INFO", "name": "nora-agent", "pid": 32, "timestamp": "2026-04-23T14:52:49.132725+00:00"}
+{"message": "process initialized", "level": "INFO", "name": "livekit.agents", "pid": 32, "elapsed_time": 0.43, "timestamp": "2026-04-23T14:52:49.135385+00:00"}
+INFO:livekit.agents:process initialized
+{"message": "process initialized", "level": "INFO", "name": "livekit.agents", "pid": 30, "elapsed_time": 0.44, "timestamp": "2026-04-23T14:52:49.135954+00:00"}
+/app/.venv/lib/python3.11/site-packages/jwt/api_jwt.py:147: InsecureKeyLengthWarning: The HMAC key is 6 bytes long, which is below the minimum recommended length of 32 bytes for SHA256. See RFC 7518 Section 3.2.
+  return self._jws.encode(
+INFO:livekit.agents:registered worker
+{"message": "registered worker", "level": "INFO", "name": "livekit.agents", "agent_name": "nora-single-prompt", "id": "AW_uL5yYxgvqxR8", "url": "ws://ip-10-0-29-234.eu-north-1.compute.internal:7880", "region": "", "protocol": 17, "timestamp": "2026-04-23T14:52:49.141586+00:00"}
+INFO:livekit.agents:received job request
+{"message": "received job request", "level": "INFO", "name": "livekit.agents", "job_id": "AJ_JPp3Y5pN83Jy", "dispatch_id": "AD_DPEMzUnN2PFg", "room": "room-rkV3PHsmR4PB", "room_id": "RM_GSGiKh5uJFPi", "agent_name": "nora-single-prompt", "resuming": false, "enable_recording": false, "timestamp": "2026-04-23T14:53:17.354360+00:00"}
+/app/.venv/lib/python3.11/site-packages/jwt/api_jwt.py:147: InsecureKeyLengthWarning: The HMAC key is 6 bytes long, which is below the minimum recommended length of 32 bytes for SHA256. See RFC 7518 Section 3.2.
+  return self._jws.encode(
+INFO:livekit.agents:initializing process
+{"message": "initializing process", "level": "INFO", "name": "livekit.agents", "pid": 47, "timestamp": "2026-04-23T14:53:17.420880+00:00"}
+INFO:nora-agent:S3 uploads disabled or bucket not configured; using local artifacts at /app/artifacts_local
+INFO:livekit.agents:process initialized
+INFO:nora-agent:S3 uploads disabled or bucket not configured; using local artifacts at /app/artifacts_local
+{"message": "process initialized", "level": "INFO", "name": "livekit.agents", "pid": 47, "elapsed_time": 0.33, "timestamp": "2026-04-23T14:53:17.755298+00:00"}
+{"message": "S3 uploads disabled or bucket not configured; using local artifacts at /app/artifacts_local", "level": "INFO", "name": "nora-agent", "pid": 47, "timestamp": "2026-04-23T14:53:17.754135+00:00"}
+WARNING:livekit.agents:The room connection was not established within 10 seconds after calling job_entry. This might mean that job_ctx.connect() was never invoked, or that no AgentSession with an active RoomIO has been started.
+WARNING:livekit.agents:The room connection was not established within 10 seconds after calling job_entry. This might mean that job_ctx.connect() was never invoked, or that no AgentSession with an active RoomIO has been started.
+{"message": "The room connection was not established within 10 seconds after calling job_entry. This might mean that job_ctx.connect() was never invoked, or that no AgentSession with an active RoomIO has been started.", "level": "WARNING", "name": "livekit.agents", "room": "room-rkV3PHsmR4PB", "job_id": "AJ_JPp3Y5pN83Jy", "pid": 32, "room_id": "RM_GSGiKh5uJFPi", "timestamp": "2026-04-23T14:53:27.360539+00:00"}
+INFO:nora-agent:Outbound call answered: +201001317175
+{"message": "Outbound call answered: +201001317175", "level": "INFO", "name": "nora-agent", "room": "room-rkV3PHsmR4PB", "job_id": "AJ_JPp3Y5pN83Jy", "pid": 32, "room_id": "RM_GSGiKh5uJFPi", "timestamp": "2026-04-23T14:53:29.332115+00:00"}
+INFO:nora-agent:Outbound call answered: +201001317175
+error: failed to fetch server settings: http status: 404
+ERROR:livekit:livekit_ffi::server::room:150:livekit_ffi::server::room - audio filter cannot be enabled: LiveKit Cloud is required
+ERROR:livekit:livekit_ffi::server::room:150:livekit_ffi::server::room - audio filter cannot be enabled: LiveKit Cloud is required
+{"message": "livekit_ffi::server::room:150:livekit_ffi::server::room - audio filter cannot be enabled: LiveKit Cloud is required", "level": "ERROR", "name": "livekit", "room": "room-rkV3PHsmR4PB", "job_id": "AJ_JPp3Y5pN83Jy", "pid": 32, "room_id": "RM_GSGiKh5uJFPi", "timestamp": "2026-04-23T14:53:30.019413+00:00"}
+INFO:livekit.agents:adaptive interruption is disabled by default in production mode
+INFO:livekit.agents:adaptive interruption is disabled by default in production mode
+{"message": "adaptive interruption is disabled by default in production mode", "level": "INFO", "name": "livekit.agents", "room": "room-rkV3PHsmR4PB", "job_id": "AJ_JPp3Y5pN83Jy", "pid": 32, "room_id": "RM_GSGiKh5uJFPi", "timestamp": "2026-04-23T14:53:30.088608+00:00"}
+not authenticated
+ERROR:livekit:livekit_ffi::server::audio_stream:135:livekit_ffi::server::audio_stream - failed to initialize the audio filter. it will not be enabled for this session.
+ERROR:livekit:livekit_ffi::server::audio_stream:135:livekit_ffi::server::audio_stream - failed to initialize the audio filter. it will not be enabled for this session.
+{"message": "livekit_ffi::server::audio_stream:135:livekit_ffi::server::audio_stream - failed to initialize the audio filter. it will not be enabled for this session.", "level": "ERROR", "name": "livekit", "room": "room-rkV3PHsmR4PB", "job_id": "AJ_JPp3Y5pN83Jy", "pid": 32, "room_id": "RM_GSGiKh5uJFPi", "timestamp": "2026-04-23T14:53:30.098181+00:00"}
+INFO:nora-agent:{"event": "stt_metrics", "timestamp": 1776956010.4825454, "request_id": "", "duration_s": 0.0, "audio_duration_s": 0.0, "streamed": true, "label": "livekit.plugins.deepgram.stt.STT", "error": null}
+INFO:nora-agent:{"event": "stt_metrics", "timestamp": 1776956010.4825454, "request_id": "", "duration_s": 0.0, "audio_duration_s": 0.0, "streamed": true, "label": "livekit.plugins.deepgram.stt.STT", "error": null}
+{"message": "{\"event\": \"stt_metrics\", \"timestamp\": 1776956010.4825454, \"request_id\": \"\", \"duration_s\": 0.0, \"audio_duration_s\": 0.0, \"streamed\": true, \"label\": \"livekit.plugins.deepgram.stt.STT\", \"error\": null}", "level": "INFO", "name": "nora-agent", "room": "room-rkV3PHsmR4PB", "job_id": "AJ_JPp3Y5pN83Jy", "pid": 32, "room_id": "RM_GSGiKh5uJFPi", "timestamp": "2026-04-23T14:53:30.483474+00:00"}
+INFO:nora-agent:{"event": "stt_metrics", "timestamp": 1776956015.1452217, "request_id": "019dbad4-efa1-74a1-9b56-3006927bf62b", "duration_s": 0.0, "audio_duration_s": 5.0, "streamed": true, "label": "livekit.plugins.deepgram.stt.STT", "error": null}
+{"message": "{\"event\": \"stt_metrics\", \"timestamp\": 1776956015.1452217, \"request_id\": \"019dbad4-efa1-74a1-9b56-3006927bf62b\", \"duration_s\": 0.0, \"audio_duration_s\": 5.0, \"streamed\": true, \"label\": \"livekit.plugins.deepgram.stt.STT\", \"error\": null}", "level": "INFO", "name": "nora-agent", "room": "room-rkV3PHsmR4PB", "job_id": "AJ_JPp3Y5pN83Jy", "pid": 32, "room_id": "RM_GSGiKh5uJFPi", "timestamp": "2026-04-23T14:53:35.146291+00:00"}
+INFO:nora-agent:{"event": "stt_metrics", "timestamp": 1776956015.1452217, "request_id": "019dbad4-efa1-74a1-9b56-3006927bf62b", "duration_s": 0.0, "audio_duration_s": 5.0, "streamed": true, "label": "livekit.plugins.deepgram.stt.STT", "error": null}
+INFO:livekit.agents:Turn detector does not support language ar-SA
+INFO:livekit.agents:Turn detector does not support language ar-SA
+{"message": "Turn detector does not support language ar-SA", "level": "INFO", "name": "livekit.agents", "room": "room-rkV3PHsmR4PB", "job_id": "AJ_JPp3Y5pN83Jy", "pid": 32, "room_id": "RM_GSGiKh5uJFPi", "timestamp": "2026-04-23T14:53:38.678670+00:00"}
+INFO:nora-agent:{"event": "llm_metrics", "timestamp": 1776956019.546126, "request_id": "chatcmpl-DXpitCa5L23mRmhYRzhlrqrbnS54a", "duration_s": 1.3398, "ttft_s": 1.2005, "prompt_tokens": 1988, "completion_tokens": 14, "total_tokens": 2002, "tokens_per_second": 10.45, "cancelled": false, "error": null}
+{"message": "{\"event\": \"llm_metrics\", \"timestamp\": 1776956019.546126, \"request_id\": \"chatcmpl-DXpitCa5L23mRmhYRzhlrqrbnS54a\", \"duration_s\": 1.3398, \"ttft_s\": 1.2005, \"prompt_tokens\": 1988, \"completion_tokens\": 14, \"total_tokens\": 2002, \"tokens_per_second\": 10.45, \"cancelled\": false, \"error\": null}", "level": "INFO", "name": "nora-agent", "room": "room-rkV3PHsmR4PB", "job_id": "AJ_JPp3Y5pN83Jy", "pid": 32, "room_id": "RM_GSGiKh5uJFPi", "timestamp": "2026-04-23T14:53:39.546873+00:00"}
+INFO:nora-agent:{"event": "llm_metrics", "timestamp": 1776956019.546126, "request_id": "chatcmpl-DXpitCa5L23mRmhYRzhlrqrbnS54a", "duration_s": 1.3398, "ttft_s": 1.2005, "prompt_tokens": 1988, "completion_tokens": 14, "total_tokens": 2002, "tokens_per_second": 10.45, "cancelled": false, "error": null}
+ERROR:nora-agent:metric handler error in on_tts_metrics: 'TTSMetrics' object has no attribute 'error'
+ERROR:nora-agent:metric handler error in on_tts_metrics: 'TTSMetrics' object has no attribute 'error'
+{"message": "metric handler error in on_tts_metrics: 'TTSMetrics' object has no attribute 'error'", "level": "ERROR", "name": "nora-agent", "room": "room-rkV3PHsmR4PB", "job_id": "AJ_JPp3Y5pN83Jy", "pid": 32, "room_id": "RM_GSGiKh5uJFPi", "timestamp": "2026-04-23T14:53:41.179729+00:00"}
+{"message": "{\"event\": \"stt_metrics\", \"timestamp\": 1776956022.8950036, \"request_id\": \"019dbad4-efa1-74a1-9b56-3006927bf62b\", \"duration_s\": 0.0, \"audio_duration_s\": 4.75, \"streamed\": true, \"label\": \"livekit.plugins.deepgram.stt.STT\", \"error\": null}", "level": "INFO", "name": "nora-agent", "room": "room-rkV3PHsmR4PB", "job_id": "AJ_JPp3Y5pN83Jy", "pid": 32, "room_id": "RM_GSGiKh5uJFPi", "timestamp": "2026-04-23T14:53:42.895775+00:00"}
+INFO:nora-agent:{"event": "stt_metrics", "timestamp": 1776956022.8950036, "request_id": "019dbad4-efa1-74a1-9b56-3006927bf62b", "duration_s": 0.0, "audio_duration_s": 4.75, "streamed": true, "label": "livekit.plugins.deepgram.stt.STT", "error": null}
+INFO:nora-agent:{"event": "stt_metrics", "timestamp": 1776956022.8950036, "request_id": "019dbad4-efa1-74a1-9b56-3006927bf62b", "duration_s": 0.0, "audio_duration_s": 4.75, "streamed": true, "label": "livekit.plugins.deepgram.stt.STT", "error": null}
+INFO:livekit.agents:Turn detector does not support language ar-SA
+INFO:livekit.agents:Turn detector does not support language ar-SA
+{"message": "Turn detector does not support language ar-SA", "level": "INFO", "name": "livekit.agents", "room": "room-rkV3PHsmR4PB", "job_id": "AJ_JPp3Y5pN83Jy", "pid": 32, "room_id": "RM_GSGiKh5uJFPi", "timestamp": "2026-04-23T14:53:47.146969+00:00"}
+INFO:nora-agent:{"event": "llm_metrics", "timestamp": 1776956027.6690667, "request_id": "chatcmpl-DXpj1a4xoLFqBRqdxBxA6DujBKKGn", "duration_s": 0.7291, "ttft_s": 0.4826, "prompt_tokens": 2017, "completion_tokens": 19, "total_tokens": 2036, "tokens_per_second": 26.06, "cancelled": false, "error": null}
+INFO:nora-agent:{"event": "llm_metrics", "timestamp": 1776956027.6690667, "request_id": "chatcmpl-DXpj1a4xoLFqBRqdxBxA6DujBKKGn", "duration_s": 0.7291, "ttft_s": 0.4826, "prompt_tokens": 2017, "completion_tokens": 19, "total_tokens": 2036, "tokens_per_second": 26.06, "cancelled": false, "error": null}
+{"message": "{\"event\": \"llm_metrics\", \"timestamp\": 1776956027.6690667, \"request_id\": \"chatcmpl-DXpj1a4xoLFqBRqdxBxA6DujBKKGn\", \"duration_s\": 0.7291, \"ttft_s\": 0.4826, \"prompt_tokens\": 2017, \"completion_tokens\": 19, \"total_tokens\": 2036, \"tokens_per_second\": 26.06, \"cancelled\": false, \"error\": null}", "level": "INFO", "name": "nora-agent", "room": "room-rkV3PHsmR4PB", "job_id": "AJ_JPp3Y5pN83Jy", "pid": 32, "room_id": "RM_GSGiKh5uJFPi", "timestamp": "2026-04-23T14:53:47.669525+00:00"}
+INFO:nora-agent:{"event": "stt_metrics", "timestamp": 1776956027.895193, "request_id": "019dbad4-efa1-74a1-9b56-3006927bf62b", "duration_s": 0.0, "audio_duration_s": 5.0, "streamed": true, "label": "livekit.plugins.deepgram.stt.STT", "error": null}
+INFO:nora-agent:{"event": "stt_metrics", "timestamp": 1776956027.895193, "request_id": "019dbad4-efa1-74a1-9b56-3006927bf62b", "duration_s": 0.0, "audio_duration_s": 5.0, "streamed": true, "label": "livekit.plugins.deepgram.stt.STT", "error": null}
+{"message": "{\"event\": \"stt_metrics\", \"timestamp\": 1776956027.895193, \"request_id\": \"019dbad4-efa1-74a1-9b56-3006927bf62b\", \"duration_s\": 0.0, \"audio_duration_s\": 5.0, \"streamed\": true, \"label\": \"livekit.plugins.deepgram.stt.STT\", \"error\": null}", "level": "INFO", "name": "nora-agent", "room": "room-rkV3PHsmR4PB", "job_id": "AJ_JPp3Y5pN83Jy", "pid": 32, "room_id": "RM_GSGiKh5uJFPi", "timestamp": "2026-04-23T14:53:47.896334+00:00"}
+ERROR:nora-agent:metric handler error in on_tts_metrics: 'TTSMetrics' object has no attribute 'error'
+{"message": "metric handler error in on_tts_metrics: 'TTSMetrics' object has no attribute 'error'", "level": "ERROR", "name": "nora-agent", "room": "room-rkV3PHsmR4PB", "job_id": "AJ_JPp3Y5pN83Jy", "pid": 32, "room_id": "RM_GSGiKh5uJFPi", "timestamp": "2026-04-23T14:53:50.001981+00:00"}
+ERROR:nora-agent:metric handler error in on_tts_metrics: 'TTSMetrics' object has no attribute 'error'
+INFO:nora-agent:{"event": "stt_metrics", "timestamp": 1776956032.8954875, "request_id": "019dbad4-efa1-74a1-9b56-3006927bf62b", "duration_s": 0.0, "audio_duration_s": 5.0, "streamed": true, "label": "livekit.plugins.deepgram.stt.STT", "error": null}
+INFO:nora-agent:{"event": "stt_metrics", "timestamp": 1776956032.8954875, "request_id": "019dbad4-efa1-74a1-9b56-3006927bf62b", "duration_s": 0.0, "audio_duration_s": 5.0, "streamed": true, "label": "livekit.plugins.deepgram.stt.STT", "error": null}
+{"message": "{\"event\": \"stt_metrics\", \"timestamp\": 1776956032.8954875, \"request_id\": \"019dbad4-efa1-74a1-9b56-3006927bf62b\", \"duration_s\": 0.0, \"audio_duration_s\": 5.0, \"streamed\": true, \"label\": \"livekit.plugins.deepgram.stt.STT\", \"error\": null}", "level": "INFO", "name": "nora-agent", "room": "room-rkV3PHsmR4PB", "job_id": "AJ_JPp3Y5pN83Jy", "pid": 32, "room_id": "RM_GSGiKh5uJFPi", "timestamp": "2026-04-23T14:53:52.896587+00:00"}
+INFO:livekit.agents:Turn detector does not support language ar-SA
+{"message": "Turn detector does not support language ar-SA", "level": "INFO", "name": "livekit.agents", "room": "room-rkV3PHsmR4PB", "job_id": "AJ_JPp3Y5pN83Jy", "pid": 32, "room_id": "RM_GSGiKh5uJFPi", "timestamp": "2026-04-23T14:53:55.623144+00:00"}
+INFO:livekit.agents:Turn detector does not support language ar-SA
+INFO:nora-agent:{"event": "llm_metrics", "timestamp": 1776956036.6158454, "request_id": "chatcmpl-DXpj9GF7eLaOjleXP9W3aXRAnlBYm", "duration_s": 0.9904, "ttft_s": 0.5277, "prompt_tokens": 2052, "completion_tokens": 32, "total_tokens": 2084, "tokens_per_second": 32.31, "cancelled": false, "error": null}
+INFO:nora-agent:{"event": "llm_metrics", "timestamp": 1776956036.6158454, "request_id": "chatcmpl-DXpj9GF7eLaOjleXP9W3aXRAnlBYm", "duration_s": 0.9904, "ttft_s": 0.5277, "prompt_tokens": 2052, "completion_tokens": 32, "total_tokens": 2084, "tokens_per_second": 32.31, "cancelled": false, "error": null}
+{"message": "{\"event\": \"llm_metrics\", \"timestamp\": 1776956036.6158454, \"request_id\": \"chatcmpl-DXpj9GF7eLaOjleXP9W3aXRAnlBYm\", \"duration_s\": 0.9904, \"ttft_s\": 0.5277, \"prompt_tokens\": 2052, \"completion_tokens\": 32, \"total_tokens\": 2084, \"tokens_per_second\": 32.31, \"cancelled\": false, \"error\": null}", "level": "INFO", "name": "nora-agent", "room": "room-rkV3PHsmR4PB", "job_id": "AJ_JPp3Y5pN83Jy", "pid": 32, "room_id": "RM_GSGiKh5uJFPi", "timestamp": "2026-04-23T14:53:56.616269+00:00"}
+INFO:nora-agent:{"event": "stt_metrics", "timestamp": 1776956037.9449797, "request_id": "019dbad4-efa1-74a1-9b56-3006927bf62b", "duration_s": 0.0, "audio_duration_s": 5.05, "streamed": true, "label": "livekit.plugins.deepgram.stt.STT", "error": null}
+INFO:nora-agent:{"event": "stt_metrics", "timestamp": 1776956037.9449797, "request_id": "019dbad4-efa1-74a1-9b56-3006927bf62b", "duration_s": 0.0, "audio_duration_s": 5.05, "streamed": true, "label": "livekit.plugins.deepgram.stt.STT", "error": null}
+{"message": "{\"event\": \"stt_metrics\", \"timestamp\": 1776956037.9449797, \"request_id\": \"019dbad4-efa1-74a1-9b56-3006927bf62b\", \"duration_s\": 0.0, \"audio_duration_s\": 5.05, \"streamed\": true, \"label\": \"livekit.plugins.deepgram.stt.STT\", \"error\": null}", "level": "INFO", "name": "nora-agent", "room": "room-rkV3PHsmR4PB", "job_id": "AJ_JPp3Y5pN83Jy", "pid": 32, "room_id": "RM_GSGiKh5uJFPi", "timestamp": "2026-04-23T14:53:57.945625+00:00"}
+ERROR:nora-agent:metric handler error in on_tts_metrics: 'TTSMetrics' object has no attribute 'error'
+ERROR:nora-agent:metric handler error in on_tts_metrics: 'TTSMetrics' object has no attribute 'error'
+{"message": "metric handler error in on_tts_metrics: 'TTSMetrics' object has no attribute 'error'", "level": "ERROR", "name": "nora-agent", "room": "room-rkV3PHsmR4PB", "job_id": "AJ_JPp3Y5pN83Jy", "pid": 32, "room_id": "RM_GSGiKh5uJFPi", "timestamp": "2026-04-23T14:53:58.929146+00:00"}
+INFO:nora-agent:{"event": "stt_metrics", "timestamp": 1776956042.9946935, "request_id": "019dbad4-efa1-74a1-9b56-3006927bf62b", "duration_s": 0.0, "audio_duration_s": 5.05, "streamed": true, "label": "livekit.plugins.deepgram.stt.STT", "error": null}
+INFO:nora-agent:{"event": "stt_metrics", "timestamp": 1776956042.9946935, "request_id": "019dbad4-efa1-74a1-9b56-3006927bf62b", "duration_s": 0.0, "audio_duration_s": 5.05, "streamed": true, "label": "livekit.plugins.deepgram.stt.STT", "error": null}
+{"message": "{\"event\": \"stt_metrics\", \"timestamp\": 1776956042.9946935, \"request_id\": \"019dbad4-efa1-74a1-9b56-3006927bf62b\", \"duration_s\": 0.0, \"audio_duration_s\": 5.05, \"streamed\": true, \"label\": \"livekit.plugins.deepgram.stt.STT\", \"error\": null}", "level": "INFO", "name": "nora-agent", "room": "room-rkV3PHsmR4PB", "job_id": "AJ_JPp3Y5pN83Jy", "pid": 32, "room_id": "RM_GSGiKh5uJFPi", "timestamp": "2026-04-23T14:54:02.995432+00:00"}
+INFO:nora-agent:{"event": "stt_metrics", "timestamp": 1776956047.9955583, "request_id": "019dbad4-efa1-74a1-9b56-3006927bf62b", "duration_s": 0.0, "audio_duration_s": 5.0, "streamed": true, "label": "livekit.plugins.deepgram.stt.STT", "error": null}
+INFO:nora-agent:{"event": "stt_metrics", "timestamp": 1776956047.9955583, "request_id": "019dbad4-efa1-74a1-9b56-3006927bf62b", "duration_s": 0.0, "audio_duration_s": 5.0, "streamed": true, "label": "livekit.plugins.deepgram.stt.STT", "error": null}
+{"message": "{\"event\": \"stt_metrics\", \"timestamp\": 1776956047.9955583, \"request_id\": \"019dbad4-efa1-74a1-9b56-3006927bf62b\", \"duration_s\": 0.0, \"audio_duration_s\": 5.0, \"streamed\": true, \"label\": \"livekit.plugins.deepgram.stt.STT\", \"error\": null}", "level": "INFO", "name": "nora-agent", "room": "room-rkV3PHsmR4PB", "job_id": "AJ_JPp3Y5pN83Jy", "pid": 32, "room_id": "RM_GSGiKh5uJFPi", "timestamp": "2026-04-23T14:54:07.996982+00:00"}
+INFO:livekit.agents:Turn detector does not support language ar-SA
+INFO:livekit.agents:Turn detector does not support language ar-SA
+{"message": "Turn detector does not support language ar-SA", "level": "INFO", "name": "livekit.agents", "room": "room-rkV3PHsmR4PB", "job_id": "AJ_JPp3Y5pN83Jy", "pid": 32, "room_id": "RM_GSGiKh5uJFPi", "timestamp": "2026-04-23T14:54:08.796366+00:00"}
+INFO:nora-agent:{"event": "llm_metrics", "timestamp": 1776956049.8522213, "request_id": "chatcmpl-DXpjMv01kUeQSVsAmdwTmG4ktayN4", "duration_s": 1.2209, "ttft_s": 0.7503, "prompt_tokens": 2098, "completion_tokens": 36, "total_tokens": 2134, "tokens_per_second": 29.49, "cancelled": false, "error": null}
+INFO:nora-agent:{"event": "llm_metrics", "timestamp": 1776956049.8522213, "request_id": "chatcmpl-DXpjMv01kUeQSVsAmdwTmG4ktayN4", "duration_s": 1.2209, "ttft_s": 0.7503, "prompt_tokens": 2098, "completion_tokens": 36, "total_tokens": 2134, "tokens_per_second": 29.49, "cancelled": false, "error": null}
+{"message": "{\"event\": \"llm_metrics\", \"timestamp\": 1776956049.8522213, \"request_id\": \"chatcmpl-DXpjMv01kUeQSVsAmdwTmG4ktayN4\", \"duration_s\": 1.2209, \"ttft_s\": 0.7503, \"prompt_tokens\": 2098, \"completion_tokens\": 36, \"total_tokens\": 2134, \"tokens_per_second\": 29.49, \"cancelled\": false, \"error\": null}", "level": "INFO", "name": "nora-agent", "room": "room-rkV3PHsmR4PB", "job_id": "AJ_JPp3Y5pN83Jy", "pid": 32, "room_id": "RM_GSGiKh5uJFPi", "timestamp": "2026-04-23T14:54:09.852682+00:00"}
+INFO:nora-agent:{"event": "stt_metrics", "timestamp": 1776956053.0446959, "request_id": "019dbad4-efa1-74a1-9b56-3006927bf62b", "duration_s": 0.0, "audio_duration_s": 5.05, "streamed": true, "label": "livekit.plugins.deepgram.stt.STT", "error": null}
+{"message": "{\"event\": \"stt_metrics\", \"timestamp\": 1776956053.0446959, \"request_id\": \"019dbad4-efa1-74a1-9b56-3006927bf62b\", \"duration_s\": 0.0, \"audio_duration_s\": 5.05, \"streamed\": true, \"label\": \"livekit.plugins.deepgram.stt.STT\", \"error\": null}", "level": "INFO", "name": "nora-agent", "room": "room-rkV3PHsmR4PB", "job_id": "AJ_JPp3Y5pN83Jy", "pid": 32, "room_id": "RM_GSGiKh5uJFPi", "timestamp": "2026-04-23T14:54:13.045412+00:00"}
+INFO:nora-agent:{"event": "stt_metrics", "timestamp": 1776956053.0446959, "request_id": "019dbad4-efa1-74a1-9b56-3006927bf62b", "duration_s": 0.0, "audio_duration_s": 5.05, "streamed": true, "label": "livekit.plugins.deepgram.stt.STT", "error": null}
+ERROR:nora-agent:metric handler error in on_tts_metrics: 'TTSMetrics' object has no attribute 'error'
+ERROR:nora-agent:metric handler error in on_tts_metrics: 'TTSMetrics' object has no attribute 'error'
+{"message": "metric handler error in on_tts_metrics: 'TTSMetrics' object has no attribute 'error'", "level": "ERROR", "name": "nora-agent", "room": "room-rkV3PHsmR4PB", "job_id": "AJ_JPp3Y5pN83Jy", "pid": 32, "room_id": "RM_GSGiKh5uJFPi", "timestamp": "2026-04-23T14:54:15.719867+00:00"}
+INFO:nora-agent:{"event": "stt_metrics", "timestamp": 1776956058.0459423, "request_id": "019dbad4-efa1-74a1-9b56-3006927bf62b", "duration_s": 0.0, "audio_duration_s": 5.0, "streamed": true, "label": "livekit.plugins.deepgram.stt.STT", "error": null}
+INFO:nora-agent:{"event": "stt_metrics", "timestamp": 1776956058.0459423, "request_id": "019dbad4-efa1-74a1-9b56-3006927bf62b", "duration_s": 0.0, "audio_duration_s": 5.0, "streamed": true, "label": "livekit.plugins.deepgram.stt.STT", "error": null}
+{"message": "{\"event\": \"stt_metrics\", \"timestamp\": 1776956058.0459423, \"request_id\": \"019dbad4-efa1-74a1-9b56-3006927bf62b\", \"duration_s\": 0.0, \"audio_duration_s\": 5.0, \"streamed\": true, \"label\": \"livekit.plugins.deepgram.stt.STT\", \"error\": null}", "level": "INFO", "name": "nora-agent", "room": "room-rkV3PHsmR4PB", "job_id": "AJ_JPp3Y5pN83Jy", "pid": 32, "room_id": "RM_GSGiKh5uJFPi", "timestamp": "2026-04-23T14:54:18.046897+00:00"}
+INFO:livekit.agents:Turn detector does not support language ar-SA
+{"message": "Turn detector does not support language ar-SA", "level": "INFO", "name": "livekit.agents", "room": "room-rkV3PHsmR4PB", "job_id": "AJ_JPp3Y5pN83Jy", "pid": 32, "room_id": "RM_GSGiKh5uJFPi", "timestamp": "2026-04-23T14:54:21.524463+00:00"}
+INFO:livekit.agents:Turn detector does not support language ar-SA
+INFO:nora-agent:{"event": "llm_metrics", "timestamp": 1776956062.7995512, "request_id": "chatcmpl-DXpjZVKmR7bV2ees3bmVHeKx5k7vG", "duration_s": 1.2736, "ttft_s": 0.5321, "prompt_tokens": 2145, "completion_tokens": 39, "total_tokens": 2184, "tokens_per_second": 30.62, "cancelled": false, "error": null}
+INFO:nora-agent:{"event": "llm_metrics", "timestamp": 1776956062.7995512, "request_id": "chatcmpl-DXpjZVKmR7bV2ees3bmVHeKx5k7vG", "duration_s": 1.2736, "ttft_s": 0.5321, "prompt_tokens": 2145, "completion_tokens": 39, "total_tokens": 2184, "tokens_per_second": 30.62, "cancelled": false, "error": null}
+{"message": "{\"event\": \"llm_metrics\", \"timestamp\": 1776956062.7995512, \"request_id\": \"chatcmpl-DXpjZVKmR7bV2ees3bmVHeKx5k7vG\", \"duration_s\": 1.2736, \"ttft_s\": 0.5321, \"prompt_tokens\": 2145, \"completion_tokens\": 39, \"total_tokens\": 2184, \"tokens_per_second\": 30.62, \"cancelled\": false, \"error\": null}", "level": "INFO", "name": "nora-agent", "room": "room-rkV3PHsmR4PB", "job_id": "AJ_JPp3Y5pN83Jy", "pid": 32, "room_id": "RM_GSGiKh5uJFPi", "timestamp": "2026-04-23T14:54:22.800031+00:00"}
+INFO:nora-agent:{"event": "stt_metrics", "timestamp": 1776956063.0463476, "request_id": "019dbad4-efa1-74a1-9b56-3006927bf62b", "duration_s": 0.0, "audio_duration_s": 5.0, "streamed": true, "label": "livekit.plugins.deepgram.stt.STT", "error": null}
+INFO:nora-agent:{"event": "stt_metrics", "timestamp": 1776956063.0463476, "request_id": "019dbad4-efa1-74a1-9b56-3006927bf62b", "duration_s": 0.0, "audio_duration_s": 5.0, "streamed": true, "label": "livekit.plugins.deepgram.stt.STT", "error": null}
+{"message": "{\"event\": \"stt_metrics\", \"timestamp\": 1776956063.0463476, \"request_id\": \"019dbad4-efa1-74a1-9b56-3006927bf62b\", \"duration_s\": 0.0, \"audio_duration_s\": 5.0, \"streamed\": true, \"label\": \"livekit.plugins.deepgram.stt.STT\", \"error\": null}", "level": "INFO", "name": "nora-agent", "room": "room-rkV3PHsmR4PB", "job_id": "AJ_JPp3Y5pN83Jy", "pid": 32, "room_id": "RM_GSGiKh5uJFPi", "timestamp": "2026-04-23T14:54:23.049245+00:00"}
+ERROR:nora-agent:metric handler error in on_tts_metrics: 'TTSMetrics' object has no attribute 'error'
+{"message": "metric handler error in on_tts_metrics: 'TTSMetrics' object has no attribute 'error'", "level": "ERROR", "name": "nora-agent", "room": "room-rkV3PHsmR4PB", "job_id": "AJ_JPp3Y5pN83Jy", "pid": 32, "room_id": "RM_GSGiKh5uJFPi", "timestamp": "2026-04-23T14:54:27.236336+00:00"}
+ERROR:nora-agent:metric handler error in on_tts_metrics: 'TTSMetrics' object has no attribute 'error'
+INFO:nora-agent:{"event": "stt_metrics", "timestamp": 1776956068.0946515, "request_id": "019dbad4-efa1-74a1-9b56-3006927bf62b", "duration_s": 0.0, "audio_duration_s": 5.05, "streamed": true, "label": "livekit.plugins.deepgram.stt.STT", "error": null}
+INFO:nora-agent:{"event": "stt_metrics", "timestamp": 1776956068.0946515, "request_id": "019dbad4-efa1-74a1-9b56-3006927bf62b", "duration_s": 0.0, "audio_duration_s": 5.05, "streamed": true, "label": "livekit.plugins.deepgram.stt.STT", "error": null}
+{"message": "{\"event\": \"stt_metrics\", \"timestamp\": 1776956068.0946515, \"request_id\": \"019dbad4-efa1-74a1-9b56-3006927bf62b\", \"duration_s\": 0.0, \"audio_duration_s\": 5.05, \"streamed\": true, \"label\": \"livekit.plugins.deepgram.stt.STT\", \"error\": null}", "level": "INFO", "name": "nora-agent", "room": "room-rkV3PHsmR4PB", "job_id": "AJ_JPp3Y5pN83Jy", "pid": 32, "room_id": "RM_GSGiKh5uJFPi", "timestamp": "2026-04-23T14:54:28.095352+00:00"}
+INFO:nora-agent:{"event": "stt_metrics", "timestamp": 1776956073.0958507, "request_id": "019dbad4-efa1-74a1-9b56-3006927bf62b", "duration_s": 0.0, "audio_duration_s": 5.0, "streamed": true, "label": "livekit.plugins.deepgram.stt.STT", "error": null}
+INFO:nora-agent:{"event": "stt_metrics", "timestamp": 1776956073.0958507, "request_id": "019dbad4-efa1-74a1-9b56-3006927bf62b", "duration_s": 0.0, "audio_duration_s": 5.0, "streamed": true, "label": "livekit.plugins.deepgram.stt.STT", "error": null}
+{"message": "{\"event\": \"stt_metrics\", \"timestamp\": 1776956073.0958507, \"request_id\": \"019dbad4-efa1-74a1-9b56-3006927bf62b\", \"duration_s\": 0.0, \"audio_duration_s\": 5.0, \"streamed\": true, \"label\": \"livekit.plugins.deepgram.stt.STT\", \"error\": null}", "level": "INFO", "name": "nora-agent", "room": "room-rkV3PHsmR4PB", "job_id": "AJ_JPp3Y5pN83Jy", "pid": 32, "room_id": "RM_GSGiKh5uJFPi", "timestamp": "2026-04-23T14:54:33.096910+00:00"}
+INFO:livekit.agents:Turn detector does not support language ar-SA
+{"message": "Turn detector does not support language ar-SA", "level": "INFO", "name": "livekit.agents", "room": "room-rkV3PHsmR4PB", "job_id": "AJ_JPp3Y5pN83Jy", "pid": 32, "room_id": "RM_GSGiKh5uJFPi", "timestamp": "2026-04-23T14:54:33.576219+00:00"}
+INFO:livekit.agents:Turn detector does not support language ar-SA
+INFO:nora-agent:{"event": "llm_metrics", "timestamp": 1776956074.6319566, "request_id": "chatcmpl-DXpjmBtUfRqf1RwXAgsCetlnw4eJN", "duration_s": 1.0531, "ttft_s": 0.7206, "prompt_tokens": 2194, "completion_tokens": 27, "total_tokens": 2221, "tokens_per_second": 25.64, "cancelled": false, "error": null}
+{"message": "{\"event\": \"llm_metrics\", \"timestamp\": 1776956074.6319566, \"request_id\": \"chatcmpl-DXpjmBtUfRqf1RwXAgsCetlnw4eJN\", \"duration_s\": 1.0531, \"ttft_s\": 0.7206, \"prompt_tokens\": 2194, \"completion_tokens\": 27, \"total_tokens\": 2221, \"tokens_per_second\": 25.64, \"cancelled\": false, \"error\": null}", "level": "INFO", "name": "nora-agent", "room": "room-rkV3PHsmR4PB", "job_id": "AJ_JPp3Y5pN83Jy", "pid": 32, "room_id": "RM_GSGiKh5uJFPi", "timestamp": "2026-04-23T14:54:34.632404+00:00"}
+INFO:nora-agent:{"event": "llm_metrics", "timestamp": 1776956074.6319566, "request_id": "chatcmpl-DXpjmBtUfRqf1RwXAgsCetlnw4eJN", "duration_s": 1.0531, "ttft_s": 0.7206, "prompt_tokens": 2194, "completion_tokens": 27, "total_tokens": 2221, "tokens_per_second": 25.64, "cancelled": false, "error": null}
+ERROR:nora-agent:metric handler error in on_tts_metrics: 'TTSMetrics' object has no attribute 'error'
+ERROR:nora-agent:metric handler error in on_tts_metrics: 'TTSMetrics' object has no attribute 'error'
+{"message": "metric handler error in on_tts_metrics: 'TTSMetrics' object has no attribute 'error'", "level": "ERROR", "name": "nora-agent", "room": "room-rkV3PHsmR4PB", "job_id": "AJ_JPp3Y5pN83Jy", "pid": 32, "room_id": "RM_GSGiKh5uJFPi", "timestamp": "2026-04-23T14:54:36.711016+00:00"}
+INFO:nora-agent:{"event": "stt_metrics", "timestamp": 1776956078.1455219, "request_id": "019dbad4-efa1-74a1-9b56-3006927bf62b", "duration_s": 0.0, "audio_duration_s": 5.05, "streamed": true, "label": "livekit.plugins.deepgram.stt.STT", "error": null}
+{"message": "{\"event\": \"stt_metrics\", \"timestamp\": 1776956078.1455219, \"request_id\": \"019dbad4-efa1-74a1-9b56-3006927bf62b\", \"duration_s\": 0.0, \"audio_duration_s\": 5.05, \"streamed\": true, \"label\": \"livekit.plugins.deepgram.stt.STT\", \"error\": null}", "level": "INFO", "name": "nora-agent", "room": "room-rkV3PHsmR4PB", "job_id": "AJ_JPp3Y5pN83Jy", "pid": 32, "room_id": "RM_GSGiKh5uJFPi", "timestamp": "2026-04-23T14:54:38.146423+00:00"}
+INFO:nora-agent:{"event": "stt_metrics", "timestamp": 1776956078.1455219, "request_id": "019dbad4-efa1-74a1-9b56-3006927bf62b", "duration_s": 0.0, "audio_duration_s": 5.05, "streamed": true, "label": "livekit.plugins.deepgram.stt.STT", "error": null}
+INFO:nora-agent:{"event": "stt_metrics", "timestamp": 1776956083.1952548, "request_id": "019dbad4-efa1-74a1-9b56-3006927bf62b", "duration_s": 0.0, "audio_duration_s": 5.05, "streamed": true, "label": "livekit.plugins.deepgram.stt.STT", "error": null}
+INFO:nora-agent:{"event": "stt_metrics", "timestamp": 1776956083.1952548, "request_id": "019dbad4-efa1-74a1-9b56-3006927bf62b", "duration_s": 0.0, "audio_duration_s": 5.05, "streamed": true, "label": "livekit.plugins.deepgram.stt.STT", "error": null}
+{"message": "{\"event\": \"stt_metrics\", \"timestamp\": 1776956083.1952548, \"request_id\": \"019dbad4-efa1-74a1-9b56-3006927bf62b\", \"duration_s\": 0.0, \"audio_duration_s\": 5.05, \"streamed\": true, \"label\": \"livekit.plugins.deepgram.stt.STT\", \"error\": null}", "level": "INFO", "name": "nora-agent", "room": "room-rkV3PHsmR4PB", "job_id": "AJ_JPp3Y5pN83Jy", "pid": 32, "room_id": "RM_GSGiKh5uJFPi", "timestamp": "2026-04-23T14:54:43.196160+00:00"}
+INFO:livekit.agents:Turn detector does not support language ar-SA
+INFO:livekit.agents:Turn detector does not support language ar-SA
+{"message": "Turn detector does not support language ar-SA", "level": "INFO", "name": "livekit.agents", "room": "room-rkV3PHsmR4PB", "job_id": "AJ_JPp3Y5pN83Jy", "pid": 32, "room_id": "RM_GSGiKh5uJFPi", "timestamp": "2026-04-23T14:54:44.629053+00:00"}
+INFO:nora-agent:{"event": "llm_metrics", "timestamp": 1776956085.4336722, "request_id": "chatcmpl-DXpjwwYuxnaKBPCoRf0bsxVPYrqYv", "duration_s": 0.8031, "ttft_s": 0.4935, "prompt_tokens": 2235, "completion_tokens": 21, "total_tokens": 2256, "tokens_per_second": 26.15, "cancelled": false, "error": null}
+INFO:nora-agent:{"event": "llm_metrics", "timestamp": 1776956085.4336722, "request_id": "chatcmpl-DXpjwwYuxnaKBPCoRf0bsxVPYrqYv", "duration_s": 0.8031, "ttft_s": 0.4935, "prompt_tokens": 2235, "completion_tokens": 21, "total_tokens": 2256, "tokens_per_second": 26.15, "cancelled": false, "error": null}
+{"message": "{\"event\": \"llm_metrics\", \"timestamp\": 1776956085.4336722, \"request_id\": \"chatcmpl-DXpjwwYuxnaKBPCoRf0bsxVPYrqYv\", \"duration_s\": 0.8031, \"ttft_s\": 0.4935, \"prompt_tokens\": 2235, \"completion_tokens\": 21, \"total_tokens\": 2256, \"tokens_per_second\": 26.15, \"cancelled\": false, \"error\": null}", "level": "INFO", "name": "nora-agent", "room": "room-rkV3PHsmR4PB", "job_id": "AJ_JPp3Y5pN83Jy", "pid": 32, "room_id": "RM_GSGiKh5uJFPi", "timestamp": "2026-04-23T14:54:45.434089+00:00"}
+ERROR:nora-agent:metric handler error in on_tts_metrics: 'TTSMetrics' object has no attribute 'error'
+ERROR:nora-agent:metric handler error in on_tts_metrics: 'TTSMetrics' object has no attribute 'error'
+{"message": "metric handler error in on_tts_metrics: 'TTSMetrics' object has no attribute 'error'", "level": "ERROR", "name": "nora-agent", "room": "room-rkV3PHsmR4PB", "job_id": "AJ_JPp3Y5pN83Jy", "pid": 32, "room_id": "RM_GSGiKh5uJFPi", "timestamp": "2026-04-23T14:54:47.789313+00:00"}
+INFO:nora-agent:{"event": "stt_metrics", "timestamp": 1776956088.1953754, "request_id": "019dbad4-efa1-74a1-9b56-3006927bf62b", "duration_s": 0.0, "audio_duration_s": 5.0, "streamed": true, "label": "livekit.plugins.deepgram.stt.STT", "error": null}
+{"message": "{\"event\": \"stt_metrics\", \"timestamp\": 1776956088.1953754, \"request_id\": \"019dbad4-efa1-74a1-9b56-3006927bf62b\", \"duration_s\": 0.0, \"audio_duration_s\": 5.0, \"streamed\": true, \"label\": \"livekit.plugins.deepgram.stt.STT\", \"error\": null}", "level": "INFO", "name": "nora-agent", "room": "room-rkV3PHsmR4PB", "job_id": "AJ_JPp3Y5pN83Jy", "pid": 32, "room_id": "RM_GSGiKh5uJFPi", "timestamp": "2026-04-23T14:54:48.196118+00:00"}
+INFO:nora-agent:{"event": "stt_metrics", "timestamp": 1776956088.1953754, "request_id": "019dbad4-efa1-74a1-9b56-3006927bf62b", "duration_s": 0.0, "audio_duration_s": 5.0, "streamed": true, "label": "livekit.plugins.deepgram.stt.STT", "error": null}
+INFO:nora-agent:{"event": "sip_call_status_updated", "identity": "+201001317175", "sip_call_status": "hangup"}
+{"message": "{\"event\": \"sip_call_status_updated\", \"identity\": \"+201001317175\", \"sip_call_status\": \"hangup\"}", "level": "INFO", "name": "nora-agent", "room": "room-rkV3PHsmR4PB", "job_id": "AJ_JPp3Y5pN83Jy", "pid": 32, "room_id": "RM_GSGiKh5uJFPi", "timestamp": "2026-04-23T14:54:49.330487+00:00"}
+INFO:nora-agent:{"event": "sip_call_status_updated", "identity": "+201001317175", "sip_call_status": "hangup"}
+INFO:livekit.agents:closing agent session due to participant disconnect (disable via `RoomInputOptions.close_on_disconnect=False`)
+INFO:nora-agent:{"event": "sip_participant_disconnected", "identity": "+201001317175", "disconnect_reason": "1"}
+INFO:livekit.agents:closing agent session due to participant disconnect (disable via `RoomInputOptions.close_on_disconnect=False`)
+{"message": "closing agent session due to participant disconnect (disable via `RoomInputOptions.close_on_disconnect=False`)", "level": "INFO", "name": "livekit.agents", "room": "room-rkV3PHsmR4PB", "participant": "+201001317175", "reason": "CLIENT_INITIATED", "job_id": "AJ_JPp3Y5pN83Jy", "pid": 32, "room_id": "RM_GSGiKh5uJFPi", "timestamp": "2026-04-23T14:54:49.337940+00:00"}
+{"message": "{\"event\": \"sip_participant_disconnected\", \"identity\": \"+201001317175\", \"disconnect_reason\": \"1\"}", "level": "INFO", "name": "nora-agent", "room": "room-rkV3PHsmR4PB", "job_id": "AJ_JPp3Y5pN83Jy", "pid": 32, "room_id": "RM_GSGiKh5uJFPi", "timestamp": "2026-04-23T14:54:49.338242+00:00"}
+INFO:nora-agent:{"event": "sip_participant_disconnected", "identity": "+201001317175", "disconnect_reason": "1"}
+INFO:nora-agent:{"event": "analysis_started", "room": "room-rkV3PHsmR4PB", "job_id": "AJ_JPp3Y5pN83Jy"}
+INFO:nora-agent:{"event": "analysis_started", "room": "room-rkV3PHsmR4PB", "job_id": "AJ_JPp3Y5pN83Jy"}
+{"message": "{\"event\": \"analysis_started\", \"room\": \"room-rkV3PHsmR4PB\", \"job_id\": \"AJ_JPp3Y5pN83Jy\"}", "level": "INFO", "name": "nora-agent", "room": "room-rkV3PHsmR4PB", "job_id": "AJ_JPp3Y5pN83Jy", "pid": 32, "room_id": "RM_GSGiKh5uJFPi", "timestamp": "2026-04-23T14:55:09.646133+00:00"}
+INFO:nora-agent:{"event": "session_report_saved", "room": "room-rkV3PHsmR4PB", "artifact_uri": "/app/artifacts_local/nora/session_reports/room-rkV3PHsmR4PB.json"}
+INFO:nora-agent:{"event": "session_report_saved", "room": "room-rkV3PHsmR4PB", "artifact_uri": "/app/artifacts_local/nora/session_reports/room-rkV3PHsmR4PB.json"}
+{"message": "{\"event\": \"session_report_saved\", \"room\": \"room-rkV3PHsmR4PB\", \"artifact_uri\": \"/app/artifacts_local/nora/session_reports/room-rkV3PHsmR4PB.json\"}", "level": "INFO", "name": "nora-agent", "room": "room-rkV3PHsmR4PB", "job_id": "AJ_JPp3Y5pN83Jy", "pid": 32, "room_id": "RM_GSGiKh5uJFPi", "timestamp": "2026-04-23T14:55:09.666207+00:00"}
+INFO:nora-agent:{"event": "analysis_failed", "room": "room-rkV3PHsmR4PB", "error": "Client error '401 Unauthorized' for url 'https://api.openai.com/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401", "duration_s": 0.36}
+INFO:nora-agent:{"event": "analysis_failed", "room": "room-rkV3PHsmR4PB", "error": "Client error '401 Unauthorized' for url 'https://api.openai.com/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401", "duration_s": 0.36}
+{"message": "{\"event\": \"analysis_failed\", \"room\": \"room-rkV3PHsmR4PB\", \"error\": \"Client error '401 Unauthorized' for url 'https://api.openai.com/v1/chat/completions'\\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401\", \"duration_s\": 0.36}", "level": "INFO", "name": "nora-agent", "room": "room-rkV3PHsmR4PB", "job_id": "AJ_JPp3Y5pN83Jy", "pid": 32, "room_id": "RM_GSGiKh5uJFPi", "timestamp": "2026-04-23T14:55:10.001547+00:00"}
+ERROR:nora-agent:Post-call analysis failed for room room-rkV3PHsmR4PB
+Traceback (most recent call last):
+  File "/app/src/agent.py", line 506, in run_post_call_analysis
+    raw_analysis = await _call_analysis_llm(system_prompt, user_message)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/src/agent.py", line 435, in _call_analysis_llm
+    resp.raise_for_status()
+  File "/app/.venv/lib/python3.11/site-packages/httpx/_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '401 Unauthorized' for url 'https://api.openai.com/v1/chat/completions'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+ERROR:nora-agent:Post-call analysis failed for room room-rkV3PHsmR4PB
+Traceback (most recent call last):
+  File "/app/src/agent.py", line 506, in run_post_call_analysis
+    raw_analysis = await _call_analysis_llm(system_prompt, user_message)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/src/agent.py", line 435, in _call_analysis_llm
+    resp.raise_for_status()
+{"message": "Post-call analysis failed for room room-rkV3PHsmR4PB\nTraceback (most recent call last):\n  File \"/app/src/agent.py\", line 506, in run_post_call_analysis\n    raw_analysis = await _call_analysis_llm(system_prompt, user_message)\n                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/src/agent.py\", line 435, in _call_analysis_llm\n    resp.raise_for_status()\n  File \"/app/.venv/lib/python3.11/site-packages/httpx/_models.py\", line 829, in raise_for_status\n    raise HTTPStatusError(message, request=request, response=self)\nhttpx.HTTPStatusError: Client error '401 Unauthorized' for url 'https://api.openai.com/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401", "level": "ERROR", "name": "nora-agent", "exc_info": "Traceback (most recent call last):\n  File \"/app/src/agent.py\", line 506, in run_post_call_analysis\n    raw_analysis = await _call_analysis_llm(system_prompt, user_message)\n                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/src/agent.py\", line 435, in _call_analysis_llm\n    resp.raise_for_status()\n  File \"/app/.venv/lib/python3.11/site-packages/httpx/_models.py\", line 829, in raise_for_status\n    raise HTTPStatusError(message, request=request, response=self)\nhttpx.HTTPStatusError: Client error '401 Unauthorized' for url 'https://api.openai.com/v1/chat/completions'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401", "room": "room-rkV3PHsmR4PB", "job_id": "AJ_JPp3Y5pN83Jy", "pid": 32, "room_id": "RM_GSGiKh5uJFPi", "timestamp": "2026-04-23T14:55:10.001705+00:00"}
+  File "/app/.venv/lib/python3.11/site-packages/httpx/_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '401 Unauthorized' for url 'https://api.openai.com/v1/chat/completions'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+Traceback (most recent call last):
+  File "/app/src/agent.py", line 506, in run_post_call_analysis
+    raw_analysis = await _call_analysis_llm(system_prompt, user_message)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/src/agent.py", line 435, in _call_analysis_llm
+    resp.raise_for_status()
+  File "/app/.venv/lib/python3.11/site-packages/httpx/_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '401 Unauthorized' for url 'https://api.openai.com/v1/chat/completions'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+INFO:livekit.agents:process exiting
+{"message": "process exiting", "level": "INFO", "name": "livekit.agents", "reason": "", "pid": 32, "job_id": "AJ_JPp3Y5pN83Jy", "room_id": "RM_GSGiKh5uJFPi", "timestamp": "2026-04-23T14:55:10.005543+00:00"}
+WARNING:livekit.agents:failed to connect to livekit, retrying in 0s
+Traceback (most recent call last):
+  File "/app/.venv/lib/python3.11/site-packages/livekit/agents/worker.py", line 1073, in _connection_task
+    await self._run_ws(ws)
+  File "/app/.venv/lib/python3.11/site-packages/livekit/agents/worker.py", line 1155, in _run_ws
+    await asyncio.gather(*tasks)
+  File "/app/.venv/lib/python3.11/site-packages/livekit/agents/worker.py", line 1127, in _recv_task
+    raise Exception("worker connection closed unexpectedly")
+Exception: worker connection closed unexpectedly
+{"message": "failed to connect to livekit, retrying in 0s", "level": "WARNING", "name": "livekit.agents", "exc_info": "Traceback (most recent call last):\n  File \"/app/.venv/lib/python3.11/site-packages/livekit/agents/worker.py\", line 1073, in _connection_task\n    await self._run_ws(ws)\n  File \"/app/.venv/lib/python3.11/site-packages/livekit/agents/worker.py\", line 1155, in _run_ws\n    await asyncio.gather(*tasks)\n  File \"/app/.venv/lib/python3.11/site-packages/livekit/agents/worker.py\", line 1127, in _recv_task\n    raise Exception(\"worker connection closed unexpectedly\")\nException: worker connection closed unexpectedly", "timestamp": "2026-04-23T18:11:37.506840+00:00"}
+WARNING:livekit.agents:failed to connect to livekit, retrying in 2s
+Traceback (most recent call last):
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1310, in _wrap_create_connection
+    sock = await aiohappyeyeballs.start_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohappyeyeballs/impl.py", line 122, in start_connection
+    raise first_exception
+  File "/app/.venv/lib/python3.11/site-packages/aiohappyeyeballs/impl.py", line 73, in start_connection
+    sock = await _connect_sock(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohappyeyeballs/impl.py", line 208, in _connect_sock
+    await loop.sock_connect(sock, address)
+  File "/usr/local/lib/python3.11/asyncio/selector_events.py", line 638, in sock_connect
+    return await fut
+           ^^^^^^^^^
+  File "/usr/local/lib/python3.11/asyncio/selector_events.py", line 678, in _sock_connect_cb
+    raise OSError(err, f'Connect call failed {address}')
+ConnectionRefusedError: [Errno 111] Connect call failed ('10.0.29.234', 7880)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/app/.venv/lib/python3.11/site-packages/livekit/agents/worker.py", line 1030, in _connection_task
+    ws = await self._http_session.ws_connect(
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/client.py", line 1087, in _ws_connect
+    resp = await self.request(
+           ^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/client.py", line 788, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/client.py", line 742, in _connect_and_send_request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py", line 672, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1251, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1623, in _create_direct_connection
+    raise last_exc
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1592, in _create_direct_connection
+    transp, proto = await self._wrap_create_connection(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1333, in _wrap_create_connection
+    raise client_error(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorError: Cannot connect to host ip-10-0-29-234.eu-north-1.compute.internal:7880 ssl:default [Connect call failed ('10.0.29.234', 7880)]
+{"message": "failed to connect to livekit, retrying in 2s", "level": "WARNING", "name": "livekit.agents", "exc_info": "Traceback (most recent call last):\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py\", line 1310, in _wrap_create_connection\n    sock = await aiohappyeyeballs.start_connection(\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohappyeyeballs/impl.py\", line 122, in start_connection\n    raise first_exception\n  File \"/app/.venv/lib/python3.11/site-packages/aiohappyeyeballs/impl.py\", line 73, in start_connection\n    sock = await _connect_sock(\n           ^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohappyeyeballs/impl.py\", line 208, in _connect_sock\n    await loop.sock_connect(sock, address)\n  File \"/usr/local/lib/python3.11/asyncio/selector_events.py\", line 638, in sock_connect\n    return await fut\n           ^^^^^^^^^\n  File \"/usr/local/lib/python3.11/asyncio/selector_events.py\", line 678, in _sock_connect_cb\n    raise OSError(err, f'Connect call failed {address}')\nConnectionRefusedError: [Errno 111] Connect call failed ('10.0.29.234', 7880)\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"/app/.venv/lib/python3.11/site-packages/livekit/agents/worker.py\", line 1030, in _connection_task\n    ws = await self._http_session.ws_connect(\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/client.py\", line 1087, in _ws_connect\n    resp = await self.request(\n           ^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/client.py\", line 788, in _request\n    resp = await handler(req)\n           ^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/client.py\", line 742, in _connect_and_send_request\n    conn = await self._connector.connect(\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py\", line 672, in connect\n    proto = await self._create_connection(req, traces, timeout)\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py\", line 1251, in _create_connection\n    _, proto = await self._create_direct_connection(req, traces, timeout)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py\", line 1623, in _create_direct_connection\n    raise last_exc\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py\", line 1592, in _create_direct_connection\n    transp, proto = await self._wrap_create_connection(\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py\", line 1333, in _wrap_create_connection\n    raise client_error(req.connection_key, exc) from exc\naiohttp.client_exceptions.ClientConnectorError: Cannot connect to host ip-10-0-29-234.eu-north-1.compute.internal:7880 ssl:default [Connect call failed ('10.0.29.234', 7880)]", "timestamp": "2026-04-23T18:11:37.511238+00:00"}
+INFO:livekit.agents:registered worker
+{"message": "registered worker", "level": "INFO", "name": "livekit.agents", "agent_name": "nora-single-prompt", "id": "AW_MEvpQb3WF9SQ", "url": "ws://ip-10-0-29-234.eu-north-1.compute.internal:7880", "region": "", "protocol": 17, "timestamp": "2026-04-23T18:11:39.524284+00:00"}
+WARNING:livekit.agents:failed to connect to livekit, retrying in 0s
+Traceback (most recent call last):
+  File "/app/.venv/lib/python3.11/site-packages/livekit/agents/worker.py", line 1073, in _connection_task
+    await self._run_ws(ws)
+  File "/app/.venv/lib/python3.11/site-packages/livekit/agents/worker.py", line 1155, in _run_ws
+    await asyncio.gather(*tasks)
+  File "/app/.venv/lib/python3.11/site-packages/livekit/agents/worker.py", line 1127, in _recv_task
+    raise Exception("worker connection closed unexpectedly")
+Exception: worker connection closed unexpectedly
+{"message": "failed to connect to livekit, retrying in 0s", "level": "WARNING", "name": "livekit.agents", "exc_info": "Traceback (most recent call last):\n  File \"/app/.venv/lib/python3.11/site-packages/livekit/agents/worker.py\", line 1073, in _connection_task\n    await self._run_ws(ws)\n  File \"/app/.venv/lib/python3.11/site-packages/livekit/agents/worker.py\", line 1155, in _run_ws\n    await asyncio.gather(*tasks)\n  File \"/app/.venv/lib/python3.11/site-packages/livekit/agents/worker.py\", line 1127, in _recv_task\n    raise Exception(\"worker connection closed unexpectedly\")\nException: worker connection closed unexpectedly", "timestamp": "2026-04-23T21:05:01.543952+00:00"}
+WARNING:livekit.agents:failed to connect to livekit, retrying in 2s
+Traceback (most recent call last):
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1310, in _wrap_create_connection
+    sock = await aiohappyeyeballs.start_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohappyeyeballs/impl.py", line 122, in start_connection
+    raise first_exception
+  File "/app/.venv/lib/python3.11/site-packages/aiohappyeyeballs/impl.py", line 73, in start_connection
+    sock = await _connect_sock(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohappyeyeballs/impl.py", line 208, in _connect_sock
+    await loop.sock_connect(sock, address)
+  File "/usr/local/lib/python3.11/asyncio/selector_events.py", line 638, in sock_connect
+    return await fut
+           ^^^^^^^^^
+  File "/usr/local/lib/python3.11/asyncio/selector_events.py", line 678, in _sock_connect_cb
+    raise OSError(err, f'Connect call failed {address}')
+ConnectionRefusedError: [Errno 111] Connect call failed ('10.0.29.234', 7880)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/app/.venv/lib/python3.11/site-packages/livekit/agents/worker.py", line 1030, in _connection_task
+    ws = await self._http_session.ws_connect(
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/client.py", line 1087, in _ws_connect
+    resp = await self.request(
+           ^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/client.py", line 788, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/client.py", line 742, in _connect_and_send_request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py", line 672, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1251, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1623, in _create_direct_connection
+    raise last_exc
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1592, in _create_direct_connection
+    transp, proto = await self._wrap_create_connection(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1333, in _wrap_create_connection
+    raise client_error(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorError: Cannot connect to host ip-10-0-29-234.eu-north-1.compute.internal:7880 ssl:default [Connect call failed ('10.0.29.234', 7880)]
+{"message": "failed to connect to livekit, retrying in 2s", "level": "WARNING", "name": "livekit.agents", "exc_info": "Traceback (most recent call last):\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py\", line 1310, in _wrap_create_connection\n    sock = await aiohappyeyeballs.start_connection(\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohappyeyeballs/impl.py\", line 122, in start_connection\n    raise first_exception\n  File \"/app/.venv/lib/python3.11/site-packages/aiohappyeyeballs/impl.py\", line 73, in start_connection\n    sock = await _connect_sock(\n           ^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohappyeyeballs/impl.py\", line 208, in _connect_sock\n    await loop.sock_connect(sock, address)\n  File \"/usr/local/lib/python3.11/asyncio/selector_events.py\", line 638, in sock_connect\n    return await fut\n           ^^^^^^^^^\n  File \"/usr/local/lib/python3.11/asyncio/selector_events.py\", line 678, in _sock_connect_cb\n    raise OSError(err, f'Connect call failed {address}')\nConnectionRefusedError: [Errno 111] Connect call failed ('10.0.29.234', 7880)\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"/app/.venv/lib/python3.11/site-packages/livekit/agents/worker.py\", line 1030, in _connection_task\n    ws = await self._http_session.ws_connect(\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/client.py\", line 1087, in _ws_connect\n    resp = await self.request(\n           ^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/client.py\", line 788, in _request\n    resp = await handler(req)\n           ^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/client.py\", line 742, in _connect_and_send_request\n    conn = await self._connector.connect(\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py\", line 672, in connect\n    proto = await self._create_connection(req, traces, timeout)\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py\", line 1251, in _create_connection\n    _, proto = await self._create_direct_connection(req, traces, timeout)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py\", line 1623, in _create_direct_connection\n    raise last_exc\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py\", line 1592, in _create_direct_connection\n    transp, proto = await self._wrap_create_connection(\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py\", line 1333, in _wrap_create_connection\n    raise client_error(req.connection_key, exc) from exc\naiohttp.client_exceptions.ClientConnectorError: Cannot connect to host ip-10-0-29-234.eu-north-1.compute.internal:7880 ssl:default [Connect call failed ('10.0.29.234', 7880)]", "timestamp": "2026-04-23T21:05:01.547312+00:00"}
+WARNING:livekit.agents:failed to connect to livekit, retrying in 4s
+Traceback (most recent call last):
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1310, in _wrap_create_connection
+    sock = await aiohappyeyeballs.start_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohappyeyeballs/impl.py", line 122, in start_connection
+    raise first_exception
+  File "/app/.venv/lib/python3.11/site-packages/aiohappyeyeballs/impl.py", line 73, in start_connection
+    sock = await _connect_sock(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohappyeyeballs/impl.py", line 208, in _connect_sock
+    await loop.sock_connect(sock, address)
+  File "/usr/local/lib/python3.11/asyncio/selector_events.py", line 638, in sock_connect
+    return await fut
+           ^^^^^^^^^
+  File "/usr/local/lib/python3.11/asyncio/selector_events.py", line 678, in _sock_connect_cb
+    raise OSError(err, f'Connect call failed {address}')
+ConnectionRefusedError: [Errno 111] Connect call failed ('10.0.29.234', 7880)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/app/.venv/lib/python3.11/site-packages/livekit/agents/worker.py", line 1030, in _connection_task
+    ws = await self._http_session.ws_connect(
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/client.py", line 1087, in _ws_connect
+    resp = await self.request(
+           ^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/client.py", line 788, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/client.py", line 742, in _connect_and_send_request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py", line 672, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1251, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1623, in _create_direct_connection
+    raise last_exc
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1592, in _create_direct_connection
+    transp, proto = await self._wrap_create_connection(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1333, in _wrap_create_connection
+    raise client_error(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorError: Cannot connect to host ip-10-0-29-234.eu-north-1.compute.internal:7880 ssl:default [Connect call failed ('10.0.29.234', 7880)]
+{"message": "failed to connect to livekit, retrying in 4s", "level": "WARNING", "name": "livekit.agents", "exc_info": "Traceback (most recent call last):\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py\", line 1310, in _wrap_create_connection\n    sock = await aiohappyeyeballs.start_connection(\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohappyeyeballs/impl.py\", line 122, in start_connection\n    raise first_exception\n  File \"/app/.venv/lib/python3.11/site-packages/aiohappyeyeballs/impl.py\", line 73, in start_connection\n    sock = await _connect_sock(\n           ^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohappyeyeballs/impl.py\", line 208, in _connect_sock\n    await loop.sock_connect(sock, address)\n  File \"/usr/local/lib/python3.11/asyncio/selector_events.py\", line 638, in sock_connect\n    return await fut\n           ^^^^^^^^^\n  File \"/usr/local/lib/python3.11/asyncio/selector_events.py\", line 678, in _sock_connect_cb\n    raise OSError(err, f'Connect call failed {address}')\nConnectionRefusedError: [Errno 111] Connect call failed ('10.0.29.234', 7880)\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"/app/.venv/lib/python3.11/site-packages/livekit/agents/worker.py\", line 1030, in _connection_task\n    ws = await self._http_session.ws_connect(\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/client.py\", line 1087, in _ws_connect\n    resp = await self.request(\n           ^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/client.py\", line 788, in _request\n    resp = await handler(req)\n           ^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/client.py\", line 742, in _connect_and_send_request\n    conn = await self._connector.connect(\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py\", line 672, in connect\n    proto = await self._create_connection(req, traces, timeout)\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py\", line 1251, in _create_connection\n    _, proto = await self._create_direct_connection(req, traces, timeout)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py\", line 1623, in _create_direct_connection\n    raise last_exc\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py\", line 1592, in _create_direct_connection\n    transp, proto = await self._wrap_create_connection(\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py\", line 1333, in _wrap_create_connection\n    raise client_error(req.connection_key, exc) from exc\naiohttp.client_exceptions.ClientConnectorError: Cannot connect to host ip-10-0-29-234.eu-north-1.compute.internal:7880 ssl:default [Connect call failed ('10.0.29.234', 7880)]", "timestamp": "2026-04-23T21:05:03.552296+00:00"}
+WARNING:livekit.agents:failed to connect to livekit, retrying in 6s
+Traceback (most recent call last):
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1310, in _wrap_create_connection
+    sock = await aiohappyeyeballs.start_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohappyeyeballs/impl.py", line 122, in start_connection
+    raise first_exception
+  File "/app/.venv/lib/python3.11/site-packages/aiohappyeyeballs/impl.py", line 73, in start_connection
+    sock = await _connect_sock(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohappyeyeballs/impl.py", line 208, in _connect_sock
+    await loop.sock_connect(sock, address)
+  File "/usr/local/lib/python3.11/asyncio/selector_events.py", line 638, in sock_connect
+    return await fut
+           ^^^^^^^^^
+  File "/usr/local/lib/python3.11/asyncio/selector_events.py", line 678, in _sock_connect_cb
+    raise OSError(err, f'Connect call failed {address}')
+ConnectionRefusedError: [Errno 111] Connect call failed ('10.0.29.234', 7880)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/app/.venv/lib/python3.11/site-packages/livekit/agents/worker.py", line 1030, in _connection_task
+    ws = await self._http_session.ws_connect(
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/client.py", line 1087, in _ws_connect
+    resp = await self.request(
+           ^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/client.py", line 788, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/client.py", line 742, in _connect_and_send_request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py", line 672, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1251, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1623, in _create_direct_connection
+    raise last_exc
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1592, in _create_direct_connection
+    transp, proto = await self._wrap_create_connection(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1333, in _wrap_create_connection
+    raise client_error(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorError: Cannot connect to host ip-10-0-29-234.eu-north-1.compute.internal:7880 ssl:default [Connect call failed ('10.0.29.234', 7880)]
+{"message": "failed to connect to livekit, retrying in 6s", "level": "WARNING", "name": "livekit.agents", "exc_info": "Traceback (most recent call last):\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py\", line 1310, in _wrap_create_connection\n    sock = await aiohappyeyeballs.start_connection(\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohappyeyeballs/impl.py\", line 122, in start_connection\n    raise first_exception\n  File \"/app/.venv/lib/python3.11/site-packages/aiohappyeyeballs/impl.py\", line 73, in start_connection\n    sock = await _connect_sock(\n           ^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohappyeyeballs/impl.py\", line 208, in _connect_sock\n    await loop.sock_connect(sock, address)\n  File \"/usr/local/lib/python3.11/asyncio/selector_events.py\", line 638, in sock_connect\n    return await fut\n           ^^^^^^^^^\n  File \"/usr/local/lib/python3.11/asyncio/selector_events.py\", line 678, in _sock_connect_cb\n    raise OSError(err, f'Connect call failed {address}')\nConnectionRefusedError: [Errno 111] Connect call failed ('10.0.29.234', 7880)\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"/app/.venv/lib/python3.11/site-packages/livekit/agents/worker.py\", line 1030, in _connection_task\n    ws = await self._http_session.ws_connect(\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/client.py\", line 1087, in _ws_connect\n    resp = await self.request(\n           ^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/client.py\", line 788, in _request\n    resp = await handler(req)\n           ^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/client.py\", line 742, in _connect_and_send_request\n    conn = await self._connector.connect(\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py\", line 672, in connect\n    proto = await self._create_connection(req, traces, timeout)\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py\", line 1251, in _create_connection\n    _, proto = await self._create_direct_connection(req, traces, timeout)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py\", line 1623, in _create_direct_connection\n    raise last_exc\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py\", line 1592, in _create_direct_connection\n    transp, proto = await self._wrap_create_connection(\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py\", line 1333, in _wrap_create_connection\n    raise client_error(req.connection_key, exc) from exc\naiohttp.client_exceptions.ClientConnectorError: Cannot connect to host ip-10-0-29-234.eu-north-1.compute.internal:7880 ssl:default [Connect call failed ('10.0.29.234', 7880)]", "timestamp": "2026-04-23T21:05:07.556111+00:00"}
+WARNING:livekit.agents:failed to connect to livekit, retrying in 8s
+Traceback (most recent call last):
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1310, in _wrap_create_connection
+    sock = await aiohappyeyeballs.start_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohappyeyeballs/impl.py", line 122, in start_connection
+    raise first_exception
+  File "/app/.venv/lib/python3.11/site-packages/aiohappyeyeballs/impl.py", line 73, in start_connection
+    sock = await _connect_sock(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohappyeyeballs/impl.py", line 208, in _connect_sock
+    await loop.sock_connect(sock, address)
+  File "/usr/local/lib/python3.11/asyncio/selector_events.py", line 638, in sock_connect
+    return await fut
+           ^^^^^^^^^
+  File "/usr/local/lib/python3.11/asyncio/selector_events.py", line 678, in _sock_connect_cb
+    raise OSError(err, f'Connect call failed {address}')
+ConnectionRefusedError: [Errno 111] Connect call failed ('10.0.29.234', 7880)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/app/.venv/lib/python3.11/site-packages/livekit/agents/worker.py", line 1030, in _connection_task
+    ws = await self._http_session.ws_connect(
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/client.py", line 1087, in _ws_connect
+    resp = await self.request(
+           ^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/client.py", line 788, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/client.py", line 742, in _connect_and_send_request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py", line 672, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1251, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1623, in _create_direct_connection
+    raise last_exc
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1592, in _create_direct_connection
+    transp, proto = await self._wrap_create_connection(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1333, in _wrap_create_connection
+    raise client_error(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorError: Cannot connect to host ip-10-0-29-234.eu-north-1.compute.internal:7880 ssl:default [Connect call failed ('10.0.29.234', 7880)]
+{"message": "failed to connect to livekit, retrying in 8s", "level": "WARNING", "name": "livekit.agents", "exc_info": "Traceback (most recent call last):\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py\", line 1310, in _wrap_create_connection\n    sock = await aiohappyeyeballs.start_connection(\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohappyeyeballs/impl.py\", line 122, in start_connection\n    raise first_exception\n  File \"/app/.venv/lib/python3.11/site-packages/aiohappyeyeballs/impl.py\", line 73, in start_connection\n    sock = await _connect_sock(\n           ^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohappyeyeballs/impl.py\", line 208, in _connect_sock\n    await loop.sock_connect(sock, address)\n  File \"/usr/local/lib/python3.11/asyncio/selector_events.py\", line 638, in sock_connect\n    return await fut\n           ^^^^^^^^^\n  File \"/usr/local/lib/python3.11/asyncio/selector_events.py\", line 678, in _sock_connect_cb\n    raise OSError(err, f'Connect call failed {address}')\nConnectionRefusedError: [Errno 111] Connect call failed ('10.0.29.234', 7880)\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"/app/.venv/lib/python3.11/site-packages/livekit/agents/worker.py\", line 1030, in _connection_task\n    ws = await self._http_session.ws_connect(\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/client.py\", line 1087, in _ws_connect\n    resp = await self.request(\n           ^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/client.py\", line 788, in _request\n    resp = await handler(req)\n           ^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/client.py\", line 742, in _connect_and_send_request\n    conn = await self._connector.connect(\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py\", line 672, in connect\n    proto = await self._create_connection(req, traces, timeout)\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py\", line 1251, in _create_connection\n    _, proto = await self._create_direct_connection(req, traces, timeout)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py\", line 1623, in _create_direct_connection\n    raise last_exc\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py\", line 1592, in _create_direct_connection\n    transp, proto = await self._wrap_create_connection(\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py\", line 1333, in _wrap_create_connection\n    raise client_error(req.connection_key, exc) from exc\naiohttp.client_exceptions.ClientConnectorError: Cannot connect to host ip-10-0-29-234.eu-north-1.compute.internal:7880 ssl:default [Connect call failed ('10.0.29.234', 7880)]", "timestamp": "2026-04-23T21:05:13.562863+00:00"}
+WARNING:livekit.agents:failed to connect to livekit, retrying in 10s
+Traceback (most recent call last):
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1310, in _wrap_create_connection
+    sock = await aiohappyeyeballs.start_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohappyeyeballs/impl.py", line 122, in start_connection
+    raise first_exception
+  File "/app/.venv/lib/python3.11/site-packages/aiohappyeyeballs/impl.py", line 73, in start_connection
+    sock = await _connect_sock(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohappyeyeballs/impl.py", line 208, in _connect_sock
+    await loop.sock_connect(sock, address)
+  File "/usr/local/lib/python3.11/asyncio/selector_events.py", line 638, in sock_connect
+    return await fut
+           ^^^^^^^^^
+  File "/usr/local/lib/python3.11/asyncio/selector_events.py", line 678, in _sock_connect_cb
+    raise OSError(err, f'Connect call failed {address}')
+ConnectionRefusedError: [Errno 111] Connect call failed ('10.0.29.234', 7880)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/app/.venv/lib/python3.11/site-packages/livekit/agents/worker.py", line 1030, in _connection_task
+    ws = await self._http_session.ws_connect(
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/client.py", line 1087, in _ws_connect
+    resp = await self.request(
+           ^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/client.py", line 788, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/client.py", line 742, in _connect_and_send_request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py", line 672, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1251, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1623, in _create_direct_connection
+    raise last_exc
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1592, in _create_direct_connection
+    transp, proto = await self._wrap_create_connection(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1333, in _wrap_create_connection
+    raise client_error(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorError: Cannot connect to host ip-10-0-29-234.eu-north-1.compute.internal:7880 ssl:default [Connect call failed ('10.0.29.234', 7880)]
+{"message": "failed to connect to livekit, retrying in 10s", "level": "WARNING", "name": "livekit.agents", "exc_info": "Traceback (most recent call last):\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py\", line 1310, in _wrap_create_connection\n    sock = await aiohappyeyeballs.start_connection(\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohappyeyeballs/impl.py\", line 122, in start_connection\n    raise first_exception\n  File \"/app/.venv/lib/python3.11/site-packages/aiohappyeyeballs/impl.py\", line 73, in start_connection\n    sock = await _connect_sock(\n           ^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohappyeyeballs/impl.py\", line 208, in _connect_sock\n    await loop.sock_connect(sock, address)\n  File \"/usr/local/lib/python3.11/asyncio/selector_events.py\", line 638, in sock_connect\n    return await fut\n           ^^^^^^^^^\n  File \"/usr/local/lib/python3.11/asyncio/selector_events.py\", line 678, in _sock_connect_cb\n    raise OSError(err, f'Connect call failed {address}')\nConnectionRefusedError: [Errno 111] Connect call failed ('10.0.29.234', 7880)\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"/app/.venv/lib/python3.11/site-packages/livekit/agents/worker.py\", line 1030, in _connection_task\n    ws = await self._http_session.ws_connect(\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/client.py\", line 1087, in _ws_connect\n    resp = await self.request(\n           ^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/client.py\", line 788, in _request\n    resp = await handler(req)\n           ^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/client.py\", line 742, in _connect_and_send_request\n    conn = await self._connector.connect(\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py\", line 672, in connect\n    proto = await self._create_connection(req, traces, timeout)\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py\", line 1251, in _create_connection\n    _, proto = await self._create_direct_connection(req, traces, timeout)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py\", line 1623, in _create_direct_connection\n    raise last_exc\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py\", line 1592, in _create_direct_connection\n    transp, proto = await self._wrap_create_connection(\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py\", line 1333, in _wrap_create_connection\n    raise client_error(req.connection_key, exc) from exc\naiohttp.client_exceptions.ClientConnectorError: Cannot connect to host ip-10-0-29-234.eu-north-1.compute.internal:7880 ssl:default [Connect call failed ('10.0.29.234', 7880)]", "timestamp": "2026-04-23T21:05:21.566718+00:00"}
+WARNING:livekit.agents:failed to connect to livekit, retrying in 10s
+Traceback (most recent call last):
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1310, in _wrap_create_connection
+    sock = await aiohappyeyeballs.start_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohappyeyeballs/impl.py", line 122, in start_connection
+    raise first_exception
+  File "/app/.venv/lib/python3.11/site-packages/aiohappyeyeballs/impl.py", line 73, in start_connection
+    sock = await _connect_sock(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohappyeyeballs/impl.py", line 208, in _connect_sock
+    await loop.sock_connect(sock, address)
+  File "/usr/local/lib/python3.11/asyncio/selector_events.py", line 638, in sock_connect
+    return await fut
+           ^^^^^^^^^
+  File "/usr/local/lib/python3.11/asyncio/selector_events.py", line 678, in _sock_connect_cb
+    raise OSError(err, f'Connect call failed {address}')
+ConnectionRefusedError: [Errno 111] Connect call failed ('10.0.29.234', 7880)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/app/.venv/lib/python3.11/site-packages/livekit/agents/worker.py", line 1030, in _connection_task
+    ws = await self._http_session.ws_connect(
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/client.py", line 1087, in _ws_connect
+    resp = await self.request(
+           ^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/client.py", line 788, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/client.py", line 742, in _connect_and_send_request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py", line 672, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1251, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1623, in _create_direct_connection
+    raise last_exc
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1592, in _create_direct_connection
+    transp, proto = await self._wrap_create_connection(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1333, in _wrap_create_connection
+    raise client_error(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorError: Cannot connect to host ip-10-0-29-234.eu-north-1.compute.internal:7880 ssl:default [Connect call failed ('10.0.29.234', 7880)]
+{"message": "failed to connect to livekit, retrying in 10s", "level": "WARNING", "name": "livekit.agents", "exc_info": "Traceback (most recent call last):\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py\", line 1310, in _wrap_create_connection\n    sock = await aiohappyeyeballs.start_connection(\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohappyeyeballs/impl.py\", line 122, in start_connection\n    raise first_exception\n  File \"/app/.venv/lib/python3.11/site-packages/aiohappyeyeballs/impl.py\", line 73, in start_connection\n    sock = await _connect_sock(\n           ^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohappyeyeballs/impl.py\", line 208, in _connect_sock\n    await loop.sock_connect(sock, address)\n  File \"/usr/local/lib/python3.11/asyncio/selector_events.py\", line 638, in sock_connect\n    return await fut\n           ^^^^^^^^^\n  File \"/usr/local/lib/python3.11/asyncio/selector_events.py\", line 678, in _sock_connect_cb\n    raise OSError(err, f'Connect call failed {address}')\nConnectionRefusedError: [Errno 111] Connect call failed ('10.0.29.234', 7880)\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"/app/.venv/lib/python3.11/site-packages/livekit/agents/worker.py\", line 1030, in _connection_task\n    ws = await self._http_session.ws_connect(\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/client.py\", line 1087, in _ws_connect\n    resp = await self.request(\n           ^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/client.py\", line 788, in _request\n    resp = await handler(req)\n           ^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/client.py\", line 742, in _connect_and_send_request\n    conn = await self._connector.connect(\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py\", line 672, in connect\n    proto = await self._create_connection(req, traces, timeout)\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py\", line 1251, in _create_connection\n    _, proto = await self._create_direct_connection(req, traces, timeout)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py\", line 1623, in _create_direct_connection\n    raise last_exc\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py\", line 1592, in _create_direct_connection\n    transp, proto = await self._wrap_create_connection(\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py\", line 1333, in _wrap_create_connection\n    raise client_error(req.connection_key, exc) from exc\naiohttp.client_exceptions.ClientConnectorError: Cannot connect to host ip-10-0-29-234.eu-north-1.compute.internal:7880 ssl:default [Connect call failed ('10.0.29.234', 7880)]", "timestamp": "2026-04-23T21:05:31.572488+00:00"}
+WARNING:livekit.agents:failed to connect to livekit, retrying in 10s
+Traceback (most recent call last):
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1310, in _wrap_create_connection
+    sock = await aiohappyeyeballs.start_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohappyeyeballs/impl.py", line 122, in start_connection
+    raise first_exception
+  File "/app/.venv/lib/python3.11/site-packages/aiohappyeyeballs/impl.py", line 73, in start_connection
+    sock = await _connect_sock(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohappyeyeballs/impl.py", line 208, in _connect_sock
+    await loop.sock_connect(sock, address)
+  File "/usr/local/lib/python3.11/asyncio/selector_events.py", line 638, in sock_connect
+    return await fut
+           ^^^^^^^^^
+  File "/usr/local/lib/python3.11/asyncio/selector_events.py", line 678, in _sock_connect_cb
+    raise OSError(err, f'Connect call failed {address}')
+ConnectionRefusedError: [Errno 111] Connect call failed ('10.0.29.234', 7880)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/app/.venv/lib/python3.11/site-packages/livekit/agents/worker.py", line 1030, in _connection_task
+    ws = await self._http_session.ws_connect(
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/client.py", line 1087, in _ws_connect
+    resp = await self.request(
+           ^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/client.py", line 788, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/client.py", line 742, in _connect_and_send_request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py", line 672, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1251, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1623, in _create_direct_connection
+    raise last_exc
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1592, in _create_direct_connection
+    transp, proto = await self._wrap_create_connection(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1333, in _wrap_create_connection
+    raise client_error(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorError: Cannot connect to host ip-10-0-29-234.eu-north-1.compute.internal:7880 ssl:default [Connect call failed ('10.0.29.234', 7880)]
+{"message": "failed to connect to livekit, retrying in 10s", "level": "WARNING", "name": "livekit.agents", "exc_info": "Traceback (most recent call last):\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py\", line 1310, in _wrap_create_connection\n    sock = await aiohappyeyeballs.start_connection(\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohappyeyeballs/impl.py\", line 122, in start_connection\n    raise first_exception\n  File \"/app/.venv/lib/python3.11/site-packages/aiohappyeyeballs/impl.py\", line 73, in start_connection\n    sock = await _connect_sock(\n           ^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohappyeyeballs/impl.py\", line 208, in _connect_sock\n    await loop.sock_connect(sock, address)\n  File \"/usr/local/lib/python3.11/asyncio/selector_events.py\", line 638, in sock_connect\n    return await fut\n           ^^^^^^^^^\n  File \"/usr/local/lib/python3.11/asyncio/selector_events.py\", line 678, in _sock_connect_cb\n    raise OSError(err, f'Connect call failed {address}')\nConnectionRefusedError: [Errno 111] Connect call failed ('10.0.29.234', 7880)\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"/app/.venv/lib/python3.11/site-packages/livekit/agents/worker.py\", line 1030, in _connection_task\n    ws = await self._http_session.ws_connect(\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/client.py\", line 1087, in _ws_connect\n    resp = await self.request(\n           ^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/client.py\", line 788, in _request\n    resp = await handler(req)\n           ^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/client.py\", line 742, in _connect_and_send_request\n    conn = await self._connector.connect(\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py\", line 672, in connect\n    proto = await self._create_connection(req, traces, timeout)\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py\", line 1251, in _create_connection\n    _, proto = await self._create_direct_connection(req, traces, timeout)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py\", line 1623, in _create_direct_connection\n    raise last_exc\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py\", line 1592, in _create_direct_connection\n    transp, proto = await self._wrap_create_connection(\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py\", line 1333, in _wrap_create_connection\n    raise client_error(req.connection_key, exc) from exc\naiohttp.client_exceptions.ClientConnectorError: Cannot connect to host ip-10-0-29-234.eu-north-1.compute.internal:7880 ssl:default [Connect call failed ('10.0.29.234', 7880)]", "timestamp": "2026-04-23T21:05:41.578004+00:00"}
+WARNING:livekit.agents:failed to connect to livekit, retrying in 10s
+Traceback (most recent call last):
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1310, in _wrap_create_connection
+    sock = await aiohappyeyeballs.start_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohappyeyeballs/impl.py", line 122, in start_connection
+    raise first_exception
+  File "/app/.venv/lib/python3.11/site-packages/aiohappyeyeballs/impl.py", line 73, in start_connection
+    sock = await _connect_sock(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohappyeyeballs/impl.py", line 208, in _connect_sock
+    await loop.sock_connect(sock, address)
+  File "/usr/local/lib/python3.11/asyncio/selector_events.py", line 638, in sock_connect
+    return await fut
+           ^^^^^^^^^
+  File "/usr/local/lib/python3.11/asyncio/selector_events.py", line 678, in _sock_connect_cb
+    raise OSError(err, f'Connect call failed {address}')
+ConnectionRefusedError: [Errno 111] Connect call failed ('10.0.29.234', 7880)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/app/.venv/lib/python3.11/site-packages/livekit/agents/worker.py", line 1030, in _connection_task
+    ws = await self._http_session.ws_connect(
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/client.py", line 1087, in _ws_connect
+    resp = await self.request(
+           ^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/client.py", line 788, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/client.py", line 742, in _connect_and_send_request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py", line 672, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1251, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1623, in _create_direct_connection
+    raise last_exc
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1592, in _create_direct_connection
+    transp, proto = await self._wrap_create_connection(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1333, in _wrap_create_connection
+    raise client_error(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorError: Cannot connect to host ip-10-0-29-234.eu-north-1.compute.internal:7880 ssl:default [Connect call failed ('10.0.29.234', 7880)]
+{"message": "failed to connect to livekit, retrying in 10s", "level": "WARNING", "name": "livekit.agents", "exc_info": "Traceback (most recent call last):\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py\", line 1310, in _wrap_create_connection\n    sock = await aiohappyeyeballs.start_connection(\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohappyeyeballs/impl.py\", line 122, in start_connection\n    raise first_exception\n  File \"/app/.venv/lib/python3.11/site-packages/aiohappyeyeballs/impl.py\", line 73, in start_connection\n    sock = await _connect_sock(\n           ^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohappyeyeballs/impl.py\", line 208, in _connect_sock\n    await loop.sock_connect(sock, address)\n  File \"/usr/local/lib/python3.11/asyncio/selector_events.py\", line 638, in sock_connect\n    return await fut\n           ^^^^^^^^^\n  File \"/usr/local/lib/python3.11/asyncio/selector_events.py\", line 678, in _sock_connect_cb\n    raise OSError(err, f'Connect call failed {address}')\nConnectionRefusedError: [Errno 111] Connect call failed ('10.0.29.234', 7880)\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"/app/.venv/lib/python3.11/site-packages/livekit/agents/worker.py\", line 1030, in _connection_task\n    ws = await self._http_session.ws_connect(\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/client.py\", line 1087, in _ws_connect\n    resp = await self.request(\n           ^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/client.py\", line 788, in _request\n    resp = await handler(req)\n           ^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/client.py\", line 742, in _connect_and_send_request\n    conn = await self._connector.connect(\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py\", line 672, in connect\n    proto = await self._create_connection(req, traces, timeout)\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py\", line 1251, in _create_connection\n    _, proto = await self._create_direct_connection(req, traces, timeout)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py\", line 1623, in _create_direct_connection\n    raise last_exc\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py\", line 1592, in _create_direct_connection\n    transp, proto = await self._wrap_create_connection(\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py\", line 1333, in _wrap_create_connection\n    raise client_error(req.connection_key, exc) from exc\naiohttp.client_exceptions.ClientConnectorError: Cannot connect to host ip-10-0-29-234.eu-north-1.compute.internal:7880 ssl:default [Connect call failed ('10.0.29.234', 7880)]", "timestamp": "2026-04-23T21:05:51.583987+00:00"}
+WARNING:livekit.agents:failed to connect to livekit, retrying in 10s
+Traceback (most recent call last):
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1310, in _wrap_create_connection
+    sock = await aiohappyeyeballs.start_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohappyeyeballs/impl.py", line 122, in start_connection
+    raise first_exception
+  File "/app/.venv/lib/python3.11/site-packages/aiohappyeyeballs/impl.py", line 73, in start_connection
+    sock = await _connect_sock(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohappyeyeballs/impl.py", line 208, in _connect_sock
+    await loop.sock_connect(sock, address)
+  File "/usr/local/lib/python3.11/asyncio/selector_events.py", line 638, in sock_connect
+    return await fut
+           ^^^^^^^^^
+  File "/usr/local/lib/python3.11/asyncio/selector_events.py", line 678, in _sock_connect_cb
+    raise OSError(err, f'Connect call failed {address}')
+ConnectionRefusedError: [Errno 111] Connect call failed ('10.0.29.234', 7880)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/app/.venv/lib/python3.11/site-packages/livekit/agents/worker.py", line 1030, in _connection_task
+    ws = await self._http_session.ws_connect(
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/client.py", line 1087, in _ws_connect
+    resp = await self.request(
+           ^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/client.py", line 788, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/client.py", line 742, in _connect_and_send_request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py", line 672, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1251, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1623, in _create_direct_connection
+    raise last_exc
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1592, in _create_direct_connection
+    transp, proto = await self._wrap_create_connection(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1333, in _wrap_create_connection
+    raise client_error(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorError: Cannot connect to host ip-10-0-29-234.eu-north-1.compute.internal:7880 ssl:default [Connect call failed ('10.0.29.234', 7880)]
+{"message": "failed to connect to livekit, retrying in 10s", "level": "WARNING", "name": "livekit.agents", "exc_info": "Traceback (most recent call last):\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py\", line 1310, in _wrap_create_connection\n    sock = await aiohappyeyeballs.start_connection(\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohappyeyeballs/impl.py\", line 122, in start_connection\n    raise first_exception\n  File \"/app/.venv/lib/python3.11/site-packages/aiohappyeyeballs/impl.py\", line 73, in start_connection\n    sock = await _connect_sock(\n           ^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohappyeyeballs/impl.py\", line 208, in _connect_sock\n    await loop.sock_connect(sock, address)\n  File \"/usr/local/lib/python3.11/asyncio/selector_events.py\", line 638, in sock_connect\n    return await fut\n           ^^^^^^^^^\n  File \"/usr/local/lib/python3.11/asyncio/selector_events.py\", line 678, in _sock_connect_cb\n    raise OSError(err, f'Connect call failed {address}')\nConnectionRefusedError: [Errno 111] Connect call failed ('10.0.29.234', 7880)\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"/app/.venv/lib/python3.11/site-packages/livekit/agents/worker.py\", line 1030, in _connection_task\n    ws = await self._http_session.ws_connect(\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/client.py\", line 1087, in _ws_connect\n    resp = await self.request(\n           ^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/client.py\", line 788, in _request\n    resp = await handler(req)\n           ^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/client.py\", line 742, in _connect_and_send_request\n    conn = await self._connector.connect(\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py\", line 672, in connect\n    proto = await self._create_connection(req, traces, timeout)\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py\", line 1251, in _create_connection\n    _, proto = await self._create_direct_connection(req, traces, timeout)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py\", line 1623, in _create_direct_connection\n    raise last_exc\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py\", line 1592, in _create_direct_connection\n    transp, proto = await self._wrap_create_connection(\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py\", line 1333, in _wrap_create_connection\n    raise client_error(req.connection_key, exc) from exc\naiohttp.client_exceptions.ClientConnectorError: Cannot connect to host ip-10-0-29-234.eu-north-1.compute.internal:7880 ssl:default [Connect call failed ('10.0.29.234', 7880)]", "timestamp": "2026-04-23T21:06:01.589544+00:00"}
+WARNING:livekit.agents:failed to connect to livekit, retrying in 10s
+Traceback (most recent call last):
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1310, in _wrap_create_connection
+    sock = await aiohappyeyeballs.start_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohappyeyeballs/impl.py", line 122, in start_connection
+    raise first_exception
+  File "/app/.venv/lib/python3.11/site-packages/aiohappyeyeballs/impl.py", line 73, in start_connection
+    sock = await _connect_sock(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohappyeyeballs/impl.py", line 208, in _connect_sock
+    await loop.sock_connect(sock, address)
+  File "/usr/local/lib/python3.11/asyncio/selector_events.py", line 638, in sock_connect
+    return await fut
+           ^^^^^^^^^
+  File "/usr/local/lib/python3.11/asyncio/selector_events.py", line 678, in _sock_connect_cb
+    raise OSError(err, f'Connect call failed {address}')
+ConnectionRefusedError: [Errno 111] Connect call failed ('10.0.29.234', 7880)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/app/.venv/lib/python3.11/site-packages/livekit/agents/worker.py", line 1030, in _connection_task
+    ws = await self._http_session.ws_connect(
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/client.py", line 1087, in _ws_connect
+    resp = await self.request(
+           ^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/client.py", line 788, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/client.py", line 742, in _connect_and_send_request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py", line 672, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1251, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1623, in _create_direct_connection
+    raise last_exc
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1592, in _create_direct_connection
+    transp, proto = await self._wrap_create_connection(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1333, in _wrap_create_connection
+    raise client_error(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorError: Cannot connect to host ip-10-0-29-234.eu-north-1.compute.internal:7880 ssl:default [Connect call failed ('10.0.29.234', 7880)]
+{"message": "failed to connect to livekit, retrying in 10s", "level": "WARNING", "name": "livekit.agents", "exc_info": "Traceback (most recent call last):\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py\", line 1310, in _wrap_create_connection\n    sock = await aiohappyeyeballs.start_connection(\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohappyeyeballs/impl.py\", line 122, in start_connection\n    raise first_exception\n  File \"/app/.venv/lib/python3.11/site-packages/aiohappyeyeballs/impl.py\", line 73, in start_connection\n    sock = await _connect_sock(\n           ^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohappyeyeballs/impl.py\", line 208, in _connect_sock\n    await loop.sock_connect(sock, address)\n  File \"/usr/local/lib/python3.11/asyncio/selector_events.py\", line 638, in sock_connect\n    return await fut\n           ^^^^^^^^^\n  File \"/usr/local/lib/python3.11/asyncio/selector_events.py\", line 678, in _sock_connect_cb\n    raise OSError(err, f'Connect call failed {address}')\nConnectionRefusedError: [Errno 111] Connect call failed ('10.0.29.234', 7880)\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"/app/.venv/lib/python3.11/site-packages/livekit/agents/worker.py\", line 1030, in _connection_task\n    ws = await self._http_session.ws_connect(\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/client.py\", line 1087, in _ws_connect\n    resp = await self.request(\n           ^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/client.py\", line 788, in _request\n    resp = await handler(req)\n           ^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/client.py\", line 742, in _connect_and_send_request\n    conn = await self._connector.connect(\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py\", line 672, in connect\n    proto = await self._create_connection(req, traces, timeout)\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py\", line 1251, in _create_connection\n    _, proto = await self._create_direct_connection(req, traces, timeout)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py\", line 1623, in _create_direct_connection\n    raise last_exc\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py\", line 1592, in _create_direct_connection\n    transp, proto = await self._wrap_create_connection(\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py\", line 1333, in _wrap_create_connection\n    raise client_error(req.connection_key, exc) from exc\naiohttp.client_exceptions.ClientConnectorError: Cannot connect to host ip-10-0-29-234.eu-north-1.compute.internal:7880 ssl:default [Connect call failed ('10.0.29.234', 7880)]", "timestamp": "2026-04-23T21:06:11.593887+00:00"}
+WARNING:livekit.agents:failed to connect to livekit, retrying in 10s
+Traceback (most recent call last):
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1310, in _wrap_create_connection
+    sock = await aiohappyeyeballs.start_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohappyeyeballs/impl.py", line 122, in start_connection
+    raise first_exception
+  File "/app/.venv/lib/python3.11/site-packages/aiohappyeyeballs/impl.py", line 73, in start_connection
+    sock = await _connect_sock(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohappyeyeballs/impl.py", line 208, in _connect_sock
+    await loop.sock_connect(sock, address)
+  File "/usr/local/lib/python3.11/asyncio/selector_events.py", line 638, in sock_connect
+    return await fut
+           ^^^^^^^^^
+  File "/usr/local/lib/python3.11/asyncio/selector_events.py", line 678, in _sock_connect_cb
+    raise OSError(err, f'Connect call failed {address}')
+ConnectionRefusedError: [Errno 111] Connect call failed ('10.0.29.234', 7880)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/app/.venv/lib/python3.11/site-packages/livekit/agents/worker.py", line 1030, in _connection_task
+    ws = await self._http_session.ws_connect(
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/client.py", line 1087, in _ws_connect
+    resp = await self.request(
+           ^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/client.py", line 788, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/client.py", line 742, in _connect_and_send_request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py", line 672, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1251, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1623, in _create_direct_connection
+    raise last_exc
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1592, in _create_direct_connection
+    transp, proto = await self._wrap_create_connection(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1333, in _wrap_create_connection
+    raise client_error(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorError: Cannot connect to host ip-10-0-29-234.eu-north-1.compute.internal:7880 ssl:default [Connect call failed ('10.0.29.234', 7880)]
+{"message": "failed to connect to livekit, retrying in 10s", "level": "WARNING", "name": "livekit.agents", "exc_info": "Traceback (most recent call last):\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py\", line 1310, in _wrap_create_connection\n    sock = await aiohappyeyeballs.start_connection(\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohappyeyeballs/impl.py\", line 122, in start_connection\n    raise first_exception\n  File \"/app/.venv/lib/python3.11/site-packages/aiohappyeyeballs/impl.py\", line 73, in start_connection\n    sock = await _connect_sock(\n           ^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohappyeyeballs/impl.py\", line 208, in _connect_sock\n    await loop.sock_connect(sock, address)\n  File \"/usr/local/lib/python3.11/asyncio/selector_events.py\", line 638, in sock_connect\n    return await fut\n           ^^^^^^^^^\n  File \"/usr/local/lib/python3.11/asyncio/selector_events.py\", line 678, in _sock_connect_cb\n    raise OSError(err, f'Connect call failed {address}')\nConnectionRefusedError: [Errno 111] Connect call failed ('10.0.29.234', 7880)\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"/app/.venv/lib/python3.11/site-packages/livekit/agents/worker.py\", line 1030, in _connection_task\n    ws = await self._http_session.ws_connect(\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/client.py\", line 1087, in _ws_connect\n    resp = await self.request(\n           ^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/client.py\", line 788, in _request\n    resp = await handler(req)\n           ^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/client.py\", line 742, in _connect_and_send_request\n    conn = await self._connector.connect(\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py\", line 672, in connect\n    proto = await self._create_connection(req, traces, timeout)\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py\", line 1251, in _create_connection\n    _, proto = await self._create_direct_connection(req, traces, timeout)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py\", line 1623, in _create_direct_connection\n    raise last_exc\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py\", line 1592, in _create_direct_connection\n    transp, proto = await self._wrap_create_connection(\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py\", line 1333, in _wrap_create_connection\n    raise client_error(req.connection_key, exc) from exc\naiohttp.client_exceptions.ClientConnectorError: Cannot connect to host ip-10-0-29-234.eu-north-1.compute.internal:7880 ssl:default [Connect call failed ('10.0.29.234', 7880)]", "timestamp": "2026-04-23T21:06:21.598530+00:00"}
+WARNING:livekit.agents:failed to connect to livekit, retrying in 10s
+Traceback (most recent call last):
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1310, in _wrap_create_connection
+    sock = await aiohappyeyeballs.start_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohappyeyeballs/impl.py", line 122, in start_connection
+    raise first_exception
+  File "/app/.venv/lib/python3.11/site-packages/aiohappyeyeballs/impl.py", line 73, in start_connection
+    sock = await _connect_sock(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohappyeyeballs/impl.py", line 208, in _connect_sock
+    await loop.sock_connect(sock, address)
+  File "/usr/local/lib/python3.11/asyncio/selector_events.py", line 638, in sock_connect
+    return await fut
+           ^^^^^^^^^
+  File "/usr/local/lib/python3.11/asyncio/selector_events.py", line 678, in _sock_connect_cb
+    raise OSError(err, f'Connect call failed {address}')
+ConnectionRefusedError: [Errno 111] Connect call failed ('10.0.29.234', 7880)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/app/.venv/lib/python3.11/site-packages/livekit/agents/worker.py", line 1030, in _connection_task
+    ws = await self._http_session.ws_connect(
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/client.py", line 1087, in _ws_connect
+    resp = await self.request(
+           ^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/client.py", line 788, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/client.py", line 742, in _connect_and_send_request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py", line 672, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1251, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1623, in _create_direct_connection
+    raise last_exc
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1592, in _create_direct_connection
+    transp, proto = await self._wrap_create_connection(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1333, in _wrap_create_connection
+    raise client_error(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorError: Cannot connect to host ip-10-0-29-234.eu-north-1.compute.internal:7880 ssl:default [Connect call failed ('10.0.29.234', 7880)]
+{"message": "failed to connect to livekit, retrying in 10s", "level": "WARNING", "name": "livekit.agents", "exc_info": "Traceback (most recent call last):\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py\", line 1310, in _wrap_create_connection\n    sock = await aiohappyeyeballs.start_connection(\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohappyeyeballs/impl.py\", line 122, in start_connection\n    raise first_exception\n  File \"/app/.venv/lib/python3.11/site-packages/aiohappyeyeballs/impl.py\", line 73, in start_connection\n    sock = await _connect_sock(\n           ^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohappyeyeballs/impl.py\", line 208, in _connect_sock\n    await loop.sock_connect(sock, address)\n  File \"/usr/local/lib/python3.11/asyncio/selector_events.py\", line 638, in sock_connect\n    return await fut\n           ^^^^^^^^^\n  File \"/usr/local/lib/python3.11/asyncio/selector_events.py\", line 678, in _sock_connect_cb\n    raise OSError(err, f'Connect call failed {address}')\nConnectionRefusedError: [Errno 111] Connect call failed ('10.0.29.234', 7880)\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"/app/.venv/lib/python3.11/site-packages/livekit/agents/worker.py\", line 1030, in _connection_task\n    ws = await self._http_session.ws_connect(\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/client.py\", line 1087, in _ws_connect\n    resp = await self.request(\n           ^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/client.py\", line 788, in _request\n    resp = await handler(req)\n           ^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/client.py\", line 742, in _connect_and_send_request\n    conn = await self._connector.connect(\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py\", line 672, in connect\n    proto = await self._create_connection(req, traces, timeout)\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py\", line 1251, in _create_connection\n    _, proto = await self._create_direct_connection(req, traces, timeout)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py\", line 1623, in _create_direct_connection\n    raise last_exc\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py\", line 1592, in _create_direct_connection\n    transp, proto = await self._wrap_create_connection(\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py\", line 1333, in _wrap_create_connection\n    raise client_error(req.connection_key, exc) from exc\naiohttp.client_exceptions.ClientConnectorError: Cannot connect to host ip-10-0-29-234.eu-north-1.compute.internal:7880 ssl:default [Connect call failed ('10.0.29.234', 7880)]", "timestamp": "2026-04-23T21:06:31.603590+00:00"}
+WARNING:livekit.agents:failed to connect to livekit, retrying in 10s
+Traceback (most recent call last):
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1310, in _wrap_create_connection
+    sock = await aiohappyeyeballs.start_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohappyeyeballs/impl.py", line 122, in start_connection
+    raise first_exception
+  File "/app/.venv/lib/python3.11/site-packages/aiohappyeyeballs/impl.py", line 73, in start_connection
+    sock = await _connect_sock(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohappyeyeballs/impl.py", line 208, in _connect_sock
+    await loop.sock_connect(sock, address)
+  File "/usr/local/lib/python3.11/asyncio/selector_events.py", line 638, in sock_connect
+    return await fut
+           ^^^^^^^^^
+  File "/usr/local/lib/python3.11/asyncio/selector_events.py", line 678, in _sock_connect_cb
+    raise OSError(err, f'Connect call failed {address}')
+ConnectionRefusedError: [Errno 111] Connect call failed ('10.0.29.234', 7880)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/app/.venv/lib/python3.11/site-packages/livekit/agents/worker.py", line 1030, in _connection_task
+    ws = await self._http_session.ws_connect(
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/client.py", line 1087, in _ws_connect
+    resp = await self.request(
+           ^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/client.py", line 788, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/client.py", line 742, in _connect_and_send_request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py", line 672, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1251, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1623, in _create_direct_connection
+    raise last_exc
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1592, in _create_direct_connection
+    transp, proto = await self._wrap_create_connection(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1333, in _wrap_create_connection
+    raise client_error(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorError: Cannot connect to host ip-10-0-29-234.eu-north-1.compute.internal:7880 ssl:default [Connect call failed ('10.0.29.234', 7880)]
+{"message": "failed to connect to livekit, retrying in 10s", "level": "WARNING", "name": "livekit.agents", "exc_info": "Traceback (most recent call last):\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py\", line 1310, in _wrap_create_connection\n    sock = await aiohappyeyeballs.start_connection(\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohappyeyeballs/impl.py\", line 122, in start_connection\n    raise first_exception\n  File \"/app/.venv/lib/python3.11/site-packages/aiohappyeyeballs/impl.py\", line 73, in start_connection\n    sock = await _connect_sock(\n           ^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohappyeyeballs/impl.py\", line 208, in _connect_sock\n    await loop.sock_connect(sock, address)\n  File \"/usr/local/lib/python3.11/asyncio/selector_events.py\", line 638, in sock_connect\n    return await fut\n           ^^^^^^^^^\n  File \"/usr/local/lib/python3.11/asyncio/selector_events.py\", line 678, in _sock_connect_cb\n    raise OSError(err, f'Connect call failed {address}')\nConnectionRefusedError: [Errno 111] Connect call failed ('10.0.29.234', 7880)\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"/app/.venv/lib/python3.11/site-packages/livekit/agents/worker.py\", line 1030, in _connection_task\n    ws = await self._http_session.ws_connect(\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/client.py\", line 1087, in _ws_connect\n    resp = await self.request(\n           ^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/client.py\", line 788, in _request\n    resp = await handler(req)\n           ^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/client.py\", line 742, in _connect_and_send_request\n    conn = await self._connector.connect(\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py\", line 672, in connect\n    proto = await self._create_connection(req, traces, timeout)\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py\", line 1251, in _create_connection\n    _, proto = await self._create_direct_connection(req, traces, timeout)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py\", line 1623, in _create_direct_connection\n    raise last_exc\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py\", line 1592, in _create_direct_connection\n    transp, proto = await self._wrap_create_connection(\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py\", line 1333, in _wrap_create_connection\n    raise client_error(req.connection_key, exc) from exc\naiohttp.client_exceptions.ClientConnectorError: Cannot connect to host ip-10-0-29-234.eu-north-1.compute.internal:7880 ssl:default [Connect call failed ('10.0.29.234', 7880)]", "timestamp": "2026-04-23T21:06:41.607230+00:00"}
+WARNING:livekit.agents:failed to connect to livekit, retrying in 10s
+Traceback (most recent call last):
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1310, in _wrap_create_connection
+    sock = await aiohappyeyeballs.start_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohappyeyeballs/impl.py", line 122, in start_connection
+    raise first_exception
+  File "/app/.venv/lib/python3.11/site-packages/aiohappyeyeballs/impl.py", line 73, in start_connection
+    sock = await _connect_sock(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohappyeyeballs/impl.py", line 208, in _connect_sock
+    await loop.sock_connect(sock, address)
+  File "/usr/local/lib/python3.11/asyncio/selector_events.py", line 638, in sock_connect
+    return await fut
+           ^^^^^^^^^
+  File "/usr/local/lib/python3.11/asyncio/selector_events.py", line 678, in _sock_connect_cb
+    raise OSError(err, f'Connect call failed {address}')
+ConnectionRefusedError: [Errno 111] Connect call failed ('10.0.29.234', 7880)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/app/.venv/lib/python3.11/site-packages/livekit/agents/worker.py", line 1030, in _connection_task
+    ws = await self._http_session.ws_connect(
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/client.py", line 1087, in _ws_connect
+    resp = await self.request(
+           ^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/client.py", line 788, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/client.py", line 742, in _connect_and_send_request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py", line 672, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1251, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1623, in _create_direct_connection
+    raise last_exc
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1592, in _create_direct_connection
+    transp, proto = await self._wrap_create_connection(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1333, in _wrap_create_connection
+    raise client_error(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorError: Cannot connect to host ip-10-0-29-234.eu-north-1.compute.internal:7880 ssl:default [Connect call failed ('10.0.29.234', 7880)]
+{"message": "failed to connect to livekit, retrying in 10s", "level": "WARNING", "name": "livekit.agents", "exc_info": "Traceback (most recent call last):\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py\", line 1310, in _wrap_create_connection\n    sock = await aiohappyeyeballs.start_connection(\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohappyeyeballs/impl.py\", line 122, in start_connection\n    raise first_exception\n  File \"/app/.venv/lib/python3.11/site-packages/aiohappyeyeballs/impl.py\", line 73, in start_connection\n    sock = await _connect_sock(\n           ^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohappyeyeballs/impl.py\", line 208, in _connect_sock\n    await loop.sock_connect(sock, address)\n  File \"/usr/local/lib/python3.11/asyncio/selector_events.py\", line 638, in sock_connect\n    return await fut\n           ^^^^^^^^^\n  File \"/usr/local/lib/python3.11/asyncio/selector_events.py\", line 678, in _sock_connect_cb\n    raise OSError(err, f'Connect call failed {address}')\nConnectionRefusedError: [Errno 111] Connect call failed ('10.0.29.234', 7880)\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"/app/.venv/lib/python3.11/site-packages/livekit/agents/worker.py\", line 1030, in _connection_task\n    ws = await self._http_session.ws_connect(\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/client.py\", line 1087, in _ws_connect\n    resp = await self.request(\n           ^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/client.py\", line 788, in _request\n    resp = await handler(req)\n           ^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/client.py\", line 742, in _connect_and_send_request\n    conn = await self._connector.connect(\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py\", line 672, in connect\n    proto = await self._create_connection(req, traces, timeout)\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py\", line 1251, in _create_connection\n    _, proto = await self._create_direct_connection(req, traces, timeout)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py\", line 1623, in _create_direct_connection\n    raise last_exc\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py\", line 1592, in _create_direct_connection\n    transp, proto = await self._wrap_create_connection(\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py\", line 1333, in _wrap_create_connection\n    raise client_error(req.connection_key, exc) from exc\naiohttp.client_exceptions.ClientConnectorError: Cannot connect to host ip-10-0-29-234.eu-north-1.compute.internal:7880 ssl:default [Connect call failed ('10.0.29.234', 7880)]", "timestamp": "2026-04-23T21:06:51.611519+00:00"}
+WARNING:livekit.agents:failed to connect to livekit, retrying in 10s
+Traceback (most recent call last):
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1310, in _wrap_create_connection
+    sock = await aiohappyeyeballs.start_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohappyeyeballs/impl.py", line 122, in start_connection
+    raise first_exception
+  File "/app/.venv/lib/python3.11/site-packages/aiohappyeyeballs/impl.py", line 73, in start_connection
+    sock = await _connect_sock(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohappyeyeballs/impl.py", line 208, in _connect_sock
+    await loop.sock_connect(sock, address)
+  File "/usr/local/lib/python3.11/asyncio/selector_events.py", line 638, in sock_connect
+    return await fut
+           ^^^^^^^^^
+  File "/usr/local/lib/python3.11/asyncio/selector_events.py", line 678, in _sock_connect_cb
+    raise OSError(err, f'Connect call failed {address}')
+ConnectionRefusedError: [Errno 111] Connect call failed ('10.0.29.234', 7880)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/app/.venv/lib/python3.11/site-packages/livekit/agents/worker.py", line 1030, in _connection_task
+    ws = await self._http_session.ws_connect(
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/client.py", line 1087, in _ws_connect
+    resp = await self.request(
+           ^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/client.py", line 788, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/client.py", line 742, in _connect_and_send_request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py", line 672, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1251, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1623, in _create_direct_connection
+    raise last_exc
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1592, in _create_direct_connection
+    transp, proto = await self._wrap_create_connection(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1333, in _wrap_create_connection
+    raise client_error(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorError: Cannot connect to host ip-10-0-29-234.eu-north-1.compute.internal:7880 ssl:default [Connect call failed ('10.0.29.234', 7880)]
+{"message": "failed to connect to livekit, retrying in 10s", "level": "WARNING", "name": "livekit.agents", "exc_info": "Traceback (most recent call last):\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py\", line 1310, in _wrap_create_connection\n    sock = await aiohappyeyeballs.start_connection(\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohappyeyeballs/impl.py\", line 122, in start_connection\n    raise first_exception\n  File \"/app/.venv/lib/python3.11/site-packages/aiohappyeyeballs/impl.py\", line 73, in start_connection\n    sock = await _connect_sock(\n           ^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohappyeyeballs/impl.py\", line 208, in _connect_sock\n    await loop.sock_connect(sock, address)\n  File \"/usr/local/lib/python3.11/asyncio/selector_events.py\", line 638, in sock_connect\n    return await fut\n           ^^^^^^^^^\n  File \"/usr/local/lib/python3.11/asyncio/selector_events.py\", line 678, in _sock_connect_cb\n    raise OSError(err, f'Connect call failed {address}')\nConnectionRefusedError: [Errno 111] Connect call failed ('10.0.29.234', 7880)\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"/app/.venv/lib/python3.11/site-packages/livekit/agents/worker.py\", line 1030, in _connection_task\n    ws = await self._http_session.ws_connect(\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/client.py\", line 1087, in _ws_connect\n    resp = await self.request(\n           ^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/client.py\", line 788, in _request\n    resp = await handler(req)\n           ^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/client.py\", line 742, in _connect_and_send_request\n    conn = await self._connector.connect(\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py\", line 672, in connect\n    proto = await self._create_connection(req, traces, timeout)\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py\", line 1251, in _create_connection\n    _, proto = await self._create_direct_connection(req, traces, timeout)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py\", line 1623, in _create_direct_connection\n    raise last_exc\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py\", line 1592, in _create_direct_connection\n    transp, proto = await self._wrap_create_connection(\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/aiohttp/connector.py\", line 1333, in _wrap_create_connection\n    raise client_error(req.connection_key, exc) from exc\naiohttp.client_exceptions.ClientConnectorError: Cannot connect to host ip-10-0-29-234.eu-north-1.compute.internal:7880 ssl:default [Connect call failed ('10.0.29.234', 7880)]", "timestamp": "2026-04-23T21:07:01.617033+00:00"}
+ERROR:livekit.agents:Error in _connection_task
+Traceback (most recent call last):
+  File "/app/.venv/lib/python3.11/site-packages/livekit/agents/utils/log.py", line 17, in async_fn_logs
+    return await fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/livekit/agents/worker.py", line 1080, in _connection_task
+    raise RuntimeError(
+RuntimeError: failed to connect to livekit after 16 attempts
+{"message": "Error in _connection_task", "level": "ERROR", "name": "livekit.agents", "exc_info": "Traceback (most recent call last):\n  File \"/app/.venv/lib/python3.11/site-packages/livekit/agents/utils/log.py\", line 17, in async_fn_logs\n    return await fn(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/.venv/lib/python3.11/site-packages/livekit/agents/worker.py\", line 1080, in _connection_task\n    raise RuntimeError(\nRuntimeError: failed to connect to livekit after 16 attempts", "timestamp": "2026-04-23T21:07:11.623089+00:00"}
+ubuntu@ip-10-0-23-147:~$ sudo find / -name "*.yaml" -o -name "*.yml" | grep -i livekit
+ubuntu@ip-10-0-23-147:~$ printenv | grep -i livekit
+ubuntu@ip-10-0-23-147:~$ ls ~/Desktop
+ls ~/projects
+ls ~
+ls: cannot access '/home/ubuntu/Desktop': No such file or directory
+ls: cannot access '/home/ubuntu/projects': No such file or directory
+ubuntu@ip-10-0-23-147:~$ echo "=== PORTS ==="
+ss -tulnp
+=== PORTS ===
+Netid         State          Recv-Q         Send-Q                       Local Address:Port                   Peer Address:Port         Process         
+udp           UNCONN         0              0                               127.0.0.54:53                          0.0.0.0:*                            
+udp           UNCONN         0              0                            127.0.0.53%lo:53                          0.0.0.0:*                            
+udp           UNCONN         0              0                      10.0.23.147%enp39s0:68                          0.0.0.0:*                            
+udp           UNCONN         0              0                                127.0.0.1:323                         0.0.0.0:*                            
+udp           UNCONN         0              0                                    [::1]:323                            [::]:*                            
+tcp           LISTEN         0              4096                            127.0.0.54:53                          0.0.0.0:*                            
+tcp           LISTEN         0              128                                0.0.0.0:8081                        0.0.0.0:*                            
+tcp           LISTEN         0              4096                             127.0.0.1:34731                       0.0.0.0:*                            
+tcp           LISTEN         0              4096                               0.0.0.0:22                          0.0.0.0:*                            
+tcp           LISTEN         0              4096                         127.0.0.53%lo:53                          0.0.0.0:*                            
+tcp           LISTEN         0              128                                   [::]:8081                           [::]:*                            
+tcp           LISTEN         0              4096                                  [::]:22                             [::]:*                            
+ubuntu@ip-10-0-23-147:~$ 
+
