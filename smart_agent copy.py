@@ -1632,7 +1632,7 @@ if __name__ == "__main__":
         WorkerOptions(
             entrypoint_fnc=entrypoint,
             prewarm_fnc=prewarm,
-            agent_name=os.getenv("AGENT_NAME", "outbound-caller-smart"),
+            agent_name=os.getenv("AGENT_NAME", "outbound-caller-smart2"),
             num_idle_processes=1,
         )
     )

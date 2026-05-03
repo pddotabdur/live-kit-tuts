@@ -10,9 +10,9 @@ load_dotenv()
 async def main():
     phone_number = os.getenv("PHONE_NUMBER")
     if not phone_number:
-        raise SystemExit("PHONE_NUMBER env var is required (e.g. PHONE_NUMBER=+966555209485)")
+        raise SystemExit("PHONE_NUMBER env var is required (e.g. PHONE_NUMBER=880555209485)")
 
-    agent_name = os.getenv("AGENT_NAME", "audio-play-caller") #outbound-caller-smart
+    agent_name = os.getenv("AGENT_NAME", "outbound-caller-smart") #outbound-caller-smart
 
     lk_api = api.LiveKitAPI()
     room_name = f"outbound-call-{uuid.uuid4().hex[:8]}"

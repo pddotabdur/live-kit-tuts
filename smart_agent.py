@@ -30,9 +30,8 @@ STT: Deepgram nova-3 ar-SA. TTS: Faseeh ar-najdi-female-1.
 The PERSONA + stage instructions stay in English — the model understands
 them and generates Najdi Arabic in its replies.
 """
-
 from __future__ import annotations
-
+#from _pytest.mark import param
 import asyncio
 import datetime
 import json
@@ -1291,6 +1290,10 @@ async def entrypoint(ctx: JobContext):
 
     participant_identity = f"sip-{phone_number}"
 
+    options = soniox.STTOptions(
+        language_hints=["ar"],
+    )
+
     session = AgentSession[CallData](
         userdata=data,
         turn_handling={
@@ -1306,7 +1309,7 @@ async def entrypoint(ctx: JobContext):
             },
         },
         #stt=deepgram.STT(model="nova-3", language="ar-SA"),
-        stt=hamsa_livekit.STT(language="ar"),
+        stt=soniox.STT(params=options),
         llm=openai.LLM(model="gpt-4.1", temperature=0.4),
         tts=faseeh.TTS(
             base_url="https://api.munsit.com/api/v1",
