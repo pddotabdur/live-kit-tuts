@@ -12,7 +12,7 @@ async def main():
     if not phone_number:
         raise SystemExit("PHONE_NUMBER env var is required (e.g. PHONE_NUMBER=+966555209485)")
 
-    agent_name = os.getenv("AGENT_NAME", "outbound-caller")
+    agent_name = os.getenv("AGENT_NAME", "outbound-caller-aws-local")
 
     lk_api = api.LiveKitAPI()
     room_name = f"outbound-call-{uuid.uuid4().hex[:8]}"

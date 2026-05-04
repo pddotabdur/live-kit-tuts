@@ -117,6 +117,7 @@ class CallData:
     # Ladder counters — used to drive EC-4 (anger) and EC-6 (refusal) flows
     refusal_attempts: int = 0
     angry_attempts: int = 0
+    id_unclear_attempts: int = 0
     dispute_open: bool = False
     payment_link_sent: bool = False
 
@@ -252,6 +253,33 @@ def _ar_digits_individual(s: str) -> str:
     return " ".join(_AR_DIGITS[int(c)] for c in s if c.isdigit())
 
 
+_WORD_TO_DIGIT = {
+    "صفر": "0", "واحد": "1", "وحدة": "1", "اثنين": "2", "اثنان": "2",
+    "ثلاثة": "3", "ثلاث": "3", "أربعة": "4", "اربعة": "4", "أربع": "4",
+    "خمسة": "5", "خمس": "5", "ستة": "6", "ست": "6", "سبعة": "7", "سبع": "7",
+    "ثمانية": "8", "ثماني": "8", "ثمان": "8", "تسعة": "9", "تسع": "9",
+    "zero": "0", "one": "1", "two": "2", "three": "3", "four": "4",
+    "five": "5", "six": "6", "seven": "7", "eight": "8", "nine": "9",
+}
+
+
+def _parse_spoken_digits(raw: str) -> str:
+    """Extract digits from spoken input — handles Arabic words, English words,
+    Arabic-Indic numerals, space-separated digits, and mixed forms."""
+    s = raw.translate(_AR_INDIC_DIGITS).strip()
+    tokens = re.split(r"[\s,،.]+", s)
+    result = []
+    for tok in tokens:
+        tok_lower = tok.lower().strip()
+        if tok_lower in _WORD_TO_DIGIT:
+            result.append(_WORD_TO_DIGIT[tok_lower])
+        else:
+            for ch in tok:
+                if ch.isdigit():
+                    result.append(ch)
+    return "".join(result)
+
+
 _TERM_MAP = {
     "stc": "اس تي سي",
     "STC": "اس تي سي",
@@ -295,7 +323,7 @@ behalf of بنك stc. You ALWAYS reply in Najdi Saudi Arabic; English only for
 brand names (stc, simah).
 
 ABSOLUTE RULES (these override every other instinct):
-- Brevity: ONE short sentence per turn, target 8–14 words. NEVER two
+- Brevity: ONE short sentence per turn, max 12 words. NEVER two
   sentences unless explicitly required by the stage. No preambles, no
   explanations, no monologues.
 - Q&A style: ask, listen, ack, ask. Do not narrate. Do not justify.
@@ -307,9 +335,15 @@ ABSOLUTE RULES (these override every other instinct):
   reply with just "أبشر" or "تفضل" and continue. Do NOT say "وعليكم
   السلام" — that sounds like restarting the call.
 
+EMPATHY (brief, genuine, never performative):
+- When the customer mentions hardship, difficulty, or frustration: ack
+  with ONE short empathetic phrase ("أقدر ظرفك", "الله يعينك", "أتفهم
+  وضعك") then immediately continue with the next question.
+- Never pile on empathy — one phrase max, then move forward.
+- Never skip empathy entirely when the customer shares difficulty.
+
 ACKNOWLEDGEMENTS (use one short word, never a phrase):
 - "أبشر", "زين", "تمام", "طيب", "ولا يهمك" — pick one, move on.
-- Skip flowery empathy. Hardship gets a one-word ack and a question.
 
 NUMBERS / DATES / IDENTITY:
 - Amounts in Arabic words ("خمس مئة ريال", not "500 ريال").
@@ -799,11 +833,13 @@ identity before discussing the account. ONE sentence.
 
 Then call exactly one tool:
 - digits_provided(digits): customer spoke 4 digits. Pass as a 4-character
-  ASCII string. Convert Arabic-word numbers to digit characters
-  ('واحد اثنين ثلاثة أربعة' → '1234'). If the customer says them as one
-  number (e.g. 'ألف ومئتين وأربعة وثلاثين' or '١٢٣٤'), still pass '1234'.
+  ASCII string. Accept ANY format the customer uses:
+  • Spoken individually: "واحد اثنين ثلاثة أربعة" → '1234'
+  • As a compound number: "ألف ومئتين وأربعة وثلاثين" → '1234'
+  • Space-separated: "1 2 3 4" → '1234'
+  • Arabic-Indic: "١٢٣٤" → '1234'
+  Always pass exactly 4 ASCII digit characters.
 - unclear: customer asked to repeat / gave fewer than 4 digits / off-topic.
-  Use whenever no clear 4-digit answer is given. Never guess.
 - refuses_to_verify: customer flatly refuses to share verification details
   ("ما أعطيك", "ما أعطي معلوماتي", "مين أنتي أصلاً").
 
@@ -840,8 +876,11 @@ class IDVerifyAgent(BaseCallAgent):
         Args:
             digits: 4-character ASCII digit string, e.g. '1234'.
         """
-        clean = re.sub(r"\D", "", digits.translate(_AR_INDIC_DIGITS))
+        clean = _parse_spoken_digits(digits)
         if len(clean) != 4:
+            ctx.userdata.id_unclear_attempts += 1
+            if ctx.userdata.id_unclear_attempts >= 2:
+                return DOBVerifyAgent(self.data, chat_ctx=None)
             self.session.generate_reply(
                 instructions=(
                     "You couldn't catch all 4 digits. Politely ask the "
@@ -863,6 +902,9 @@ class IDVerifyAgent(BaseCallAgent):
     @function_tool()
     async def unclear(self, ctx: RunContext[CallData]):
         """Customer asked to repeat or didn't give a clear 4-digit reply."""
+        ctx.userdata.id_unclear_attempts += 1
+        if ctx.userdata.id_unclear_attempts >= 2:
+            return DOBVerifyAgent(self.data, chat_ctx=None)
         self.session.generate_reply(
             instructions=(
                 "Politely re-ask for the last 4 digits of the national ID, "
@@ -1019,49 +1061,40 @@ class Stage2DebtIntroAgent(BaseCallAgent):
 STAGE3_NEGOTIATION_TASK = """\
 Current stage: 3 — Negotiation. DISCOVERY-LED, never dictate.
 
-Outstanding amount: {amount} SAR.
+Outstanding amount: {amount} SAR. The customer already knows the total
+from Stage 2 — do not hide it.
 
 GOLDEN RULE: NEVER name an amount before the customer has named one.
 Open by asking how much HE can pay, then judge his number.
 
-Q&A FLOW (one short sentence each turn):
+Q&A FLOW (one short sentence each turn, max 12 words):
 
 1. Open: ask how much he can pay today / soon.
-   Example: "كم تقدر تدفع اليوم طال عمرك؟"
+   Example: "كم تقدر تدفع الحين؟"
 
 2. Customer names a number A:
-   • If A covers the full debt: ack, ask when (today/tomorrow), call
-     full_payment(when_iso).
-   • If A is at or above the IDEAL first payment ({ideal_first} SAR):
-     ack ("زين"), ask WHEN he can transfer it. Move to step 4.
-   • If A is between the FLOOR ({floor_first} SAR) and IDEAL ({ideal_first} SAR):
-     ack briefly, ONE soft push to stretch a bit higher
-     ("تقدر توصلها لـ {ideal_first} ريال؟"). Whatever he answers next, accept
-     it (do NOT push twice). Move to step 4.
+   • If A covers the full debt: ack, ask when, call full_payment(when_iso).
+   • If A is at or above the FLOOR ({floor_first} SAR): accept it
+     gracefully ("زين"), ask WHEN he can transfer it. Move to step 4.
+     Do NOT push for more if it's above FLOOR.
    • If A is BELOW the FLOOR ({floor_first} SAR):
-     point out it's small vs the total in ONE short sentence and ask if he
-     can increase. Do NOT name a number yourself yet.
-     If he raises but is still below FLOOR, you MAY now suggest a
-     stretch range like "تقدر توصلها لـ {floor_first} أو {ideal_first} ريال؟"
-     — only after he has named at least one number. Whatever he commits
-     to next, accept and move on. Never push more than twice.
+     ack his offer respectfully, ask ONE time if he can stretch a bit
+     ("تقدر تزيدها شوي؟"). Whatever he says next, ACCEPT and move on.
+     Never push more than once.
 
-3. (After step 2) Customer is still vague after 2 nudges, OR refuses, OR
-   disputes — call vague_response / refuses_payment / disputes_debt.
+3. Customer is vague after 1 nudge, OR refuses, OR disputes — call
+   vague_response / refuses_payment / disputes_debt.
 
-4. You now have an initial amount X he agreed to. Ask WHEN he can pay it.
-   Translate "اليوم", "بكرا", "بعد يومين" to a SPECIFIC ISO date using
-   the dates context. ONE short sentence.
+4. You have an initial amount X. Ask WHEN he can pay it.
+   Translate relative dates to ISO. ONE short sentence.
 
-5. With initial X + initial date locked, ask when the REST will be paid:
-   "والباقي ({remainder} of {amount} SAR) متى تقدر تسدده؟"
-   Aim for ~14 days from today. If he names a date much later, ask ONCE
-   if he can pull it sooner. Then accept whatever he commits to.
-   (If he says he can pay the WHOLE debt at once on a single date,
-   call full_payment(when_iso) instead.)
+5. With initial X + date locked, ask when the REST will be paid:
+   "والباقي متى تقدر تسدده؟"
+   If he names a far date, ask ONCE if sooner is possible. Accept
+   whatever he commits to. Never push twice on dates either.
+   (If he can pay the whole debt at once, call full_payment instead.)
 
-6. With all four pieces (initial_amount, initial_date_iso, rest_amount,
-   rest_date_iso) agreed, call partial_committed.
+6. With all four pieces agreed, call partial_committed.
 
 TOOLS:
 - partial_committed(initial_amount, initial_date_iso, rest_amount, rest_date_iso):
@@ -1069,19 +1102,20 @@ TOOLS:
 - full_payment(when_iso): customer commits to pay the whole {amount} SAR
   in a single transfer on this ISO date.
 - already_paid: customer asserts the debt is already paid.
-- vague_response: after pushing twice, no concrete number / no concrete
+- vague_response: after one nudge, no concrete number / no concrete
   date ("بشوف", "إن شاء الله", "ما أدري").
 - refuses_payment: flat refusal ("ما أدفع", "ما تستحقون").
 - disputes_debt: claims it's not his / wrong amount / fraud.
 - unclear: ambiguous reply — re-ask the SAME question.
 
 HARD RULES (override every other instinct):
-- ONE short sentence per turn (8–14 words). Q&A, not monologue.
+- ONE short sentence per turn (max 12 words). Q&A, not monologue.
 - NEVER explain SIMAH, grace periods, or company policy unless he asks.
 - NEVER name an amount first.
+- NEVER push more than ONCE on amount. ONCE on date. Then accept.
 - NEVER use "والله". NEVER overuse "طال عمرك".
 - Acknowledgements are ONE word: "أبشر" / "زين" / "تمام" / "طيب".
-- Hardship gets a one-word ack and the next question — no empathy speech.
+- Hardship: one brief empathy phrase ("أقدر ظرفك"), then next question.
 """
 
 
@@ -1174,16 +1208,16 @@ class Stage3NegotiationAgent(BaseCallAgent):
             return ClosingAgent(self.data, intent="hard_refusal", chat_ctx=None)
         if n == 1:
             instructions = (
-                "ONE-word empathy ('أتفهم'), then ask softly what the SMALLEST "
-                "amount he could manage today as a good-faith gesture would "
-                "be — do NOT name a number yourself. ONE short sentence."
+                "Brief empathy ('أقدر ظرفك'), then ask softly what the "
+                "smallest amount he could manage would be — do NOT name a "
+                "number yourself. ONE short sentence, max 12 words."
             )
         else:  # n == 2
             instructions = (
-                "Briefly mention that without any commitment now the case "
-                "will be returned to the bank per policy — NO threats, NO "
-                "legal language. Then ask one last time if a token small "
-                "payment today is possible. ONE short sentence."
+                "Acknowledge his position respectfully. Ask one last time "
+                "if any small amount is possible, even later this month. "
+                "NO threats, NO consequences, NO policy mentions. "
+                "ONE short sentence, max 12 words."
             )
         self.session.generate_reply(instructions=instructions)
         return None
@@ -1847,7 +1881,7 @@ if __name__ == "__main__":
         WorkerOptions(
             entrypoint_fnc=entrypoint,
             prewarm_fnc=prewarm,
-            agent_name=os.getenv("AGENT_NAME", "outbound-caller-aws"),
+            agent_name=os.getenv("AGENT_NAME", "outbound-caller-aws-local"),
             num_idle_processes=1,
         )
     )
