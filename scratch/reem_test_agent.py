@@ -58,7 +58,7 @@ from livekit.agents import (
     get_job_context,
 )
 from livekit.agents.voice import ModelSettings
-from livekit.plugins import deepgram, faseeh, openai, silero, azure
+from livekit.plugins import deepgram, faseeh, openai, silero
 from livekit.plugins import soniox
 
 
@@ -99,8 +99,8 @@ LIVEKIT_URL = os.getenv("LIVEKIT_URL", "")
 
 @dataclass
 class CallData:
-    customer_name: str = "محمد"
-    amount: str = "15000"
+    customer_name: str = " محمد صالح الحربي"
+    amount: str = "10000"
     debt_date: str = "2023-01-01"
     national_id_last4: str = "1234"
     dob: str = "1990-01-01"  # ISO YYYY-MM-DD, fallback verifier
@@ -117,8 +117,6 @@ class CallData:
     # Ladder counters — used to drive EC-4 (anger) and EC-6 (refusal) flows
     refusal_attempts: int = 0
     angry_attempts: int = 0
-    id_unclear_attempts: int = 0
-    pending_id_digits: str = ""
     dispute_open: bool = False
     payment_link_sent: bool = False
 
@@ -177,8 +175,8 @@ _AR_TEENS = ["عشرة", "أحد عشر", "اثنا عشر", "ثلاثة عشر"
              "خمسة عشر", "ستة عشر", "سبعة عشر", "ثمانية عشر", "تسعة عشر"]
 _AR_TENS = ["", "", "عشرين", "ثلاثين", "أربعين", "خمسين",
             "ستين", "سبعين", "ثمانين", "تسعين"]
-_AR_HUNDREDS = ["", "مية", "مئتين", "ثلاث مية", "أربع مية", "خمس مية",
-                "ست مية", "سبع مية", "ثمان مية", "تسع مية"]
+_AR_HUNDREDS = ["", "مئة", "مئتين", "ثلاث مئة", "أربع مئة", "خمس مئة",
+                "ست مئة", "سبع مئة", "ثمان مئة", "تسع مئة"]
 _AR_MONTHS = [
     "", "يناير", "فبراير", "مارس", "أبريل", "مايو", "يونيو",
     "يوليو", "أغسطس", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر",
@@ -254,33 +252,6 @@ def _ar_digits_individual(s: str) -> str:
     return " ".join(_AR_DIGITS[int(c)] for c in s if c.isdigit())
 
 
-_WORD_TO_DIGIT = {
-    "صفر": "0", "واحد": "1", "وحدة": "1", "اثنين": "2", "اثنان": "2",
-    "ثلاثة": "3", "ثلاث": "3", "أربعة": "4", "اربعة": "4", "أربع": "4",
-    "خمسة": "5", "خمس": "5", "ستة": "6", "ست": "6", "سبعة": "7", "سبع": "7",
-    "ثمانية": "8", "ثماني": "8", "ثمان": "8", "تسعة": "9", "تسع": "9",
-    "zero": "0", "one": "1", "two": "2", "three": "3", "four": "4",
-    "five": "5", "six": "6", "seven": "7", "eight": "8", "nine": "9",
-}
-
-
-def _parse_spoken_digits(raw: str) -> str:
-    """Extract digits from spoken input — handles Arabic words, English words,
-    Arabic-Indic numerals, space-separated digits, and mixed forms."""
-    s = raw.translate(_AR_INDIC_DIGITS).strip()
-    tokens = re.split(r"[\s,،.]+", s)
-    result = []
-    for tok in tokens:
-        tok_lower = tok.lower().strip()
-        if tok_lower in _WORD_TO_DIGIT:
-            result.append(_WORD_TO_DIGIT[tok_lower])
-        else:
-            for ch in tok:
-                if ch.isdigit():
-                    result.append(ch)
-    return "".join(result)
-
-
 _TERM_MAP = {
     "stc": "اس تي سي",
     "STC": "اس تي سي",
@@ -288,59 +259,6 @@ _TERM_MAP = {
     "SIMAH": "سمة",
     "simah": "سمة",
 }
-
-_PRONUNCIATION_MAP = {
-    "سمة": "سِمَه",
-    "لسمة": "لسِمَه",
-    "توافق": "تَوَافُقْ",
-    "أبشر": "أَبْشِرْ",
-    "ابشر": "أَبْشِرْ",
-    "أبشرك": "أَبَشِّرَكْ",
-    "ابشرك": "أَبَشِّرَكْ",
-    "تفضل": "تَفَضَّلْ",
-    "أقدر": "أقْدَر",
-    "اقدر": "أقْدَر",
-    "للأسف": "للأَسَفْ",
-    "بكرة": "بُكْرَهْ",
-    "معاك": "مَعَاكْ",
-    "هلا": "هَلَا",
-    "يا هلا بك": "يَا هَلَا بِكْ",
-    "يا هلا وغلا": "يَا هَلَا وَغَلَا",
-    "يا طويل العمر": "يَا طوِيلْ العُمْرْ",
-    "يطول لي بعمرك": "يَطَوِّلْ لِي بِعُمْرِك",
-    "أمرني": "اَمْرُنِي",
-    "امرني": "اَمْرُنِي",
-    "دقيقة": "دَقِيقَة",
-    "سبب": "سَبَّبّ",
-    "وهذا اللي سبب": "وَهَذَا اللِّي سَبَّبْ",
-    "قصدك": "قَصْدِكْ",
-    "تسعة": "تِسْعَة",
-    "عشرة": "عَشْرَة",
-    "ثمانية": "ثمانيه",
-    "سبعة": "سبعه",
-    "خمسة": "خمسه",
-    "اربعة": "اربعه",
-    "ثلاثة": "ثلاثه",
-    "الساعة": "الساعه",
-    "هللة": "هَلَّلَه",
-    "هلله": "هَلَّلَه",
-    "معلق": "معَلَّقْ",
-    "المبكر": "المُبَكِّر",
-    "تلغى": "تُلْغَى",
-    "دفعت": "دَفَعَتْ",
-    "وصلت": "وُصَلَتْ",
-    "اتصلت": "إتَّصَلْت",
-    "قيد": "قِيدْ",
-    "صدر": "صَدَرْ",
-}
-
-_PRONUNCIATION_SORTED = sorted(_PRONUNCIATION_MAP.items(), key=lambda x: -len(x[0]))
-
-
-def _apply_pronunciation(text: str) -> str:
-    for original, replacement in _PRONUNCIATION_SORTED:
-        text = text.replace(original, replacement)
-    return text
 
 
 def _najdi_normalize(text: str) -> str:
@@ -366,7 +284,6 @@ def _najdi_normalize(text: str) -> str:
     )
     for term, repl in _TERM_MAP.items():
         text = re.sub(rf"\b{re.escape(term)}\b", repl, text)
-    text = _apply_pronunciation(text)
     return text
 
 
@@ -378,51 +295,24 @@ behalf of بنك stc. You ALWAYS reply in Najdi Saudi Arabic; English only for
 brand names (stc, simah).
 
 ABSOLUTE RULES (these override every other instinct):
-- Brevity: ONE short sentence per turn, max 12 words. NEVER two
+- Brevity: ONE short sentence per turn, target 8–14 words. NEVER two
   sentences unless explicitly required by the stage. No preambles, no
   explanations, no monologues.
-- Ask ONE question at a time. Wait for a complete answer before moving on.
 - Q&A style: ask, listen, ack, ask. Do not narrate. Do not justify.
 - NEVER say "والله". NEVER use oaths.
-- Use soft persuasion, suggestions, and options — never commands or pressure.
+- Use "طال عمرك" ONLY in the very first greeting; never again.
 - Discovery, not dictation: NEVER name an amount before the customer has
   named one. Only counter-offer AFTER he proposes a number.
 - Mid-call salaam: if the customer says "السلام عليكم" mid-conversation,
   reply with just "أبشر" or "تفضل" and continue. Do NOT say "وعليكم
   السلام" — that sounds like restarting the call.
-- Do not use the customer's name repeatedly — only on greeting and closing.
-
-STRICTLY FORBIDDEN — never say these or anything similar:
-- "لازم تسدد" (you must pay)
-- "هذا إنذار" (this is a warning)
-- "إجراء قانوني" (legal action)
-- "راح يتم اتخاذ إجراء ضدك" (action will be taken against you)
-- Never shame, threaten, guilt, or pressure the customer.
-
-EMPATHY (brief, genuine, ALWAYS consistent — never skip, never overdo):
-- EVERY time the customer mentions hardship, difficulty, inability to pay,
-  or frustration: ALWAYS ack with ONE short empathetic phrase before your
-  next question. This is mandatory, not optional.
-- One phrase max per turn, then move forward immediately.
-- This applies in EVERY stage, EVERY turn where the customer shares
-  difficulty. Consistency is critical — the customer should feel the same
-  warmth throughout the entire call, not just sometimes.
-
-RESPONSE STYLE BY CUSTOMER STATE (use these Arabic phrases as templates):
-- Cooperative: "الله يعطيك العافية، تبي تسدد الحين أو نرتب طريقة تناسبك؟"
-- Needs time: "ما فيه مشكلة، كم المدة اللي تناسبك ونضبطها لك؟"
-- Can't pay: "مقدّر وضعك، خلنا نشوف حل بسيط مثل دفعة جزئية أو خطة مريحة لك."
-- Angry/frustrated: "أفهم شعورك، وهدفنا بس نسهّل الموضوع عليك بدون أي ضغط."
-- Denial/dispute: "ممكن يكون فيه لبس، خلني أراجع معك التفاصيل خطوة خطوة."
-- Payment confirmed: "ممتاز، يعطيك العافية، بنثبت الاتفاق على [التاريخ/المبلغ]، تمام؟"
-These are reference templates — you may adapt them naturally but keep the
-same tone, vocabulary, and level of politeness.
 
 ACKNOWLEDGEMENTS (use one short word, never a phrase):
-- "أبشر", "زين", "تمام", "طيب", "ولا يهمك", "الله يعافيك" — pick one, move on.
+- "أبشر", "زين", "تمام", "طيب", "ولا يهمك" — pick one, move on.
+- Skip flowery empathy. Hardship gets a one-word ack and a question.
 
 NUMBERS / DATES / IDENTITY:
-- Amounts in Arabic words ("خمس مية ريال", not "500 ريال").
+- Amounts in Arabic words, starting with thousands then hundreds (e.g., "ألف وخمس مئة ريال", not "خمس مئة وألف ريال", and not "500 ريال").
 - ID/PIN: spell digit-by-digit.
 - Dates in Arabic words. Translate "بكرا", "نهاية الشهر" to a SPECIFIC
   ISO date and confirm.
@@ -446,9 +336,6 @@ COMPLIANCE:
 - Until identity is verified, NEVER disclose the debt amount, debt date,
   or any account detail.
 - No threats, no legal scare language, no oaths.
-- Do NOT mention سمة or legal escalation during objections or disputes.
-  Only mention consequences if the customer has acknowledged the debt and
-  is simply delaying without objection.
 """
 
 
@@ -588,13 +475,12 @@ class BaseCallAgent(Agent):
 STAGE1_TASK = """\
 Current stage: 1 — Right-party verification.
 
-You just said "السلام عليكم، هل معي الأستاذ {customer_name}؟". Listen to
-the reply.
+You have just been connected. Greet the customer briefly, identify yourself
+as نورا from شركة توافق on behalf of بنك stc, and ask whether you are speaking
+with الأستاذ {customer_name}. You MUST say their FULL name exactly as provided: {customer_name}. Do not shorten it to just the first name. Listen carefully to their reply.
 
 Then call exactly one tool based on what you hear:
-- right_party: customer confirms they ARE {customer_name} (or says نعم /
-  أيوه / صحيح / أنا). Note: "تفضلي" without confirming the name is NOT
-  a right_party confirmation — re-ask politely.
+- right_party: customer confirms they ARE {customer_name}.
 - wrong_party: customer says they are NOT the named person.
 - caller_busy: it's not a good time / asks to call back later / مشغول / بعدين.
 - do_not_call: asks not to be contacted again / DNC request / لا تتصلوا فيني.
@@ -622,8 +508,10 @@ class Stage1RightPartyAgent(BaseCallAgent):
         await asyncio.sleep(0.4)
         self.session.generate_reply(
             instructions=(
-                "Open the call: 'السلام عليكم، هل معي الأستاذ "
-                f"{self.data.customer_name}؟' — EXACTLY this, nothing more."
+                "Open the call now. Greet warmly and identify yourself as "
+                "نورا from شركة توافق on behalf of بنك stc, then ask whether "
+                f"you are speaking with الأستاذ {self.data.customer_name}. "
+                "ONE short sentence."
             )
         )
 
@@ -665,8 +553,8 @@ ASK_GOOD_TIME_TASK = """\
 Current stage: confirm-good-time.
 
 You have just verified you are speaking with الأستاذ {customer_name}.
-Introduce yourself briefly as نورا from شركة توافق on behalf of بنك stc,
-then ask whether NOW is a good time to talk. TWO short sentences max.
+Before discussing the account, briefly ask whether NOW is a good time to
+talk for a few minutes. ONE short sentence, friendly and unhurried.
 
 Then call exactly one tool:
 - good_time_now: customer says yes / تفضلي / أبشر / ما عندي مانع / it's fine.
@@ -692,8 +580,8 @@ class AskGoodTimeAgent(BaseCallAgent):
     async def on_enter(self):
         self.session.generate_reply(
             instructions=(
-                "Introduce yourself: 'معك نورا من شركة توافق عن بنك stc' "
-                "then ask if now is a good time. TWO short sentences max."
+                "Briefly ask the customer if NOW is a good time to talk "
+                "for a few minutes. Friendly, unhurried, ONE short sentence."
             )
         )
 
@@ -909,21 +797,20 @@ You are speaking with الأستاذ {customer_name}. Politely ask for the last 
 digits of his national ID (آخر ٤ أرقام من الهوية الوطنية) so you can confirm
 identity before discussing the account. ONE sentence.
 
-IMPORTANT: The customer may say digits slowly, split across turns (e.g.
-"1 2" then "3 4"). Pass ALL digits you hear in each turn — even if only
-1 or 2 digits. The system accumulates them automatically.
-
 Then call exactly one tool:
-- digits_provided(digits): customer spoke ANY digits. Pass them as ASCII
-  digit characters. Even partial (e.g. '12' or '34') is fine — the system
-  accumulates across turns until it has 4.
-- unclear: customer asked to repeat / said something non-numeric / off-topic.
+- digits_provided(digits): customer spoke 4 digits. Pass as a 4-character
+  ASCII string. Convert Arabic-word numbers to digit characters
+  ('واحد اثنين ثلاثة أربعة' → '1234'). If the customer says them as one
+  number (e.g. 'ألف ومئتين وأربعة وثلاثين' or '١٢٣٤'), still pass '1234'.
+- unclear: customer asked to repeat / gave fewer than 4 digits / off-topic.
+  Use whenever no clear 4-digit answer is given. Never guess.
 - refuses_to_verify: customer flatly refuses to share verification details
   ("ما أعطيك", "ما أعطي معلوماتي", "مين أنتي أصلاً").
 
 The stored last-4 digits are in the call data; you do NOT speak them.
-Until verification succeeds, you must NOT mention the debt, amount, or
-due date.
+On a single mismatch, the system silently switches to date-of-birth as
+an alternate verification method. Until verification succeeds, you must
+NOT mention the debt, amount, or due date.
 """
 
 
@@ -939,7 +826,6 @@ class IDVerifyAgent(BaseCallAgent):
         self.data = data
 
     async def on_enter(self):
-        self.data.pending_id_digits = ""
         self.session.generate_reply(
             instructions=(
                 "Politely ask the customer for the last 4 digits of his "
@@ -949,58 +835,34 @@ class IDVerifyAgent(BaseCallAgent):
 
     @function_tool()
     async def digits_provided(self, ctx: RunContext[CallData], digits: str):
-        """Customer spoke digits — may be partial (1-4 digits). The system
-        accumulates across turns.
+        """Customer spoke 4 digits — verify against stored last-4.
 
         Args:
-            digits: ASCII digit characters the customer spoke this turn.
+            digits: 4-character ASCII digit string, e.g. '1234'.
         """
-        new_digits = _parse_spoken_digits(digits)
-        if not new_digits:
-            ctx.userdata.id_unclear_attempts += 1
-            if ctx.userdata.id_unclear_attempts >= 3:
-                ctx.userdata.outcome = "verify_failed"
-                _emit_outcome(ctx.userdata, "verify_failed")
-                return ClosingAgent(self.data, intent="verify_refused", chat_ctx=None)
+        clean = re.sub(r"\D", "", digits.translate(_AR_INDIC_DIGITS))
+        if len(clean) != 4:
             self.session.generate_reply(
                 instructions=(
-                    "You couldn't catch any digits. Politely ask the "
-                    "customer to repeat slowly. One short sentence."
+                    "You couldn't catch all 4 digits. Politely ask the "
+                    "customer to repeat the last 4 digits of the national "
+                    "ID, slowly. One short sentence."
                 )
             )
             return
 
-        ctx.userdata.pending_id_digits += new_digits
-
-        if len(ctx.userdata.pending_id_digits) < 4:
-            remaining = 4 - len(ctx.userdata.pending_id_digits)
-            self.session.generate_reply(
-                instructions=(
-                    f"You got {len(ctx.userdata.pending_id_digits)} digits so far, "
-                    f"need {remaining} more. Ask for the remaining digits. "
-                    "ONE short sentence."
-                )
-            )
-            return
-
-        full = ctx.userdata.pending_id_digits[:4]
-
-        if full == self.data.national_id_last4:
+        if clean == self.data.national_id_last4:
             ctx.userdata.id_verified = True
             return Stage2DebtIntroAgent(self.data, chat_ctx=None)
 
-        ctx.userdata.outcome = "id_mismatch"
-        _emit_outcome(ctx.userdata, "id_mismatch")
-        return ClosingAgent(self.data, intent="id_mismatch", chat_ctx=None)
+        # Single mismatch — switch to DOB fallback (EC-3) instead of
+        # making the customer re-guess his own ID. Do NOT disclose any
+        # debt detail in the meantime.
+        return DOBVerifyAgent(self.data, chat_ctx=None)
 
     @function_tool()
     async def unclear(self, ctx: RunContext[CallData]):
-        """Customer asked to repeat or didn't give a clear reply."""
-        ctx.userdata.id_unclear_attempts += 1
-        if ctx.userdata.id_unclear_attempts >= 3:
-            ctx.userdata.outcome = "verify_failed"
-            _emit_outcome(ctx.userdata, "verify_failed")
-            return ClosingAgent(self.data, intent="verify_refused", chat_ctx=None)
+        """Customer asked to repeat or didn't give a clear 4-digit reply."""
         self.session.generate_reply(
             instructions=(
                 "Politely re-ask for the last 4 digits of the national ID, "
@@ -1113,13 +975,10 @@ You MUST ask the following question exactly word-for-word as written, as a singl
 "عليك مبلغ {amount} ريال من stc هل قادر على السداد الان طال عمرك ؟"
 DO NOT add any greetings, DO NOT add any extra words, and DO NOT split it. Just this exact text.
 
-Then call exactly one tool based on the customer's reply:
-- commits_to_pay: customer says YES he will pay now / today / immediately
-  ("أدفع الحين", "بسدد اليوم", "ما في مشكلة بدفع", "أنا جاهز", etc.).
-  This SKIPS negotiation and goes straight to confirmation.
+Then call exactly one tool:
 - already_paid: customer claims it's already paid (مدفوع / سددته / دفعت).
-- proceed_to_negotiation: anything else — no, reason, hardship, partial offer,
-  "will pay later", disputes, vague answers, etc.
+- proceed_to_negotiation: anything else (yes, no, reason, hardship, willingness to
+  discuss, disputes, "will pay later", etc).
 """
 
 
@@ -1143,26 +1002,10 @@ class Stage2DebtIntroAgent(BaseCallAgent):
         )
 
     @function_tool()
-    async def commits_to_pay(self, ctx: RunContext[CallData]):
-        """Customer agrees to pay now / today / immediately — full commitment."""
-        today = datetime.date.today().isoformat()
-        ctx.userdata.commitment = (
-            f"full payment of {self.data.amount} SAR on {today}"
-        )
-        ctx.userdata.outcome = "committed"
-        return Stage4RecapAgent(self.data, chat_ctx=None)
-
-    @function_tool()
     async def already_paid(self, ctx: RunContext[CallData]):
         """Customer claims the debt is already paid."""
         ctx.userdata.outcome = "paid"
         return ClosingAgent(self.data, intent="paid", chat_ctx=None)
-
-    @function_tool()
-    async def disputes_debt(self, ctx: RunContext[CallData]):
-        """Customer disputes the debt — wrong amount, not his, fraud."""
-        ctx.userdata.dispute_open = True
-        return DisputeAgent(self.data, chat_ctx=None)
 
     @function_tool()
     async def proceed_to_negotiation(self, ctx: RunContext[CallData]):
@@ -1180,23 +1023,14 @@ Outstanding amount: {amount} SAR.
 GOLDEN RULE: NEVER name an amount before the customer has named one.
 Open by asking how much HE can pay, then judge his number.
 
-ARITHMETIC RULES (critical — never skip):
-- When customer names an amount X, ALWAYS compute: remainder = {amount} - X.
-- State the remainder out loud in Arabic words: "الباقي [remainder] ريال"
-- If customer offers X per month, compute EXACTLY how many months:
-  months = {amount} / X. Tell him: "يعني حوالي [months] شهر للمبلغ كامل".
-  NEVER round or guess. 500/month on a 10000 debt = 20 months, NOT 3.
-- NEVER say "you'll finish in N months" without computing N = total / monthly.
-- Track running totals: initial offer + remainder = {amount}. Always.
-
 Q&A FLOW (one short sentence each turn):
 
 1. Open: ask how much he can pay today / soon.
    Example: "كم تقدر تدفع اليوم طال عمرك؟"
 
 2. Customer names a number A:
-   • If A covers the full debt ({amount} SAR): ack, ask when
-     (today/tomorrow), call full_payment(when_iso).
+   • If A covers the full debt: ack, ask when (today/tomorrow), call
+     full_payment(when_iso).
    • If A is at or above the IDEAL first payment ({ideal_first} SAR):
      ack ("زين"), ask WHEN he can transfer it. Move to step 4.
    • If A is between the FLOOR ({floor_first} SAR) and IDEAL ({ideal_first} SAR):
@@ -1218,34 +1052,24 @@ Q&A FLOW (one short sentence each turn):
    Translate "اليوم", "بكرا", "بعد يومين" to a SPECIFIC ISO date using
    the dates context. ONE short sentence.
 
-5. With initial X + initial date locked, compute remainder = {amount} - X.
-   Ask when the REST will be paid:
-   "والباقي [remainder] ريال متى تقدر تسدده؟"
+5. With initial X + initial date locked, ask when the REST will be paid:
+   "والباقي ({remainder} of {amount} SAR) متى تقدر تسدده؟"
    Aim for ~14 days from today. If he names a date much later, ask ONCE
    if he can pull it sooner. Then accept whatever he commits to.
    (If he says he can pay the WHOLE debt at once on a single date,
    call full_payment(when_iso) instead.)
-
-   IMPORTANT: if the customer is vague or undecided about the remainder
-   after 2 tries, but has ALREADY committed to the initial payment,
-   call initial_agreed_remainder_later(initial_amount, initial_date_iso)
-   to lock in what's agreed and schedule a follow-up for the rest.
-   Do NOT call vague_response — that would lose the initial commitment.
 
 6. With all four pieces (initial_amount, initial_date_iso, rest_amount,
    rest_date_iso) agreed, call partial_committed.
 
 TOOLS:
 - partial_committed(initial_amount, initial_date_iso, rest_amount, rest_date_iso):
-  full deal captured — both initial and remainder amounts + dates agreed.
-- initial_agreed_remainder_later(initial_amount, initial_date_iso):
-  initial payment agreed but customer is vague about the remainder.
-  Records the initial commitment and schedules a follow-up call for the rest.
+  full deal captured.
 - full_payment(when_iso): customer commits to pay the whole {amount} SAR
   in a single transfer on this ISO date.
 - already_paid: customer asserts the debt is already paid.
-- vague_response: customer has NOT committed to ANY amount at all — no
-  concrete number, no concrete date, after 2 nudges.
+- vague_response: after pushing twice, no concrete number / no concrete
+  date ("بشوف", "إن شاء الله", "ما أدري").
 - refuses_payment: flat refusal ("ما أدفع", "ما تستحقون").
 - disputes_debt: claims it's not his / wrong amount / fraud.
 - unclear: ambiguous reply — re-ask the SAME question.
@@ -1285,10 +1109,10 @@ class Stage3NegotiationAgent(BaseCallAgent):
     async def on_enter(self):
         self.session.generate_reply(
             instructions=(
-                "Acknowledge his situation briefly with empathy, then offer "
-                "options. Use this template: "
-                "'مقدّر وضعك، خلنا نشوف حل بسيط — كم تقدر تدفع الحين أو قريب؟' "
-                "DO NOT name any amount. TWO short sentences max."
+                "Open Stage 3 by asking the customer how much he can pay "
+                "today (or soon). DO NOT name any amount. ONE short "
+                "sentence, e.g. 'كم تقدر تدفع اليوم طال عمرك؟' — but vary "
+                "the phrasing naturally."
             )
         )
 
@@ -1332,45 +1156,34 @@ class Stage3NegotiationAgent(BaseCallAgent):
         return Stage4RecapAgent(self.data, chat_ctx=None)
 
     @function_tool()
-    async def initial_agreed_remainder_later(
-        self,
-        ctx: RunContext[CallData],
-        initial_amount: float,
-        initial_date_iso: str,
-    ):
-        """Customer agreed to an initial payment but is vague about the
-        remainder. Lock in the initial commitment and schedule a follow-up.
-
-        Args:
-            initial_amount: SAR the customer commits to pay first.
-            initial_date_iso: ISO date (YYYY-MM-DD) of the first payment.
-        """
-        remainder = self._amount_int - int(initial_amount)
-        ctx.userdata.commitment = (
-            f"initial {int(initial_amount)} SAR on {initial_date_iso}, "
-            f"remainder {remainder} SAR TBD"
-        )
-        ctx.userdata.outcome = "committed"
-        return RescheduleAgent(self.data, chat_ctx=None)
-
-    @function_tool()
     async def vague_response(self, ctx: RunContext[CallData]):
-        """Customer would not name ANY concrete number at all after two nudges."""
+        """Customer would not name a concrete number / date after two nudges."""
         return RescheduleAgent(self.data, chat_ctx=None)
 
     @function_tool()
     async def refuses_payment(self, ctx: RunContext[CallData]):
-        """Customer flatly refuses to pay. One empathetic attempt, then
-        move to reschedule — never push more than once."""
+        """Customer flatly refuses to pay. Drives the EC-6 ladder:
+        attempt 1 → empathy + smallest-entry ask, attempt 2 → soft
+        consequence (no threats), attempt 3+ → HARD_REFUSAL close."""
         ctx.userdata.refusal_attempts += 1
         n = ctx.userdata.refusal_attempts
-        if n >= 2:
-            return RescheduleAgent(self.data, chat_ctx=None)
-        instructions = (
-            "Brief empathy ('أقدر ظرفك'), then ask softly if he could "
-            "manage any small amount, even later this month — do NOT name "
-            "a number yourself. ONE short sentence, max 12 words."
-        )
+        if n >= 3:
+            ctx.userdata.outcome = "hard_refusal"
+            _emit_outcome(ctx.userdata, "hard_refusal", attempts=n)
+            return ClosingAgent(self.data, intent="hard_refusal", chat_ctx=None)
+        if n == 1:
+            instructions = (
+                "ONE-word empathy ('أتفهم'), then ask softly what the SMALLEST "
+                "amount he could manage today as a good-faith gesture would "
+                "be — do NOT name a number yourself. ONE short sentence."
+            )
+        else:  # n == 2
+            instructions = (
+                "Briefly mention that without any commitment now the case "
+                "will be returned to the bank per policy — NO threats, NO "
+                "legal language. Then ask one last time if a token small "
+                "payment today is possible. ONE short sentence."
+            )
         self.session.generate_reply(instructions=instructions)
         return None
 
@@ -1405,10 +1218,8 @@ class Stage3NegotiationAgent(BaseCallAgent):
 RESCHEDULE_TASK = """\
 Current stage: reschedule callback.
 
-You are scheduling a FOLLOW-UP CALL (not a payment). Ask when would be a
-good time for us to CALL HIM BACK — within the next two weeks.
-ONE short sentence. Use "نكلمك" / "نتواصل" (we'll call you), NEVER "تدفع"
-(you'll pay) — this is about scheduling a phone call, not a payment.
+The customer was vague about a plan. Politely ask when would be a better
+time to follow up — within the next two weeks. ONE short sentence.
 
 Then call exactly one tool:
 - callback_scheduled(when): customer named a time. Pass a short description
@@ -1430,9 +1241,8 @@ class RescheduleAgent(BaseCallAgent):
     async def on_enter(self):
         self.session.generate_reply(
             instructions=(
-                "Ask when would be a good time to CALL HIM BACK. Use this "
-                "style: 'ما فيه مشكلة، متى يناسبك نتواصل معك؟' "
-                "ONE short sentence."
+                "Politely ask when would be a good time to follow up "
+                "within the next two weeks. One short sentence."
             )
         )
 
@@ -1444,8 +1254,7 @@ class RescheduleAgent(BaseCallAgent):
             when: short description of the time (e.g. 'next Monday morning').
         """
         ctx.userdata.callback_time = when
-        if not ctx.userdata.outcome:
-            ctx.userdata.outcome = "rescheduled"
+        ctx.userdata.outcome = "rescheduled"
         return Stage4RecapAgent(self.data, chat_ctx=None)
 
     @function_tool()
@@ -1458,39 +1267,29 @@ class RescheduleAgent(BaseCallAgent):
 # ---------- Stage 4: Recap & confirm ----------
 
 STAGE4_TASK = """\
-Current stage: 4 — Thank, recap, and confirm the commitment.
+Current stage: 4 — Recap and confirm the commitment.
 
-STEP-BY-STEP (one turn per step, max 12 words each):
+You have a commitment from the customer. Briefly recap it back to him so he
+can confirm — mention the amount and timing in Arabic words. ONE or TWO
+short sentences. The exact commitment text is provided below.
 
-Step A — Thank + positive reinforcement:
-  Thank the customer for committing. Say it's a positive step / good sign
-  ("خطوة ممتازة" or "شيء حلو"). ONE short sentence.
-
-Step B — Recap the details:
-  Use this template style: "ممتاز، يعطيك العافية، بنثبت الاتفاق على
-  [المبلغ] بتاريخ [التاريخ]، تمام؟"
-  Restate amounts and dates in Arabic words. ONE short sentence.
-
-Step C — Offer a reminder:
-  Ask if he would like a reminder call one day before the payment date.
-  ONE short sentence.
-
-Step D — Any questions:
-  Ask if he has any other questions. ONE short sentence.
-
-After Step D (or earlier if he says no questions), call recap_confirmed.
-
-Commitment: {commitment}
+Commitment to recap: {commitment}
 Callback time (if rescheduled): {callback}
 
-TOOLS:
-- recap_confirmed: customer confirms and has no further questions.
+Then call exactly one tool:
+- recap_confirmed: customer confirms the recap is correct.
 - recap_minor_correction(correction): customer corrects a SMALL detail
-  but the OVERALL plan stays the same.
+  (different specific date, time of day, exact amount typo) but the
+  OVERALL plan stays the same. Pass a short description.
 - wants_to_renegotiate: customer is MATERIALLY changing the commitment —
-  says he can't actually pay what was agreed.
+  says he can't actually pay what was just agreed, asks to split the
+  amount, asks for instalments, or asks for substantially more time.
+  We will return to Stage 3 to find a workable plan. This is the
+  correct tool when the customer is backing out of the commitment, even
+  if politely.
 
-For clarifications, answer briefly and continue through the steps.
+For clarifications, answer briefly and re-pose the recap. Do NOT default
+to recap_minor_correction when the customer is actually backing out.
 """
 
 
@@ -1508,41 +1307,24 @@ class Stage4RecapAgent(BaseCallAgent):
         self.data = data
 
     async def on_enter(self):
-        has_commitment = self.data.commitment and "TBD" not in (self.data.commitment or "")
-        has_partial = self.data.commitment and "TBD" in (self.data.commitment or "")
-        has_callback = bool(self.data.callback_time)
-
-        if has_partial and has_callback:
+        if self.data.outcome == "rescheduled":
             hint = (
-                "Thank the customer for his initial commitment — say it's a "
-                "positive step ('خطوة ممتازة'). Recap the INITIAL payment "
-                "amount and date in Arabic words, then mention you'll follow "
-                "up about the remainder. Ask 'تمام كذا؟'. TWO short sentences.\n\n"
-                f"Commitment: {self.data.commitment}.\n"
-                f"Follow-up callback: {self.data.callback_time}.\n"
-                "IMPORTANT: The callback is for FOLLOW-UP, not a payment date. "
-                "Say 'بنتواصل معك' (we'll follow up) NOT 'بتدفع' (you'll pay)."
-            )
-        elif self.data.outcome == "rescheduled" and not self.data.commitment:
-            hint = (
-                "Thank the customer briefly. Recap ONLY the callback time — "
-                "say 'بنكلمك' (we'll call you) on [date]. Ask to confirm. "
-                "Do NOT say 'بتدفع' (you'll pay) — this is a CALLBACK, "
-                f"not a payment. ONE short sentence.\n\n"
-                f"Callback: {self.data.callback_time}."
+                "Recap the agreed callback time in ONE short sentence and "
+                "ask the customer to confirm. Speak the day in Arabic "
+                f"words. Callback: {self.data.callback_time}."
             )
         else:
             hint = (
-                "Thank the customer for his commitment — say it's a positive "
-                "step ('خطوة ممتازة'). Then recap the amounts and dates in "
-                "Arabic words and ask 'تمام كذا؟'. TWO short sentences.\n\n"
-                f"Commitment: {self.data.commitment}."
+                "Recap the commitment in ONE short sentence — amounts in "
+                "Arabic words, dates in Arabic words, then ask 'تمام كذا؟' "
+                "or 'صح؟'. NO preamble. NO explanation.\n\n"
+                f"Commitment recorded: {self.data.commitment}."
             )
         self.session.generate_reply(instructions=hint)
 
     @function_tool()
     async def recap_confirmed(self, ctx: RunContext[CallData]):
-        """Customer confirms the recap is correct and has no questions."""
+        """Customer confirms the recap is correct."""
         return ClosingAgent(self.data, intent="ok", chat_ctx=None)
 
     @function_tool()
@@ -1562,10 +1344,10 @@ class Stage4RecapAgent(BaseCallAgent):
     @function_tool()
     async def wants_to_renegotiate(self, ctx: RunContext[CallData]):
         """Customer is materially backing out of the commitment.
-        Move to reschedule — do NOT re-enter full negotiation."""
+        Reset and re-enter the discovery-led negotiation."""
         ctx.userdata.commitment = None
         ctx.userdata.outcome = None
-        return RescheduleAgent(self.data, chat_ctx=None)
+        return Stage3NegotiationAgent(self.data, chat_ctx=None)
 
 
 # ---------- Dispute handling (EC-5) ----------
@@ -1573,17 +1355,20 @@ class Stage4RecapAgent(BaseCallAgent):
 DISPUTE_TASK = """\
 Current stage: dispute handling.
 
-The customer disputes the debt (wrong amount, not mine, fraud).
-Acknowledge calmly. Do NOT mention سمة, credit reporting, or legal action.
-Do NOT push for payment. Inform him he can contact stc customer service
-directly to verify. ONE or TWO short sentences.
+The customer disputes the debt (wrong amount, not mine, fraud). Two
+parallel actions:
+  1. Acknowledge briefly — a review will be opened by the back office.
+  2. Ask if he wants to pay any UNDISPUTED portion now in good faith
+     while the review proceeds.
+
+ONE short sentence. NEVER name a number first — let him propose.
 
 Then call exactly one tool:
 - accepts_undisputed(amount, when_iso): customer agrees to pay an
   undisputed amount today/soon. Pass SAR amount and ISO date.
 - declines_partial: customer declines any payment until review.
 - still_disputing_only: customer keeps disputing without engaging on
-  partial — close with dispute outcome.
+  partial — close with dispute outcome and back-office review.
 """
 
 
@@ -1598,10 +1383,9 @@ class DisputeAgent(BaseCallAgent):
     async def on_enter(self):
         self.session.generate_reply(
             instructions=(
-                "Acknowledge his concern calmly. Tell him he can verify "
-                "with stc customer service directly. Then ask if he wants "
-                "to pay any non-disputed portion in good faith while "
-                "checking. TWO short sentences max."
+                "Acknowledge briefly that a review will be opened, then ask "
+                "if he can pay any non-disputed portion now in good faith. "
+                "ONE short sentence."
             )
         )
 
@@ -1708,9 +1492,8 @@ class EscalationAgent(BaseCallAgent):
 
 _CLOSING_HINTS = {
     "ok": (
-        "Thank the customer warmly for cooperation. Use this style: "
-        "'شاكرة لك تعاونك، الله يجزاك خير. وراح نتواصل معك قريب بإذن الله.' "
-        "TWO short sentences max."
+        "Thank the customer warmly for his cooperation, wish him well, "
+        "and say goodbye. ONE short sentence."
     ),
     "paid": (
         "Acknowledge his statement that the amount is paid, say you'll "
@@ -1718,8 +1501,8 @@ _CLOSING_HINTS = {
         "say goodbye. ONE or TWO short sentences."
     ),
     "busy": (
-        "Politely acknowledge the bad timing. Use this style: "
-        "'أبشر، بنتواصل معك في وقت مناسب لك بإذن الله.' ONE short sentence."
+        "Politely acknowledge the bad timing, say you'll call back at a "
+        "more convenient time, and say goodbye. ONE short sentence."
     ),
     "busy_callback": (
         "Confirm the callback time you just agreed on (use the date and "
@@ -1748,9 +1531,9 @@ _CLOSING_HINTS = {
         "sentences."
     ),
     "refusal": (
-        "Acknowledge his decision politely. Use this style: "
-        "'أشكرك على وقتك، وبنتواصل معك في وقت مناسب لك بإذن الله.' "
-        "ONE short sentence. Do NOT threaten or pressure."
+        "Acknowledge his decision politely, mention the case will proceed "
+        "per company policy, and say goodbye respectfully. ONE or TWO "
+        "short sentences. Do NOT threaten or pressure."
     ),
     "dispute": (
         "Acknowledge that he disputes the debt, say the case will be "
@@ -1758,9 +1541,9 @@ _CLOSING_HINTS = {
         "say goodbye. ONE or TWO short sentences."
     ),
     "hard_refusal": (
-        "Acknowledge his decision respectfully. Use this style: "
-        "'أشكرك على وقتك، وبنتواصل معك في وقت مناسب لك بإذن الله.' "
-        "ONE short sentence. NO threats, NO legal language."
+        "Acknowledge his decision a final time, briefly note the case will "
+        "be returned to the bank per policy, and close respectfully. ONE "
+        "short sentence. NO threats, NO legal language."
     ),
     "escalated": (
         "Reassure briefly that a colleague will follow up with him "
@@ -1870,7 +1653,7 @@ class ClosingAgent(BaseCallAgent):
 
 def prewarm(proc: JobProcess):
     proc.userdata["vad"] = silero.VAD.load(
-        min_speech_duration=0.05, min_silence_duration=0.4
+        min_speech_duration=0.05, min_silence_duration=0.
     )
 
 
@@ -1892,7 +1675,7 @@ async def entrypoint(ctx: JobContext):
         return
 
     data = CallData(
-        customer_name=dial_info.get("name", "محمد"),
+        customer_name="محمد صالح الحربي",
         amount=dial_info.get("amount", "10000"),
         debt_date=dial_info.get("debt_date", "2023-01-01"),
         national_id_last4=dial_info.get("national_id_last4", "1234"),
@@ -1904,10 +1687,6 @@ async def entrypoint(ctx: JobContext):
 
     options = soniox.STTOptions(
         language_hints=["ar"],
-    )
-    azure_stt = azure.STT(
-        language="ar-SA",                    # Najdi Saudi Arabic
-        segmentation_silence_timeout_ms=700,
     )
 
     session = AgentSession[CallData](
@@ -1949,125 +1728,4 @@ async def entrypoint(ctx: JobContext):
     @session.on("function_tools_executed")
     def _on_tools(ev):
         for fc in ev.function_calls:
-            args = (fc.arguments or "").strip()
-            if args in ("", "{}"):
-                logger.info(f"TOOL  {fc.name}")
-            else:
-                logger.info(f"TOOL  {fc.name}  args={args}")
-
-    @session.on("conversation_item_added")
-    def _on_conv_item(ev):
-        item = ev.item
-        if getattr(item, "type", None) != "message":
-            return
-        if getattr(item, "role", None) != "assistant":
-            return
-        text = getattr(item, "text_content", None)
-        if not text:
-            return
-        logger.info(f"AGENT {text!r}")
-
-    #@session.on("metrics_collected")
-    #def _on_metrics(ev):
-    #    logger.info(f"metrics: {ev.metrics}")
-
-    # Per-turn latency rollup. We stash EOU + LLM TTFT and emit one summary
-    # line per response when TTS finishes. VAD per-second pings and short STT
-    # chunks are dropped — they were ~85% of log volume and added no signal.
-    _turn_state: dict[str, float] = {}
-
-    @session.on("metrics_collected")
-    def _on_metrics(ev):
-        m = ev.metrics
-        mtype = getattr(m, "type", None) or m.__class__.__name__.lower()
-
-        if mtype == "vad_metrics":
-            return
-        if mtype == "stt_metrics":
-            # STT timing isn't actionable for us here — EOU already covers it.
-            return
-
-        if mtype == "eou_metrics":
-            eou = getattr(m, "end_of_utterance_delay", 0.0)
-            tdel = getattr(m, "transcription_delay", 0.0)
-            _turn_state["eou"] = eou
-            _turn_state["transcript"] = tdel
-            logger.info(f"EOU  {eou:.2f}s  (transcript {tdel:.2f}s)")
-            return
-
-        if mtype == "llm_metrics":
-            ttft = getattr(m, "ttft", 0.0)
-            pt = getattr(m, "prompt_tokens", 0)
-            pc = getattr(m, "prompt_cached_tokens", 0)
-            ct = getattr(m, "completion_tokens", 0)
-            _turn_state["ttft"] = ttft
-            cache_pct = (pc / pt * 100) if pt else 0
-            logger.info(
-                f"LLM  ttft {ttft:.2f}s  "
-                f"prompt={pt} (cached {pc}, {cache_pct:.0f}%)  "
-                f"completion={ct}"
-            )
-            return
-
-        if mtype == "tts_metrics":
-            ttfb = getattr(m, "ttfb", 0.0)
-            audio = getattr(m, "audio_duration", 0.0)
-            chars = getattr(m, "characters_count", 0)
-            logger.info(
-                f"TTS  ttfb {ttfb:.2f}s  audio {audio:.1f}s  chars={chars}"
-            )
-            eou = _turn_state.pop("eou", None)
-            ttft = _turn_state.pop("ttft", None)
-            if eou is not None and ttft is not None:
-                total = eou + ttft + ttfb
-                _turn_state.clear()
-                logger.info(
-                    f"TURN total {total:.2f}s  "
-                    f"(EOU {eou:.2f} + TTFT {ttft:.2f} + TTFB {ttfb:.2f})"
-                )
-            return
-
-    try:
-        logger.info(f"dialing {phone_number} via trunk {OUTBOUND_TRUNK_ID}")
-        await ctx.api.sip.create_sip_participant(
-            api.CreateSIPParticipantRequest(
-                room_name=ctx.room.name,
-                sip_trunk_id=OUTBOUND_TRUNK_ID,
-                sip_call_to=phone_number,
-                participant_identity=participant_identity,
-                participant_name="Phone User",
-                wait_until_answered=True,
-            )
-        )
-
-        participant = await ctx.wait_for_participant(identity=participant_identity)
-        logger.info(f"participant joined: {participant.identity}")
-        data.participant = participant
-        data.sip_ready.set()
-
-        await session.start(
-            agent=Stage1RightPartyAgent(data),
-            room=ctx.room,
-            room_input_options=RoomInputOptions(
-                participant_identity=participant_identity,
-            ),
-        )
-
-    except api.TwirpError as e:
-        logger.error(
-            f"error creating SIP participant: {e.message}, "
-            f"SIP status: {e.metadata.get('sip_status_code')} "
-            f"{e.metadata.get('sip_status')}"
-        )
-        ctx.shutdown()
-
-
-if __name__ == "__main__":
-    cli.run_app(
-        WorkerOptions(
-            entrypoint_fnc=entrypoint,
-            prewarm_fnc=prewarm,
-            agent_name=os.getenv("AGENT_NAME", "outbound-caller-aws-local"),
-            num_idle_processes=1,
-        )
-    )
+            args = (fc.arguments or "").strip(

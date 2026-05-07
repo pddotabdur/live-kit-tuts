@@ -58,7 +58,7 @@ from livekit.agents import (
     get_job_context,
 )
 from livekit.agents.voice import ModelSettings
-from livekit.plugins import deepgram, faseeh, openai, silero, azure
+from livekit.plugins import deepgram, faseeh, openai, silero
 from livekit.plugins import soniox
 
 
@@ -398,6 +398,28 @@ STRICTLY FORBIDDEN — never say these or anything similar:
 - "إجراء قانوني" (legal action)
 - "راح يتم اتخاذ إجراء ضدك" (action will be taken against you)
 - Never shame, threaten, guilt, or pressure the customer.
+
+OBJECTION HANDLING (apply in EVERY stage — never end the call for these):
+When the customer pushes back, questions your legitimacy, or asks "why",
+DO NOT exit the call, DO NOT say "اتصل فينا لاحقاً" / "راجعنا بعدين", and
+DO NOT call a terminating tool. Reassure in ONE short sentence, then
+re-pose the current question. Stay in character.
+
+Common objection patterns and how to handle them in one sentence:
+- "ليش أعطيك؟" / "وش يضمن لي؟" / "مين أنتي أصلاً؟" / "كيف أتأكد منكم؟":
+  State the PURPOSE briefly (identity check / company is شركة توافق acting
+  for بنك stc) and SHRINK the ask where applicable (e.g. "بس آخر ٤ أرقام،
+  مو الهوية كاملة"), then re-pose. Example: "أكيد طال عمرك، هذا فقط
+  للتأكد إنك أنت قبل ما نتكلم في الحساب — تفضل."
+- "أنا مشغول الحين": acknowledge, ask for ONE minute or for a callback time.
+- "ابعثوا لي خطاب / ايميل": acknowledge, but the call is the verification
+  step — re-pose the current question politely once before conceding.
+- "ما عندي وقت لهالأسئلة": one-sentence reassurance that it's quick, then
+  the same question again — do not pile on more asks.
+
+Only call a terminating / refusal tool (refuses_to_verify, do_not_call,
+refuses_payment, etc.) if the customer EXPLICITLY refuses AFTER you have
+reassured him at least once. A question is not a refusal.
 
 EMPATHY (brief, genuine, ALWAYS consistent — never skip, never overdo):
 - EVERY time the customer mentions hardship, difficulty, inability to pay,
@@ -919,7 +941,23 @@ Then call exactly one tool:
   accumulates across turns until it has 4.
 - unclear: customer asked to repeat / said something non-numeric / off-topic.
 - refuses_to_verify: customer flatly refuses to share verification details
-  ("ما أعطيك", "ما أعطي معلوماتي", "مين أنتي أصلاً").
+  ("ما أعطيك", "ما أعطي معلوماتي") AFTER you have reassured him at least
+  once. A question like "ليش؟" or "مين أنتي؟" is NOT a refusal — it is an
+  objection (see OBJECTION HANDLING in the persona) and you must reassure
+  and re-pose, NOT call this tool.
+
+OBJECTION HANDLING FOR THIS STAGE (most common turns — handle in-character,
+do NOT end the call, do NOT call refuses_to_verify):
+- "ليش أعطيك آخر ٤ أرقام؟" / "وش الفايدة؟" / "كيف أتأكد منكم؟":
+  Reassure in ONE sentence — purpose is to confirm identity BEFORE
+  discussing any account detail; you are asking for ONLY 4 digits, not
+  the full ID — then re-pose. Example template:
+  "أكيد طال عمرك، هذا فقط للتأكد إنك أنت قبل ما نتكلم في تفاصيل الحساب،
+  وما نطلب الهوية كاملة بس آخر ٤ أرقام — تفضل."
+- "مين شركة توافق؟" / "أنا ما أعرفكم": briefly identify (شركة توافق
+  متخصصة في تحصيل الديون نيابة عن بنك stc) in one sentence, then re-pose.
+- "ابعثوا لي رسالة": one sentence — the call itself is the verification
+  step — then re-pose once before conceding.
 
 The stored last-4 digits are in the call data; you do NOT speak them.
 Until verification succeeds, you must NOT mention the debt, amount, or
@@ -1905,10 +1943,10 @@ async def entrypoint(ctx: JobContext):
     options = soniox.STTOptions(
         language_hints=["ar"],
     )
-    azure_stt = azure.STT(
-        language="ar-SA",                    # Najdi Saudi Arabic
-        segmentation_silence_timeout_ms=700,
-    )
+    # azure_stt = azure.STT(
+    #     language="ar-SA",                    # Najdi Saudi Arabic
+    #     segmentation_silence_timeout_ms=700,
+    # )
 
     session = AgentSession[CallData](
         userdata=data,
@@ -1926,7 +1964,7 @@ async def entrypoint(ctx: JobContext):
         },
         #stt=deepgram.STT(model="nova-3", language="ar-SA"),
         stt=soniox.STT(params=options),
-        llm=openai.LLM(model="gpt-4.1", temperature=0.4),
+        llm=openai.LLM(model="gpt-4.1", temperature=0.5),
         tts=faseeh.TTS(
             base_url="https://api.munsit.com/api/v1",
             voice_id="ar-hijazi-female-2",
@@ -2067,7 +2105,7 @@ if __name__ == "__main__":
         WorkerOptions(
             entrypoint_fnc=entrypoint,
             prewarm_fnc=prewarm,
-            agent_name=os.getenv("AGENT_NAME", "outbound-caller-aws-local"),
+            agent_name=os.getenv("AGENT_NAME", "outbound-caller-aws-updated"),
             num_idle_processes=1,
         )
     )
