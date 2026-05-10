@@ -219,17 +219,152 @@ _TERM_MAP = {
 }
 
 _PRONUNCIATION_MAP = {
+    # Brand / persona
     "سمة": "سِمَه",
-    "موبايلي": "مُوبَايلي",
+    "موبايلي": "مُوبَايْلِي",
     "توافق": "تَوَافُقْ",
+    "نورا": "نُورَا",
+
+    # Greetings / acks
     "أبشر": "أَبْشِرْ",
     "ابشر": "أَبْشِرْ",
     "تفضل": "تَفَضَّلْ",
-    "للأسف": "للأَسَفْ",
+    "تفضلي": "تَفَضَّلِي",
+    "للأسف": "لِلْأَسَفْ",
     "بكرة": "بُكْرَهْ",
+    "بكرا": "بُكْرَا",
     "هلا": "هَلَا",
     "أمرني": "اَمْرُنِي",
     "دقيقة": "دَقِيقَة",
+    "ولا يهمك": "وَلَا يْهِمَّكْ",
+    "الله يعافيك": "اللهُ يْعَافِيكْ",
+    "الله يجزاك خير": "اللهُ يْجْزَاكْ خَيْرْ",
+    "آسفة": "آسْفَة",
+    "معذرة": "مَعْذِرَة",
+    "زين": "زَيْنْ",
+    "تمام": "تَمَامْ",
+    "صحيح": "صَحِيحْ",
+    "مضبوط": "مَضْبُوطْ",
+
+    # Stage-1 verification vocab
+    "هلا، معي": "هَلَا، مَعِي",
+    "للتأكيد": "لِلتَّأْكِيدْ",
+    "أعيد لك": "أُعِيدْ لَكْ",
+    "آخر": "آخِرْ",
+    "أرقام": "أَرْقَامْ",
+    "الهوية": "الْهَوِيَّة",
+    "الإقامة": "الْإِقَامَة",
+    "الوطنية": "الْوَطَنِيَّة",
+    "الإزعاج": "الْإِزْعَاجْ",
+    "تعرف": "تَعْرِفْ",
+    "جواله": "جَوَّالَه",
+    "للوصول": "لِلْوُصُولْ",
+
+    # Stage-2 disclosure + debt intro
+    "شكراً": "شُكْرَنْ",
+    "هذه": "هَذِهْ",
+    "المكالمة": "الْمُكَالَمَة",
+    "قد تكون": "قَدْ تْكُونْ",
+    "مسجّلة": "مُسَجَّلَة",
+    "مسجلة": "مُسَجَّلَة",
+    "لأغراض": "لِأَغْرَاضْ",
+    "الجودة": "الْجَوْدَة",
+    "أكلمك": "أُكَلِّمَكْ",
+    "بخصوص": "بِخُصُوصْ",
+    "حسابك": "حْسَابَكْ",
+    "عليك": "عَلَيْكْ",
+    "مبلغ": "مَبْلَغْ",
+    "متأخر": "مُتَأَخِّرْ",
+    "قدره": "قَدْرَهْ",
+    "ريال": "رِيَالْ",
+    "ولم يُسدد": "وَلَمْ يُسَدَّدْ",
+    "ولم يسدد": "وَلَمْ يُسَدَّدْ",
+    "ايش سبب": "إِيشْ سَبَبْ",
+    "إيش سبب": "إِيشْ سَبَبْ",
+    "التأخير": "التَّأْخِيرْ",
+    "أقصد": "أَقْصِدْ",
+    "يمنعك": "يِمْنَعَكْ",
+    "السداد": "السَّدَادْ",
+    "سددت": "سَدَّدْتْ",
+    "دفعت": "دَفَعْتْ",
+    "تحديث": "تَحْدِيثْ",
+    "السجل": "السِّجِلْ",
+
+    # Stage-3 negotiation vocab
+    "للعلم": "لِلْعِلْمْ",
+    "للعِلم": "لِلْعِلْمْ",
+    "نحتاج": "نِحْتَاجْ",
+    "تسوية": "تَسْوِيَة",
+    "الموضوع": "الْمَوْضُوعْ",
+    "خلال": "خِلَالْ",
+    "أيام": "أَيَّامْ",
+    "وإلا": "وَإِلَّا",
+    "قد يؤثر": "قَدْ يْأَثِّرْ",
+    "سجلك": "سِجِلَّكْ",
+    "الائتماني": "الِائْتِمَانِي",
+    "ويُرفع": "وَيُرْفَعْ",
+    "ويرفع": "وَيُرْفَعْ",
+    "حسب": "حَسَبْ",
+    "الإجراءات": "الْإِجْرَاءَاتْ",
+    "تقدر": "تِقْدَرْ",
+    "تسدد": "تْسَدِّدْ",
+    "كامل": "كَامِلْ",
+    "اليوم": "الْيَوْمْ",
+    "كاستثناء": "كَاسْتِثْنَاءْ",
+    "النصف": "النِّصْفْ",
+    "يومين": "يَوْمَيْنْ",
+    "والباقي": "وَالْبَاقِي",
+    "بتاريخ": "بِتَارِيخْ",
+    "تختاره": "تِخْتَارَهْ",
+    "أقل": "أَقَلْ",
+    "تلتزم": "تِلْتَزِمْ",
+    "بالضبط": "بِالضَّبْطْ",
+    "مفهوم": "مَفْهُومْ",
+    "بالتقسيط": "بِالتَّقْسِيطْ",
+    "الشهري": "الشَّهْرِي",
+    "أقدر": "أَقْدَرْ",
+    "اقدر": "أَقْدَرْ",
+    "مقدّر وضعك": "مْقَدِّرْ وَضْعَكْ",
+    "مقدر وضعك": "مْقَدِّرْ وَضْعَكْ",
+
+    # Stage-4 recap vocab
+    "الاتفاق": "الِاتِّفَاقْ",
+    "هو:": "هُوَ:",
+    "عبر": "عَبْرْ",
+    "سداد": "سَدَادْ",
+    "باستخدام": "بِاسْتِخْدَامْ",
+    "رقم": "رَقَمْ",
+    "وكود": "وَكُودْ",
+    "كود": "كُودْ",
+    "المفوتر": "الْمُفَوْتِرْ",
+    "تطبيق": "تَطْبِيقْ",
+    "البنك": "الْبَنْكْ",
+    "أقرب": "أَقْرَبْ",
+    "فرع": "فَرْعْ",
+    "الصراف": "الصَّرَّافْ",
+    "الآلي": "الْآلِي",
+    "بعد": "بَعْدْ",
+    "أرسل": "أَرْسِلْ",
+    "إيصال": "إِيصَالْ",
+    "الدفع": "الدَّفْعْ",
+    "للتأكيد،": "لِلتَّأْكِيدِ،",
+    "بنتواصل": "بِنْتَوَاصَلْ",
+    "نتواصل": "نِتْوَاصَلْ",
+    "معك": "مَعَكْ",
+    "في التاريخ": "فِي التَّارِيخْ",
+    "المتفق": "الْمُتَّفَقْ",
+    "عليه": "عَلَيْهْ",
+    "متى": "مَتَى",
+    "الأسبوع": "الْأُسْبُوعْ",
+    "القادم": "الْقَادِمْ",
+    "نهاية": "نِهَايَة",
+    "الشهر": "الشَّهْرْ",
+
+    # Number words used in spoken digits / amounts
+    "صفر": "صِفِرْ",
+    "واحد": "وَاحِدْ",
+    "اثنين": "اثْنَيْنْ",
+    "اثنان": "اثْنَانْ",
     "تسعة": "تِسْعَة",
     "عشرة": "عَشْرَة",
     "ثمانية": "ثمانيه",
@@ -238,6 +373,14 @@ _PRONUNCIATION_MAP = {
     "اربعة": "اربعه",
     "ثلاثة": "ثلاثه",
     "الساعة": "الساعه",
+
+    # Closings
+    "شاكرة": "شَاكِرَة",
+    "تعاونك": "تَعَاوُنَكْ",
+    "بإذن الله": "بِإِذْنْ اللهْ",
+    "يعطيك العافية": "يِعْطِيكْ الْعَافْيَة",
+    "الله يرحمه": "اللهُ يِرْحَمَهْ",
+    "ويغفر له": "وَيْغْفِرْ لَهْ",
 }
 
 _PRONUNCIATION_SORTED = sorted(_PRONUNCIATION_MAP.items(), key=lambda x: -len(x[0]))
@@ -363,6 +506,16 @@ _AR_WEEKDAYS = {
 }
 
 
+def _amount_in_arabic_words(data: CallData) -> str:
+    """Spoken Arabic form of the outstanding amount (no digits) for the LLM
+    to echo verbatim. e.g. '7500' → 'سبعة آلاف وخمس مية'."""
+    try:
+        n = int(str(data.amount).strip())
+    except ValueError:
+        return str(data.amount)
+    return _ar_amount_words(n)
+
+
 def call_context_block(data: CallData) -> str:
     today = datetime.date.today()
     tomorrow = today + datetime.timedelta(days=1)
@@ -381,7 +534,10 @@ def call_context_block(data: CallData) -> str:
         f"- Customer name: {data.name}\n"
         f"- Title-with-name to use in Stage 1: {_title_with_name(data)}\n"
         f"- Short addressed name to use in Stage 2: {_addressed_name(data)}\n"
-        f"- Outstanding amount: {data.amount} SAR\n"
+        f"- Outstanding amount in ARABIC WORDS (always use this form when "
+        f"speaking, never digits): {_amount_in_arabic_words(data)} ريال\n"
+        f"- Outstanding amount in digits (for internal calculation only, "
+        f"NEVER pronounce as digits): {data.amount} SAR\n"
         f"- Last 4 digits of national ID on file: {data.national_id_last4}\n"
         f"- Services on file (used ONLY if customer denies recognising the debt):\n"
         f"{services_block}\n"
@@ -415,12 +571,32 @@ class BaseCallAgent(Agent):
         text: AsyncIterable[str],
         model_settings: ModelSettings,
     ) -> AsyncIterable[rtc.AudioFrame]:
-        async def normalized(stream: AsyncIterable[str]) -> AsyncIterable[str]:
+        # The LLM streams in small chunks. If we normalize each chunk in
+        # isolation, regexes that span tokens (e.g. "7500" + " ريال") miss,
+        # and the digit-by-digit fallback then mispronounces "7500" as
+        # "seven-five-zero-zero". Buffer until a sentence-ending mark, then
+        # normalize the whole span in one go and yield it. The first audio
+        # arrives slightly later but pronunciation is correct.
+        _SENTENCE_END = "؟!.…\n"
+
+        async def buffered_and_normalized(
+            stream: AsyncIterable[str],
+        ) -> AsyncIterable[str]:
+            buf = ""
             async for chunk in stream:
-                yield _najdi_normalize(chunk)
+                buf += chunk
+                # Flush at the last sentence-end mark in the buffer so a
+                # span like "...قدره 7500 ريال..." stays whole through the
+                # regex pass. Keep the tail for the next round.
+                idx = max((buf.rfind(c) for c in _SENTENCE_END), default=-1)
+                if idx >= 0:
+                    head, buf = buf[: idx + 1], buf[idx + 1 :]
+                    yield _najdi_normalize(head)
+            if buf:
+                yield _najdi_normalize(buf)
 
         async for frame in Agent.default.tts_node(
-            self, normalized(text), model_settings
+            self, buffered_and_normalized(text), model_settings
         ):
             yield frame
 
@@ -464,7 +640,8 @@ class Stage1RightPartyAgent(BaseCallAgent):
         await asyncio.sleep(0.4)
         self.session.generate_reply(
             instructions=(
-                f'Open the call with EXACTLY: "هلا، معي {_title_with_name(self.data)}؟" '
+                f'Open the call with EXACTLY (diacritics mandatory): '
+                f'"هَلَا، مَعِي {_title_with_name(self.data)}؟" '
                 "— nothing more, no greetings, no introductions."
             )
         )
@@ -539,8 +716,10 @@ class Stage1IDYesNoAgent(BaseCallAgent):
         digits_words = _ar_digits_individual(self.data.national_id_last4)
         self.session.generate_reply(
             instructions=(
-                f'Ask the yes/no verification question EXACTLY: '
-                f'"للتأكيد، آخر ٤ أرقام من الهوية أو الإقامة هي {digits_words}، صحيح؟" '
+                f'Ask the yes/no verification question EXACTLY (diacritics '
+                f'mandatory, separate the digits with spaces — NOT commas):\n'
+                f'"لِلتَّأْكِيدْ، آخِرْ أَرْبَعَة أَرْقَامْ مِنْ الْهَوِيَّة '
+                f'أَوْ الْإِقَامَة هِيَ {digits_words}، صَحِيحْ؟"\n'
                 "Nothing more."
             )
         )
@@ -569,8 +748,9 @@ class Stage1IDYesNoAgent(BaseCallAgent):
         digits_words = _ar_digits_individual(self.data.national_id_last4)
         self.session.generate_reply(
             instructions=(
-                f'Repeat the digits and ask yes/no once more: '
-                f'"أعيد لك: {digits_words}، صحيح؟" Nothing more.'
+                f'Repeat the digits and ask yes/no once more (digits '
+                f'space-separated, NOT comma-separated):\n'
+                f'"أُعِيدْ لَكْ: {digits_words}، صَحِيحْ؟" Nothing more.'
             )
         )
 
@@ -745,8 +925,11 @@ Turn A (QA disclosure):
   "شكراً {addressed_name}، هذه المكالمة قد تكون مسجّلة لأغراض الجودة."
 
 Turn B (debt intro + reason question):
-  "أكلمك بخصوص حسابك في موبايلي — عليك مبلغ متأخر قدره {amount} ريال
-  ولم يُسدد. ايش سبب التأخير؟"
+  "أُكَلِّمَكْ بِخُصُوصْ حْسَابَكْ فِي مُوبَايْلِي — عَلَيْكْ مَبْلَغْ
+  مُتَأَخِّرْ قَدْرَهْ {amount_words} رِيَالْ وَلَمْ يُسَدَّدْ.
+  إِيشْ سَبَبْ التَّأْخِيرْ؟"
+The amount above is ALREADY in Arabic words ({amount_words}). NEVER emit the
+amount as digits — say it exactly as written.
 
 If the customer answers Turn B with bare "نعم/طيب/تمام/اوكي" without a reason,
 re-ask ONCE: "أقصد، إيش الذي يمنعك من السداد؟"
@@ -783,7 +966,7 @@ class Stage2DebtIntroAgent(BaseCallAgent):
                 data,
                 STAGE2_TASK.format(
                     addressed_name=_addressed_name(data),
-                    amount=data.amount,
+                    amount_words=_amount_in_arabic_words(data),
                 ),
             ),
             chat_ctx=chat_ctx,
@@ -791,15 +974,22 @@ class Stage2DebtIntroAgent(BaseCallAgent):
         self.data = data
 
     async def on_enter(self):
-        # Turn A: QA disclosure (alone). The LLM will then be asked to run
-        # turn B on the next user input by following the stage script.
+        # Turn A: QA disclosure + Turn B: debt intro, as one connected reply.
+        # All script lines are pre-vocalized with diacritics so Faseeh
+        # pronounces them correctly. The amount is pre-formatted as Arabic
+        # words — never digits — so it can never be mispronounced as
+        # digit-by-digit.
+        amount_words = _amount_in_arabic_words(self.data)
         self.session.generate_reply(
             instructions=(
-                f'Say EXACTLY: "شكراً {_addressed_name(self.data)}، هذه '
-                'المكالمة قد تكون مسجّلة لأغراض الجودة." Then ask the '
-                f'debt intro right after as a single connected reply: '
-                f'"أكلمك بخصوص حسابك في موبايلي — عليك مبلغ متأخر قدره '
-                f'{self.data.amount} ريال ولم يُسدد. ايش سبب التأخير؟"'
+                f'Say this EXACTLY as a single connected reply (the diacritics '
+                f'are mandatory — do NOT remove them):\n'
+                f'"شُكْرَنْ {_addressed_name(self.data)}، هَذِهْ الْمُكَالَمَة '
+                f'قَدْ تْكُونْ مُسَجَّلَة لِأَغْرَاضْ الْجَوْدَة. '
+                f'أُكَلِّمَكْ بِخُصُوصْ حْسَابَكْ فِي مُوبَايْلِي — عَلَيْكْ '
+                f'مَبْلَغْ مُتَأَخِّرْ قَدْرَهْ {amount_words} رِيَالْ '
+                f'وَلَمْ يُسَدَّدْ. إِيشْ سَبَبْ التَّأْخِيرْ؟"\n'
+                f'NEVER emit the amount as digits.'
             )
         )
 
@@ -864,30 +1054,37 @@ class Stage2DebtIntroAgent(BaseCallAgent):
 STAGE3_TASK = """\
 Current stage: 3 — Negotiation ladder.
 
-Outstanding amount: {amount} SAR.
+Outstanding amount in Arabic words (always speak this form, NEVER digits):
+{amount_words} ريال.
 
-DETERMINISTIC FIRST TURN (consequences line — say ONCE per call, not again):
-  "للعلم، نحتاج تسوية الموضوع خلال ٧ أيام، وإلا قد يؤثر على سجلك الائتماني
-  ويُرفع لـ سمة حسب الإجراءات."
+DETERMINISTIC FIRST TURN (consequences line — say ONCE per call, not again).
+The diacritics are mandatory:
+  "لِلْعِلْمْ، نِحْتَاجْ تَسْوِيَة الْمَوْضُوعْ خِلَالْ سَبْعَة أَيَّامْ،
+  وَإِلَّا قَدْ يْأَثِّرْ عَلَى سِجِلَّكْ الِائْتِمَانِي وَيُرْفَعْ لِـ
+  سِمَه حَسَبْ الْإِجْرَاءَاتْ."
 
-After that line, immediately move into Attempt 1.
+After that line, immediately move into Attempt 1 — say it as ONE connected
+reply, do NOT repeat or rephrase the consequences line.
 
-LADDER (one short question per turn, ack briefly between turns):
+LADDER (one short question per turn, ack briefly between turns).
+All script lines below are pre-vocalized — keep diacritics intact.
 
 Attempt 1 — full today/tomorrow:
-  "تقدر تسدد المبلغ كامل اليوم أو بكرا؟"
+  "تِقْدَرْ تْسَدِّدْ الْمَبْلَغْ كَامِلْ الْيَوْمْ أَوْ بُكْرَا؟"
   • Yes (full today/tomorrow) → call commit_full(when_iso).
   • No / can't → ack briefly, then Attempt 2.
 
 Attempt 2 — half exception:
-  "كاستثناء، تقدر تسدد النصف اليوم أو خلال يومين، والباقي بتاريخ تختاره؟"
+  "كَاسْتِثْنَاءْ، تِقْدَرْ تْسَدِّدْ النِّصْفْ الْيَوْمْ أَوْ خِلَالْ
+  يَوْمَيْنْ، وَالْبَاقِي بِتَارِيخْ تِخْتَارَهْ؟"
   • Yes → ask the date for the second half, then call commit_two_step(
     first_amount, first_date_iso, rest_amount, rest_date_iso).
   • No → Attempt 3.
 
 Attempt 3 — customer-named instalments:
-  "كم أقل مبلغ تقدر تلتزم فيه، وفي أي تاريخ بالضبط؟"
-  Then: "والباقي متى تقدر تسدده؟"
+  "كَمْ أَقَلْ مَبْلَغْ تِقْدَرْ تِلْتَزِمْ فِيهْ، وَفِي أَيْ تَارِيخْ
+  بِالضَّبْطْ؟"
+  Then: "وَالْبَاقِي مَتَى تِقْدَرْ تْسَدِّدَهْ؟"
   • Plan agreed → call commit_two_step(...).
   • Vague after ONE clarification → call commit_partial_then_callback(
     first_amount, first_date_iso) if at least the initial is set, else
@@ -926,7 +1123,7 @@ class Stage3NegotiationAgent(BaseCallAgent):
         super().__init__(
             instructions=stage_instructions(
                 data,
-                STAGE3_TASK.format(amount=data.amount),
+                STAGE3_TASK.format(amount_words=_amount_in_arabic_words(data)),
             ),
             chat_ctx=chat_ctx,
         )
@@ -937,16 +1134,22 @@ class Stage3NegotiationAgent(BaseCallAgent):
             self.data.consequences_said = True
             self.session.generate_reply(
                 instructions=(
-                    'Say the consequences line ONCE then immediately ask '
-                    'Attempt 1 (full today/tomorrow) as a single connected reply: '
-                    '"للعلم، نحتاج تسوية الموضوع خلال ٧ أيام، وإلا قد يؤثر '
-                    'على سجلك الائتماني ويُرفع لـ سمة حسب الإجراءات. تقدر '
-                    'تسدد المبلغ كامل اليوم أو بكرا؟"'
+                    'Say the consequences line + Attempt 1 EXACTLY as ONE '
+                    'connected reply (diacritics mandatory, do NOT repeat or '
+                    'rephrase any part):\n'
+                    '"لِلْعِلْمْ، نِحْتَاجْ تَسْوِيَة الْمَوْضُوعْ خِلَالْ '
+                    'سَبْعَة أَيَّامْ، وَإِلَّا قَدْ يْأَثِّرْ عَلَى '
+                    'سِجِلَّكْ الِائْتِمَانِي وَيُرْفَعْ لِـ سِمَه حَسَبْ '
+                    'الْإِجْرَاءَاتْ. تِقْدَرْ تْسَدِّدْ الْمَبْلَغْ '
+                    'كَامِلْ الْيَوْمْ أَوْ بُكْرَا؟"'
                 )
             )
         else:
             self.session.generate_reply(
-                instructions='Ask Attempt 1: "تقدر تسدد المبلغ كامل اليوم أو بكرا؟"'
+                instructions=(
+                    'Ask Attempt 1 EXACTLY: "تِقْدَرْ تْسَدِّدْ الْمَبْلَغْ '
+                    'كَامِلْ الْيَوْمْ أَوْ بُكْرَا؟"'
+                )
             )
 
     @function_tool()
@@ -1095,16 +1298,19 @@ class RescheduleAgent(BaseCallAgent):
 STAGE4_TASK = """\
 Current stage: 4 — Recap + payment methods + confirmation.
 
-Deliver as a SINGLE concise reply (max ~3 short sentences, no monologue):
+Deliver as a SINGLE concise reply (max ~3 short sentences, no monologue).
+The diacritics are MANDATORY — do NOT remove them, do NOT emit any digits:
 
-  "للتأكيد، الاتفاق هو: {plan_summary}. تقدر تسدد عبر سداد باستخدام رقم
-  الهوية الوطنية وكود المفوتر صفر صفر خمسة، أو من تطبيق البنك، أو
-  تطبيق موبايلي، أو أقرب فرع موبايلي، أو الصراف الآلي. بعد السداد،
-  أرسل لنا إيصال الدفع للتأكيد. بنتواصل معك في التاريخ المتفق عليه.
-  مضبوط؟"
+  "لِلتَّأْكِيدْ، الِاتِّفَاقْ هُوَ: {plan_summary}. تِقْدَرْ تْسَدِّدْ
+  عَبْرْ سَدَادْ بِاسْتِخْدَامْ رَقَمْ الْهَوِيَّة الْوَطَنِيَّة وَكُودْ
+  الْمُفَوْتِرْ صِفِرْ صِفِرْ خَمْسَة، أَوْ مِنْ تَطْبِيقْ الْبَنْكْ،
+  أَوْ تَطْبِيقْ مُوبَايْلِي، أَوْ أَقْرَبْ فَرْعْ مُوبَايْلِي، أَوْ
+  الصَّرَّافْ الْآلِي. بَعْدْ السَّدَادْ، أَرْسِلْ لَنَا إِيصَالْ الدَّفْعْ
+  لِلتَّأْكِيدْ. بِنْتَوَاصَلْ مَعَكْ فِي التَّارِيخْ الْمُتَّفَقْ عَلَيْهْ.
+  مَضْبُوطْ؟"
 
 If the agreement is a CALLBACK (no payment commitment), say instead:
-  "للتأكيد، بنتواصل معك يوم {callback_summary}. مضبوط؟"
+  "لِلتَّأْكِيدْ، بِنْتَوَاصَلْ مَعَكْ يَوْمْ {callback_summary}. مَضْبُوطْ؟"
 
 After the customer responds to "مضبوط؟" call EXACTLY one tool:
 - recap_confirmed: customer says yes / مضبوط / تمام.
@@ -1138,22 +1344,30 @@ class Stage4RecapAgent(BaseCallAgent):
 
         if has_commitment:
             hint = (
-                'Say the recap as ONE concise reply ending with "مضبوط؟". '
-                f'Plan: {self.data.commitment}. '
-                "Mention SADAD with biller code 005, bank app, Mobily app, "
-                "branch, ATM. Ask the customer to send the payment receipt. "
-                'End with: "بنتواصل معك في التاريخ المتفق عليه. مضبوط؟"'
+                'Say the recap EXACTLY as ONE concise reply (diacritics '
+                'mandatory, no digits, end with "مَضْبُوطْ؟"):\n'
+                f'"لِلتَّأْكِيدْ، الِاتِّفَاقْ هُوَ: {self.data.commitment}. '
+                'تِقْدَرْ تْسَدِّدْ عَبْرْ سَدَادْ بِاسْتِخْدَامْ رَقَمْ '
+                'الْهَوِيَّة الْوَطَنِيَّة وَكُودْ الْمُفَوْتِرْ صِفِرْ '
+                'صِفِرْ خَمْسَة، أَوْ تَطْبِيقْ الْبَنْكْ، أَوْ تَطْبِيقْ '
+                'مُوبَايْلِي، أَوْ أَقْرَبْ فَرْعْ مُوبَايْلِي، أَوْ '
+                'الصَّرَّافْ الْآلِي. بَعْدْ السَّدَادْ، أَرْسِلْ لَنَا '
+                'إِيصَالْ الدَّفْعْ. بِنْتَوَاصَلْ مَعَكْ فِي التَّارِيخْ '
+                'الْمُتَّفَقْ عَلَيْهْ. مَضْبُوطْ؟"\n'
+                'Convert any digits in the plan to Arabic words before speaking.'
             )
         elif has_callback:
             hint = (
-                'Say a short callback recap: "للتأكيد، بنتواصل معك يوم '
-                f'{self.data.callback_time}. مضبوط؟" Use "بنتواصل معك" — '
-                "NEVER 'بتدفع'. ONE short sentence."
+                f'Say the callback recap EXACTLY (diacritics mandatory):\n'
+                f'"لِلتَّأْكِيدْ، بِنْتَوَاصَلْ مَعَكْ يَوْمْ '
+                f'{self.data.callback_time}. مَضْبُوطْ؟"\n'
+                'Use "بِنْتَوَاصَلْ مَعَكْ" — NEVER "بِتْدْفَعْ". '
+                "ONE short sentence."
             )
         else:
             hint = (
-                'Restate whatever was agreed in ONE short sentence and '
-                'ask "مضبوط؟".'
+                'Restate whatever was agreed in ONE short sentence ending '
+                'with "مَضْبُوطْ؟". Use diacritics. No digits.'
             )
         self.session.generate_reply(instructions=hint)
 
