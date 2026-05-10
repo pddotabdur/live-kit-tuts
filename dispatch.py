@@ -12,7 +12,7 @@ async def main():
     if not phone_number:
         raise SystemExit("PHONE_NUMBER env var is required (e.g. PHONE_NUMBER=+966555209485)")
 
-    agent_name = os.getenv("AGENT_NAME", "outbound-caller-aws-local")
+    agent_name = os.getenv("AGENT_NAME", "mobily-tawafuq-local")
 
     metadata = {
         "phone_number": phone_number,
