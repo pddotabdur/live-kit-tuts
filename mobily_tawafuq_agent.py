@@ -612,16 +612,28 @@ You just opened the call with the script-fixed line:
   "هلا، معي {title_with_name}؟"
 Listen to the reply.
 
-Then call EXACTLY one tool based on what you hear:
-- right_party: customer confirms they ARE {title_with_name} (نعم / أيوه / أنا
-  / صحيح). "تفضلي" alone is NOT confirmation — re-ask politely.
-- wrong_party: caller is NOT the named person.
+Then call EXACTLY one tool based on what you hear — but ONLY if the reply
+is UNAMBIGUOUS. STT errors are common; when in doubt, do NOT call a tool —
+re-ask politely instead.
+
+Tool choices:
+- right_party: customer EXPLICITLY confirms they ARE {title_with_name}
+  (نعم / أيوه / أنا / صحيح / "أنا {title_with_name}"). Treat "أنا [name]"
+  where the name SOUNDS LIKE {title_with_name} (even if STT spelt it
+  differently) as confirmation. "تفضلي" alone is NOT confirmation — re-ask.
+- wrong_party: caller EXPLICITLY denies — says "لا" / "ما أنا" / names a
+  DIFFERENT person clearly / "خطأ". Garbled or unintelligible "أنا
+  [unclear]" is NOT denial — re-ask once.
 - caller_busy: bad time / asks for callback / مشغول / بعدين.
-- do_not_call: asks not to be contacted again / DNC.
+- do_not_call: explicit DNC request.
 - customer_deceased: caller informs the named person has passed away.
 
-Off-topic / clarification → answer in ONE short sentence then re-pose the
-right-party question. Do NOT call a tool.
+When the reply is unclear, off-topic, or you cannot confidently classify it
+into one of the above:
+- Answer in ONE short sentence (e.g. "ما سمعتك زين، تأكد لي إذا أنت
+  {title_with_name}؟") and DO NOT call any tool.
+- Specifically: never call wrong_party on a single garbled phrase. Only
+  call wrong_party after a clear, unambiguous denial.
 """
 
 
@@ -770,9 +782,20 @@ Current stage: 1b — wrong party, find out if they can refer us.
 The person on the line is NOT {title_with_name}. Politely ask:
   "آسفة على الإزعاج — تعرف {title_with_name}؟"
 
-Then call EXACTLY one tool:
-- knows_person: caller says yes, knows him.
-- does_not_know_person: no / never heard of him.
+CRITICAL: ask the question and WAIT for a user reply. Do NOT call any tool
+in the same turn as this question. Only call a tool AFTER the user answers.
+
+Tool choices (call EXACTLY one, only after a clear user reply):
+- knows_person: caller explicitly says yes / "أعرفه" / "نعم" / offers help.
+- does_not_know_person: explicit "لا" / "ما أعرفه" / "ما عندي فكرة".
+- actually_right_party: caller clarifies they ARE the named person — e.g.
+  "لا، أنا {title_with_name}" / "أنا قلت لك أنا [name that sounds like
+  the named person]" / "يا أخي أنا [name]". This means the previous
+  wrong_party classification was an STT mishear; we go back to ID
+  verification and continue normally. Use this generously — recovering
+  from a mishear is much better than dragging a real customer through
+  a referral flow they can't satisfy.
+- unclear: garbled or off-topic — re-ask once without calling a tool.
 """
 
 
@@ -790,8 +813,9 @@ class WrongPartyKnowsAgent(BaseCallAgent):
     async def on_enter(self):
         self.session.generate_reply(
             instructions=(
-                f'Apologise and ask exactly: "آسفة على الإزعاج — تعرف '
-                f'{_title_with_name(self.data)}؟" One short sentence.'
+                f'Apologise and ask EXACTLY: "آسْفَة عَلَى الْإِزْعَاجْ — '
+                f'تَعْرِفْ {_title_with_name(self.data)}؟" ONE short sentence. '
+                "Do NOT call any tool in this turn — wait for the user reply."
             )
         )
 
@@ -807,6 +831,23 @@ class WrongPartyKnowsAgent(BaseCallAgent):
         _emit_outcome(ctx.userdata, "contact_invalid")
         return ClosingAgent(self.data, intent="wrong_party", chat_ctx=None)
 
+    @function_tool()
+    async def actually_right_party(self, ctx: RunContext[CallData]):
+        """Caller clarified they ARE the named person — recover from a
+        suspected STT mishear and resume ID verification."""
+        ctx.userdata.identity_confirmed = True
+        return Stage1IDYesNoAgent(self.data, chat_ctx=None)
+
+    @function_tool()
+    async def unclear(self, ctx: RunContext[CallData]):
+        """Reply was unclear — re-ask without changing stage."""
+        self.session.generate_reply(
+            instructions=(
+                f'Re-ask gently: "ما سمعتك زين، تعرف '
+                f'{_title_with_name(self.data)}؟" ONE short sentence.'
+            )
+        )
+
 
 COLLECT_MOBILE_TASK = """\
 Current stage: 1c — collect a referral mobile number.
@@ -814,10 +855,19 @@ Current stage: 1c — collect a referral mobile number.
 Ask: "تقدر تشاركنا رقم جواله المكوّن من ١٠ أرقام للوصول إليه؟"
 When digits arrive, repeat ONCE to confirm: "أعيد الرقم للتأكيد: [number]، صحيح؟"
 
-Tools:
-- mobile_provided(number): caller spoke a number. Pass digits-only string.
-  Saudi mobiles start with 05 and are 10 digits. Pass whatever digits you heard.
-- refuses_to_provide: caller declined.
+CRITICAL: ask the question and WAIT for a user reply. Do NOT call any tool
+in the same turn as the entry question.
+
+Tools (call EXACTLY one, only after a clear user reply):
+- mobile_provided(number): caller spoke a recognisable Saudi mobile number
+  (Saudi mobiles start with 05 and are 10 digits). Pass digits-only string.
+  Do NOT call this on garbage/2-3 digits — re-ask via `unclear` instead.
+- refuses_to_provide: explicit decline ("ما عندي رقمه" / "ما أعطيك").
+- actually_right_party: caller clarifies they ARE the named person —
+  e.g. "لا، أنا [name]" / "يا أخي أنا قلت لك أنا [name]" / "أنا أحمد".
+  Use this to recover from a suspected STT mishear earlier in the call;
+  we go back to ID verification.
+- unclear: garbled / 2-3 digits / off-topic — re-ask once.
 """
 
 
@@ -832,15 +882,27 @@ class CollectMobileAgent(BaseCallAgent):
     async def on_enter(self):
         self.session.generate_reply(
             instructions=(
-                'Ask: "تقدر تشاركنا رقم جواله المكوّن من ١٠ أرقام للوصول إليه؟" '
-                "One short sentence."
+                'Ask EXACTLY: "تِقْدَرْ تْشَارِكْنَا رَقَمْ جَوَّالَه '
+                'الْمُكَوَّنْ مِنْ عَشَرَة أَرْقَامْ لِلْوُصُولْ إِلَيْهْ؟" '
+                "ONE short sentence. Do NOT call any tool in this turn — "
+                "wait for the user reply."
             )
         )
 
     @function_tool()
     async def mobile_provided(self, ctx: RunContext[CallData], number: str):
-        """Caller gave a mobile number."""
+        """Caller gave a mobile number (must be 10 digits, starts with 05)."""
         clean = re.sub(r"\D", "", number.translate(_AR_INDIC_DIGITS))
+        if len(clean) < 9:
+            # Garbage / partial digits — don't accept, re-ask.
+            self.session.generate_reply(
+                instructions=(
+                    'The number was incomplete. Ask gently: "ما اكتمل الرقم، '
+                    'الرقم لازم يكون ١٠ أرقام يبدأ بـ صفر خمسة، تقدر تعيده؟" '
+                    "ONE short sentence."
+                )
+            )
+            return
         ctx.userdata.referrer_mobile = clean
         ctx.userdata.outcome = "wrong_party_referred"
         return ClosingAgent(self.data, intent="referred", chat_ctx=None)
@@ -851,6 +913,23 @@ class CollectMobileAgent(BaseCallAgent):
         ctx.userdata.outcome = "wrong_party"
         _emit_outcome(ctx.userdata, "contact_invalid")
         return ClosingAgent(self.data, intent="wrong_party", chat_ctx=None)
+
+    @function_tool()
+    async def actually_right_party(self, ctx: RunContext[CallData]):
+        """Caller clarified they ARE the named person — recover from a
+        suspected STT mishear and resume ID verification."""
+        ctx.userdata.identity_confirmed = True
+        return Stage1IDYesNoAgent(self.data, chat_ctx=None)
+
+    @function_tool()
+    async def unclear(self, ctx: RunContext[CallData]):
+        """Reply was unclear / not a valid number — re-ask once."""
+        self.session.generate_reply(
+            instructions=(
+                'Re-ask gently: "ما سمعت الرقم زين، تقدر تعيده؟ ١٠ أرقام '
+                'يبدأ بـ صفر خمسة." ONE short sentence.'
+            )
+        )
 
 
 # ---------- Schedule callback (busy at start) ----------
